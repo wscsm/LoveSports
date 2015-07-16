@@ -12,10 +12,6 @@ android {
             keyAlias keyProps["alias"]
             storePassword keyProps["storePass"]
             keyPassword keyProps["pass"]
-//            keyAlias 'tt'
-//            keyPassword 'Syl@tt'
-//            storeFile file('/Users/suyanlu/AndroidStudioProjects/EatWhat/app/key/suyanlu.keystore')
-//            storePassword 'Syl@tt'
         }
     }
 
