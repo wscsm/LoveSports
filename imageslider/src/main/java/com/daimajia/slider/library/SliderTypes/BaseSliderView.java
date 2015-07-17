@@ -190,6 +190,7 @@ public abstract class BaseSliderView {
      * @param v the whole view
      * @param targetImageView where to place image
      */
+    @SuppressWarnings("unchecked")
     protected void bindEventAndShow(final View v, ImageView targetImageView){
         final BaseSliderView me = this;
 
