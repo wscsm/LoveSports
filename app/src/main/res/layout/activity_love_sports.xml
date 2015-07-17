@@ -9,6 +9,44 @@
         android:layout_width="match_parent"
         android:background="@color/primary"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@android:color/transparent"
+            >
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="One Item"
+                android:textColor="@color/primary_text"
+
+                />
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="One Item"
+                android:textColor="@color/primary_text"
+                />
+            <TextView
+                android:layout_weight="1.0"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="One Item"
+                android:textColor="@color/primary_text"
+                />
+        </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
+    <EditText
+        android:layout_marginTop="8dip"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        />
 </RelativeLayout>
