@@ -18,6 +18,7 @@
         <item name="android:textColorPrimary">@color/primary_text</item>
         <!--Accent Color-->
         <!--<item name="android:colorAccent">@color/accent</item>-->
+        <!--编辑模式ActionMode时选中文字的弹出菜单覆盖ToolBar;-->
         <item name="windowActionModeOverlay">true</item>
     </style>
     <!--
