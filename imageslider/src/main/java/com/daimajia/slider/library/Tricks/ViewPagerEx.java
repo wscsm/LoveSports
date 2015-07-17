@@ -756,6 +756,7 @@ public class ViewPagerEx extends ViewGroup{
      *
      * @param resId Resource ID of a drawable to display between pages
      */
+    @SuppressWarnings("deprecation")
     public void setPageMarginDrawable(int resId) {
         setPageMarginDrawable(getContext().getResources().getDrawable(resId));
     }
@@ -1422,13 +1423,13 @@ public class ViewPagerEx extends ViewGroup{
                     int heightSize = childHeightSize;
                     if (lp.width != LayoutParams.WRAP_CONTENT) {
                         widthMode = MeasureSpec.EXACTLY;
-                        if (lp.width != LayoutParams.FILL_PARENT) {
+                        if (lp.width != LayoutParams.MATCH_PARENT) {
                             widthSize = lp.width;
                         }
                     }
                     if (lp.height != LayoutParams.WRAP_CONTENT) {
                         heightMode = MeasureSpec.EXACTLY;
-                        if (lp.height != LayoutParams.FILL_PARENT) {
+                        if (lp.height != LayoutParams.MATCH_PARENT) {
                             heightSize = lp.height;
                         }
                     }
@@ -2071,6 +2072,7 @@ public class ViewPagerEx extends ViewGroup{
         }
     }
 
+    @SuppressWarnings("deprecation")
     private boolean performDrag(float x) {
         boolean needsInvalidate = false;
 
@@ -2882,7 +2884,7 @@ public class ViewPagerEx extends ViewGroup{
         int childIndex;
 
         public LayoutParams() {
-            super(FILL_PARENT, FILL_PARENT);
+            super(MATCH_PARENT, MATCH_PARENT);
         }
 
         public LayoutParams(Context context, AttributeSet attrs) {

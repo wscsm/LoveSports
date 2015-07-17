@@ -213,6 +213,7 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
      * @param selected page selected drawable
      * @param unselected page unselected drawable
      */
+    @SuppressWarnings("deprecation")
     public void setIndicatorStyleResource(int selected, int unselected){
         mUserSetSelectedIndicatorResId = selected;
         mUserSetUnSelectedIndicatorResId = unselected;
