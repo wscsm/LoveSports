@@ -19,10 +19,8 @@ import mobi.imuse.lovesports.util.SystemBarTintManager;
 public class LoveSportsActivity extends AppCompatActivity {
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
-    @Bind(R.id.toolbar)
-    Toolbar mToolbar;
-    @Bind(R.id.ivClipped)
-    ImageView mIvClipped;
+    @Bind(R.id.toolbar)    Toolbar mToolbar;
+    @Bind(R.id.ivClipped)    ImageView mIvClipped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +68,6 @@ public class LoveSportsActivity extends AppCompatActivity {
                 final String path = data.getStringExtra("CropperPhotoPath");
                 SLog.d(TAG, "CropperPhotoPath = " + path);
                 if (path != null && path.length() > 0) {
-//                    Bitmap bmp = ImageUtil.readBitMap(path);
-//                    mIvClipped.setImageBitmap(bmp);
                     Glide.with(this)
                             .load(path)
                             .asBitmap()
