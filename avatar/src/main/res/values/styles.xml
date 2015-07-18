@@ -4,12 +4,21 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/primary</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/background_material_light</item>
+        <!--Text Color-->
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <!--Accent Color-->
+        <!--<item name="android:colorAccent">@color/accent</item>-->
+        <!--编辑模式ActionMode时选中文字的弹出菜单覆盖ToolBar;-->
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <!-- Application theme. -->

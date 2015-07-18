@@ -1,5 +1,6 @@
 package mobi.imuse.lovesports;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import butterknife.ButterKnife;
@@ -17,7 +18,7 @@ public class PreLoginActivity extends BaseActivity {
 
     @OnClick(R.id.btnLoginWithMobile)
     public void onBtnLoginWithMobileClick(){
-
+        startActivity(new Intent(PreLoginActivity.this, LoveSportsActivity.class));
     }
 
     @OnClick(R.id.btnRegister)

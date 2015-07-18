@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,11 +25,12 @@ import mobi.imuse.avatar.PhotoPickerFragment.OnPhotoSelectClickListener;
 import mobi.imuse.avatar.util.SystemBarTintManager;
 import mobi.imuse.avatar.util.ThumbnailsUtil;
 
-public class LocalPhotoActivity extends FragmentActivity implements OnAlbumClickedListener
+public class LocalPhotoActivity extends AppCompatActivity implements OnAlbumClickedListener
 				,OnPhotoSelectClickListener{
     @SuppressWarnings("unused")
     private static final String TAG = LocalPhotoActivity.class.getSimpleName();
-    
+
+    private Toolbar mToolbar;
     private TextView titleTextView;
     private TextView tvLeftArrowBtn;
     private TextView tvRightCancelBtn;
@@ -48,7 +49,6 @@ public class LocalPhotoActivity extends FragmentActivity implements OnAlbumClick
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_localphoto);
 
         //设定状态栏的颜色，当版本大于4.4时起作用
@@ -57,9 +57,12 @@ public class LocalPhotoActivity extends FragmentActivity implements OnAlbumClick
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
             //此处可以重新指定状态栏颜色
-//            tintManager.setStatusBarTintResource(R.color.primary_dark);
-//            tintManager.setNavigationBarTintResource(R.color.primary_dark);
+            tintManager.setStatusBarTintResource(R.color.primary_dark);
+            tintManager.setNavigationBarTintResource(R.color.primary_dark);
         }
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
         titleTextView = (TextView) findViewById(R.id.tvTitleName);
         titleTextView.setText("选择相册");
