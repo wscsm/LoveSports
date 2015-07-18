@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_texture"
-    tools:context="com.imuse.LocalPhoto.LocalPhotoActivity" >
+    tools:context="mobi.imuse.avatar.LocalPhotoActivity" >
     
     <include
         android:id="@+id/headview"

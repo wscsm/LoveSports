@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.syw.avatar.CropperActivity" >
+    tools:context="mobi.imuse.avatar.CropperActivity" >
 
-    <com.syw.avatar.widget.ClipImageView
+    <mobi.imuse.avatar.widget.ClipImageView
         android:id="@+id/civ_cropper_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.syw.avatar.widget.ClipView
+    <mobi.imuse.avatar.widget.ClipView
         android:id="@+id/clipview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

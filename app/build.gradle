@@ -77,12 +77,15 @@ def getDate() {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':avatar')
+    compile project(':imageslider')
+    compile project(':slidingmenu')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
     compile "de.greenrobot:eventbus:${EVENTBUS_VERSION}"
     compile "com.loopj.android:android-async-http:${ASYNC_HTTP_VERSION}"
     compile "net.danlew:android.joda:${JODA_TIME_VERSION}"
-//    compile "com.facebook.fresco:fresco:${FRESCO_VERSION}"
+    //    compile "com.facebook.fresco:fresco:${FRESCO_VERSION}"
     compile "com.nineoldandroids:library:${NINEOLDANDROIDS_VERSION}"
     compile "com.joanzapata.android:android-iconify:${ICONIFY_VERSION}"
     compile "com.specyci:residemenu:${RESIDE_MENU_VERSION}"
