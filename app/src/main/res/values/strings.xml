@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LoveSports</string>
     <string name="title_activity_pre_login">PreLoginActivity</string>
+    <string name="title_activity_login_with_mobile">LoginWithMobileActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

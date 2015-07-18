@@ -32,7 +32,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:padding="@dimen/activity_padding"
             android:drawableLeft="@drawable/ic_mobile_phone"
-            android:text="手机号登陆"
+            android:text="手机登录"
             android:textSize="@dimen/font_size_large"
             android:background="@drawable/btn_prelogin"
             android:textColor="@color/icons"
