@@ -38,13 +38,12 @@ public class LoveSportsApp extends Application {
         String dirPath = Constants.BasePhotoUrlDiskCached + "/" + ".nomedia";
         File file = new File(dirPath);
         if (file.exists() && file.isDirectory()){
-
             return;
         }
         if (file.isFile()){
             file.delete();
         }
-        file.mkdir();
+        file.mkdirs();
     }
 	@Override
 	public void onLowMemory() {
