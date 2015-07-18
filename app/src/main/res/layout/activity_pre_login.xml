@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/primary_dark"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
+              tools:context="mobi.imuse.lovesports.PreLoginActivity"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:text="好动酷教练"
+        android:textColor="@color/icons"
+        android:textSize="40sp"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btnLoginWithMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/activity_padding"
+            android:text="{fa-mobile} 手机号登陆"
+            android:textSize="@dimen/font_size_large"
+            android:background="@drawable/btn_prelogin"
+            android:textColor="@color/icons"
+            />
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/activity_padding"
+            android:text="{fa-user} 注册"
+            android:textSize="@dimen/font_size_large"
+            android:background="@drawable/btn_prelogin"
+            android:textColor="@color/icons"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dip"
+        android:gravity="center"
+        android:textColor="@color/icons"
+        android:text="版权所有&#169;2015 北京明智科技有限公司"
+        />
+</LinearLayout>
