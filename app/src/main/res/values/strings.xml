@@ -3,7 +3,9 @@
     <string name="title_activity_pre_login">PreLoginActivity</string>
     <string name="title_activity_login_with_mobile">LoginWithMobileActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="title_login_by_mobile">Login By Mobile</string>
+    <string name="title_mobile_phone">Mobile Phone</string>
+    <string name="title_login_password">Login Password</string>
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
 </resources>

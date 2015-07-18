@@ -1,14 +1,14 @@
 package mobi.imuse.lovesports;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-public class LoginWithMobileActivity extends AppCompatActivity {
+public class LoginWithMobileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_with_mobile);
+        setSystemBar();
     }
 
 }

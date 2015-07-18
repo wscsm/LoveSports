@@ -27,30 +27,30 @@
     </style>
 
     <style name="B3_Font_white">
-        <item name="android:textSize">16.0sp</item>
+        <item name="android:textSize">@dimen/font_size_middle</item>
         <item name="android:textColor">@color/skin_black_item</item>
     </style>
     
     <style name="B4_Font_white">
-        <item name="android:textSize">15.0sp</item>
+        <item name="android:textSize">@dimen/font_size_middle</item>
         <item name="android:textColor">@color/skin_dark_gray_item</item>
     </style>
 
     <style name="C8_Font_white">
-        <item name="android:textSize">15.0sp</item>
+        <item name="android:textSize">@dimen/font_size_middle</item>
         <item name="android:textColor">@color/skin_blue_item</item>
     </style>
     
     <style name="TitleText">
-        <item name="android:textSize">17.0dip</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:textColor">@color/skin_bar_text</item>
     </style>
     <style name="TitleBtn">
-        <item name="android:textSize">17.0dip</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
         <item name="android:textColor">@color/skin_bar_btn</item>
     </style>    
     <style name="SmallButtonBlue" parent="@android:style/Widget.Button">
-        <item name="android:textSize">15.0dip</item>
+        <item name="android:textSize">@dimen/font_size_middle</item>
         <item name="android:textColor">@color/skin_color_button_blue</item>
         <item name="android:background">@drawable/common_btn_small_blue</item>
         <item name="android:paddingLeft">11.0dip</item>

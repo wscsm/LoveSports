@@ -2,7 +2,55 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="mobi.imuse.lovesports.LoginWithMobileActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:fitsSystemWindows="true"
+                tools:context="mobi.imuse.lovesports.LoginWithMobileActivity"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        >
+        <RelativeLayout
+            android:id="@+id/layout_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:padding="0.0px"
+            >
 
+            <!-- 标题文字; -->
+            <TextView
+                android:id="@+id/tvTitleName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="88dip"
+                android:layout_marginRight="88dip"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/icons"
+                android:textSize="@dimen/font_size_large"
+                android:text="@string/title_login_by_mobile"
+                />
+
+            <!-- 左箭头 -->
+            <ImageView
+                android:id="@+id/tvTitleArrowBtnLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_arrow_left"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:contentDescription="@null"
+                />
+
+        </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>
