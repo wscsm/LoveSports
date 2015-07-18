@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/localphoto_activity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_texture"
-    tools:context="mobi.imuse.avatar.LocalPhotoActivity" >
-    
+<LinearLayout android:id="@+id/localphoto_activity"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/bg_texture"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
+              tools:context="mobi.imuse.avatar.LocalPhotoActivity"
+    >
+
     <include
         android:id="@+id/headview"
+        layout="@layout/custom_title_bar"
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        layout="@layout/custom_title_bar" />
-    
+        />
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        >
     </FrameLayout>
 </LinearLayout>

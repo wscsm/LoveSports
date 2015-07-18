@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Thumbnails;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import mobi.imuse.avatar.AlbumFragment.OnAlbumClickedListener;
 import mobi.imuse.avatar.PhotoPickerFragment.OnPhotoSelectClickListener;
+import mobi.imuse.avatar.util.SystemBarTintManager;
 import mobi.imuse.avatar.util.ThumbnailsUtil;
 
 public class LocalPhotoActivity extends FragmentActivity implements OnAlbumClickedListener
@@ -48,7 +50,17 @@ public class LocalPhotoActivity extends FragmentActivity implements OnAlbumClick
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_localphoto);
-		
+
+        //设定状态栏的颜色，当版本大于4.4时起作用
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setNavigationBarTintEnabled(true);
+            //此处可以重新指定状态栏颜色
+//            tintManager.setStatusBarTintResource(R.color.primary_dark);
+//            tintManager.setNavigationBarTintResource(R.color.primary_dark);
+        }
+
         titleTextView = (TextView) findViewById(R.id.tvTitleName);
         titleTextView.setText("选择相册");
         tvLeftArrowBtn = (TextView) findViewById(R.id.tvTitleArrowBtnLeft);

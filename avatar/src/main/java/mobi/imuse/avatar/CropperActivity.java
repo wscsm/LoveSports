@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.io.IOException;
 
 import mobi.imuse.avatar.util.ImageUtil;
 import mobi.imuse.avatar.util.SLog;
+import mobi.imuse.avatar.util.SystemBarTintManager;
 import mobi.imuse.avatar.widget.ClipImageView;
 
 public class CropperActivity extends Activity{
@@ -49,6 +51,15 @@ public class CropperActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_cropper);
 
+        //设定状态栏的颜色，当版本大于4.4时起作用
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setNavigationBarTintEnabled(true);
+            //此处可以重新指定状态栏颜色
+//            tintManager.setStatusBarTintResource(R.color.primary_dark);
+//            tintManager.setNavigationBarTintResource(R.color.primary_dark);
+        }
         tvCancel = (TextView)findViewById(R.id.tv_cancel);
         tvRetakePhoto = (TextView)findViewById(R.id.tv_retakephoto);
         tvUseThisCropperPhoto = (TextView)findViewById(R.id.tv_use_this_cropper_photo);
