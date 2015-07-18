@@ -12,7 +12,6 @@ import butterknife.ButterKnife;
 
 public class PreLoginActivity extends BaseActivity {
 
-    @Bind(R.id.btnLoginWithMobile)    Button mBtnLoginWithMobile;
     @Bind(R.id.btnRegister)           Button mBtnRegister;
 
     @Override
@@ -20,7 +19,6 @@ public class PreLoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_login);
         ButterKnife.bind(this);
-        Iconify.addIcons(mBtnLoginWithMobile);
         Iconify.addIcons(mBtnRegister);
         setSystemBar();
     }
