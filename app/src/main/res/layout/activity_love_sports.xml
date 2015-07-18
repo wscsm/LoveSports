@@ -1,52 +1,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".LoveSportsActivity">
+                tools:context=".LoveSportsActivity"
+    >
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:background="@color/primary"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:background="@android:color/transparent"
+            android:orientation="horizontal"
             >
+
             <TextView
-                android:layout_weight="1.0"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:gravity="center"
-                android:text="One Item"
+                android:text="One Item One Item One Item"
                 android:textColor="@color/primary_text"
 
                 />
+
             <TextView
-                android:layout_weight="1.0"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:gravity="center"
-                android:text="One Item"
+                android:text="One Item One Item One Item"
                 android:textColor="@color/primary_text"
                 />
+
             <TextView
-                android:layout_weight="1.0"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:gravity="center"
-                android:text="One Item"
+                android:text="One Item One Item One Item"
                 android:textColor="@color/primary_text"
                 />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
     <EditText
-        android:layout_marginTop="8dip"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="8dip"
         />
 </RelativeLayout>
