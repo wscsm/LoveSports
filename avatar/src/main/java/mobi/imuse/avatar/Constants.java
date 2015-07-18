@@ -21,5 +21,5 @@ import android.provider.MediaStore.Images;
 public final class Constants {
     public static final boolean DEVELOPER_MODE = false;
     public static final String BASE_CONTENT_STRING_IMAGES = (Images.Media.EXTERNAL_CONTENT_URI).toString() + "/";
-    public static final String BasePhotoUrlDiskCached = Environment.getExternalStorageDirectory()+"/avatar/Images";
+    public static final String BasePhotoUrlDiskCached = Environment.getExternalStorageDirectory()+"/lovesports/Images";
 }

@@ -139,8 +139,12 @@ public class CropperActivity extends Activity{
     private void startImageCaptureActivity() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         long now = System.currentTimeMillis();
-        String photoId = String.format("%d.%03d", now/1000, now%1000);
+        String photoId = String.format("%d.%03d", now / 1000, now % 1000);
         String fileName = photoId+".jpg";
+        File f = new File(imgCachePath);
+        if (!f.exists()){
+            f.mkdirs();
+        }
         pathTmpImage = imgCachePath + "/" + fileName;
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.parse("file://" + pathTmpImage));
         startActivityForResult(intent, 20000);
