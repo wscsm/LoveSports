@@ -8,4 +8,9 @@
     <string name="title_login_password">Login Password</string>
     <string name="title_login">Login</string>
     <string name="title_register">Register</string>
+
+
+    <string name="error_input_empty">Input cannot be empty</string>
+    <string name="error_input_password">Password please begin with the letter, the length of the 6~18, can only contain characters, figures and underscores.</string>
+    <string name="error_input_phone">Mobile Phone Number is wrong</string>
 </resources>

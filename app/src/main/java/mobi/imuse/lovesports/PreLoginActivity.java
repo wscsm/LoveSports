@@ -18,7 +18,7 @@ public class PreLoginActivity extends BaseActivity {
 
     @OnClick(R.id.btnLoginWithMobile)
     public void onBtnLoginWithMobileClick(){
-        startActivity(new Intent(PreLoginActivity.this, LoveSportsActivity.class));
+        startActivity(new Intent(PreLoginActivity.this, LoginWithMobileActivity.class));
     }
 
     @OnClick(R.id.btnRegister)

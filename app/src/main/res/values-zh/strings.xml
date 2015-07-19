@@ -8,4 +8,10 @@
     <string name="title_register">注册</string>
     <string name="title_activity_login_with_mobile">手机号登录Activity</string>
     <string name="title_activity_pre_login">预登录Activity</string>
+
+
+    <string name="error_input_empty">输入不能为空</string>
+    <string name="error_input_phone">输入的手机号码不正确</string>
+    <string name="error_input_password">密码请以字母开头，长度在6~18之间，只能包含字符、数字和下划线。</string>
+
 </resources>
