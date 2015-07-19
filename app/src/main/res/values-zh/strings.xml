@@ -13,5 +13,13 @@
     <string name="error_input_empty">输入不能为空</string>
     <string name="error_input_phone">输入的手机号码不正确</string>
     <string name="error_input_password">密码请以字母开头，长度在6~18之间，只能包含字符、数字和下划线。</string>
+    <string name="title_activity_register">注册Activity</string>
+    <string name="title_register_newer">注册新用户</string>
+    <string name="title_realname">姓名</string>
+    <string name="title_sms_authcode">短信验证码</string>
+    <string name="error_input_sms_authcode">验证码不正确</string>
+    <string name="error_input_realname">姓名输入不正确</string>
+    <string name="title_next_step">下一步</string>
+    <string name="title_send_sms">发送短信</string>
 
 </resources>

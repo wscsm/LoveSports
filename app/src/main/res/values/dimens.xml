@@ -4,6 +4,9 @@
     <dimen name="activity_padding">8dip</dimen>
     <dimen name="activity_margin">8dip</dimen>
 
+    <!-- padding for edittext -->
+    <dimen name="edittext_padding">16dip</dimen>
+
     <!-- font size definition; -->
     <dimen name="font_size_extra_large">22.0sp</dimen>
     <dimen name="font_size_large">18.0sp</dimen>

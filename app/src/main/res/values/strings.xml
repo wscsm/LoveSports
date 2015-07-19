@@ -13,4 +13,13 @@
     <string name="error_input_empty">Input cannot be empty</string>
     <string name="error_input_password">Password please begin with the letter, the length of the 6~18, can only contain characters, figures and underscores.</string>
     <string name="error_input_phone">Mobile Phone Number is wrong</string>
+    <string name="error_input_sms_authcode">SMS Authentication Code is wrong</string>
+    <string name="error_input_realname">Username input is wrong</string>
+
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_register_newer">New User Register</string>
+    <string name="title_sms_authcode">SMS Auth Code</string>
+    <string name="title_realname">Real Name</string>
+    <string name="title_next_step">Next</string>
+    <string name="title_send_sms">Send SMS</string>
 </resources>

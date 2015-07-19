@@ -1,5 +1,6 @@
 package mobi.imuse.lovesports;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
@@ -39,6 +40,6 @@ public class LoginWithMobileActivity extends BaseActivity {
 
     @OnClick(R.id.btnRegister)
     public void onBtnRegisterClick(){
-
+        startActivity(new Intent(LoginWithMobileActivity.this, RegisterActivity.class));
     }
 }

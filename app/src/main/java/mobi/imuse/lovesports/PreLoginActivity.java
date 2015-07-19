@@ -23,6 +23,7 @@ public class PreLoginActivity extends BaseActivity {
 
     @OnClick(R.id.btnRegister)
     public void onBtnRegisterClick(){
-        
+
+        startActivity(new Intent(PreLoginActivity.this, RegisterActivity.class));
     }
 }

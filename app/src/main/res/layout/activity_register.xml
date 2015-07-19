@@ -4,7 +4,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                tools:context="mobi.imuse.lovesports.LoginWithMobileActivity"
+                tools:context="mobi.imuse.lovesports.RegisterActivity"
+    >
     >
 
     <android.support.v7.widget.Toolbar
@@ -35,7 +36,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="@string/title_login_by_mobile"
+                android:text="@string/title_register_newer"
                 android:textColor="@color/icons"
                 android:textSize="@dimen/font_size_large"
                 />
@@ -56,9 +57,9 @@
 
     <LinearLayout
         android:id="@+id/llInputInformations"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="16dip"
@@ -75,11 +76,11 @@
             >
 
             <TextView
-                android:id="@+id/titleMobilePhone"
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="match_parent"
-                android:padding="@dimen/activity_padding"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding"
                 android:text="@string/title_mobile_phone"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
@@ -87,14 +88,15 @@
 
             <com.andreabaccega.widget.FormEditText
                 android:id="@+id/editMobilePhone"
-                android:layout_width="match_parent"
+                android:layout_width="0dip"
                 android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:background="@android:color/transparent"
-                android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:inputType="phone"
                 android:maxLength="32"
                 android:padding="@dimen/edittext_padding"
+                android:singleLine="true"
+                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
                 app:customRegexp="^(0|86|\\+86)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$"
@@ -113,23 +115,115 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="@dimen/activity_padding"
                 android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding"
+                android:text="@string/title_sms_authcode"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/editSmsAuthCode"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@android:color/transparent"
+                android:inputType="number"
+                android:maxLength="6"
+                android:padding="@dimen/edittext_padding"
+                android:singleLine="true"
+                android:gravity="right|center_vertical"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/font_size_extra_large"
+                app:emptyErrorString="@string/error_input_empty"
+                app:testErrorString="@string/error_input_sms_authcode"
+                app:testType="numeric"
+                />
+            <Button
+                android:id="@+id/btnSendSms"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:text="@string/title_send_sms"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/llInputInformations"
+        android:id="@+id/llUserInformations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="16dip"
+        android:background="@color/md_white_1000"
+        android:divider="@drawable/divider_verital"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding"
+                android:text="@string/title_realname"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/editRealName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:maxLength="32"
+                android:padding="@dimen/edittext_padding"
+                android:singleLine="true"
+                android:gravity="right|center_vertical"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/font_size_extra_large"
+                app:emptyErrorString="@string/error_input_empty"
+                app:testErrorString="@string/error_input_realname"
+                app:testType="personName"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding"
                 android:text="@string/title_login_password"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
 
             <com.andreabaccega.widget.FormEditText
-                android:id="@+id/editPassword"
+                android:id="@+id/editLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:padding="@dimen/edittext_padding"
+                android:singleLine="true"
+                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
                 app:customRegexp="^[a-zA-Z]\w{5,17}$"
@@ -140,40 +234,21 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_below="@id/llInputInformations"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+    <Button
+        android:layout_below="@id/llUserInformations"
+        android:id="@+id/btnNextStep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_weight="1.0"
+        android:background="@drawable/btn_common"
         android:padding="@dimen/activity_padding"
-        >
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/title_login_by_mobile"
-            android:textSize="@dimen/font_size_large"
-            android:background="@drawable/btn_common"
-            android:textColor="@color/icons"
-            />
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/title_register"
-            android:textSize="@dimen/font_size_large"
-            android:background="@drawable/btn_common"
-            android:textColor="@color/icons"
-            />
-    </LinearLayout>
+        android:text="@string/title_next_step"
+        android:textColor="@color/icons"
+        android:textSize="@dimen/font_size_large"
+        />
 
 </RelativeLayout>
