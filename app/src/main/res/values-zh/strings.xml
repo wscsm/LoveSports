@@ -36,5 +36,11 @@
     <string name="title_skills">擅长</string>
     <string name="title_sport_game">运动项目</string>
     <string name="title_teaching_experience">执教年限</string>
+    <string name="error_input_bodylength">身高输入不正确</string>
+    <string name="error_input_bodyweight">体重输入不正确</string>
+    <string name="error_input_teaching_experience">执教年限输入不正确</string>
+    <string name="unit_length">公分</string>
+    <string name="unit_time">年</string>
+    <string name="unit_weight">千克</string>
 
 </resources>

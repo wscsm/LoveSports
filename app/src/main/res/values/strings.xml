@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LoveSports</string>
     <string name="title_activity_pre_login">PreLoginActivity</string>
@@ -15,6 +16,9 @@
     <string name="error_input_phone">Mobile Phone Number is wrong</string>
     <string name="error_input_sms_authcode">SMS Authentication Code is wrong</string>
     <string name="error_input_realname">Username input is wrong</string>
+    <string name="error_input_bodylength">Body Length is not correct</string>
+    <string name="error_input_bodyweight">Body Weight is not correct</string>
+    <string name="error_input_teaching_experience">Teaching Experience\'s Value incorrect</string>
 
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_register_newer">New User Register</string>
@@ -32,7 +36,7 @@
     <string name="title_birthday">Birthday</string>
     <string name="title_city">City</string>
 
-    <string name="title_coach_info">Coach's Information</string>
+    <string name="title_coach_info">Coach\'s Information</string>
     <string name="title_sport_game">Sport Game</string>
     <string name="title_body_length">Body Length</string>
     <string name="title_body_weight">Body Weight</string>
@@ -42,5 +46,9 @@
     <string name="title_skills">Skills</string>
     
     <string name="title_detailed_introduction">Detailed Introduction</string>
+
+    <string name="unit_length">CM</string>
+    <string name="unit_weight">KG</string>
+    <string name="unit_time">Years</string>
 
 </resources>
