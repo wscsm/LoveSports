@@ -54,6 +54,10 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name=".PerfectInfoActivity"
+            android:label="@string/title_activity_perfect_info" >
+        </activity>
     </application>
 
 </manifest>
