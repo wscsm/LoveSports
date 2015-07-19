@@ -24,5 +24,23 @@
     <string name="title_send_sms">Send SMS</string>
 
     <string name="title_activity_perfect_info">PerfectInfoActivity</string>
+    <string name="title_perfect_info">Perfect Info Data</string>
+
+    <string name="title_basic_info">Basic Information</string>
+    <string name="title_avatar">Avatar</string>
+    <string name="title_gender">Gender</string>
+    <string name="title_birthday">Birthday</string>
+    <string name="title_city">City</string>
+
+    <string name="title_coach_info">Coach's Information</string>
+    <string name="title_sport_game">Sport Game</string>
+    <string name="title_body_length">Body Length</string>
+    <string name="title_body_weight">Body Weight</string>
+    <string name="title_teaching_experience">Teaching Experience</string>
+    <string name="title_organisation">Organisation</string>
+    
+    <string name="title_skills">Skills</string>
+    
+    <string name="title_detailed_introduction">Detailed Introduction</string>
 
 </resources>
