@@ -16,7 +16,7 @@ import butterknife.OnClick;
 public class PerfectInfoActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
-    @Bind(R.id.ivFaceImage)    ImageView mIvFaceImage;
+    @Bind(R.id.ivAvatarImage)    ImageView mIvAvatarImage;
     @Bind(R.id.editRealName)    FormEditText mEditRealName;
     @Bind(R.id.tvBirthday)    TextView mTvBirthday;
     @Bind(R.id.tvCity)    TextView mTvCity;
