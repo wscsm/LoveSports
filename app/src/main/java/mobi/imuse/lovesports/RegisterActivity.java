@@ -31,4 +31,9 @@ public class RegisterActivity extends BaseActivity {
     public void onBtnNextStepClick() {
         startActivity(new Intent(RegisterActivity.this, PerfectInfoActivity.class));
     }
+
+    @OnClick(R.id.tvTitleArrowBtnLeft)
+    public void onTvTitleArrowBtnLeftClick(){
+        onBackPressed();
+    }
 }
