@@ -42,5 +42,6 @@
     <string name="unit_length">公分</string>
     <string name="unit_time">年</string>
     <string name="unit_weight">千克</string>
+    <string name="title_submit">提交</string>
 
 </resources>

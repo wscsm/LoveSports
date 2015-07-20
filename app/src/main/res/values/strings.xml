@@ -51,4 +51,6 @@
     <string name="unit_weight">KG</string>
     <string name="unit_time">Years</string>
 
+    <string name="title_submit">Submit</string>
+
 </resources>

@@ -2,6 +2,7 @@ package mobi.imuse.lovesports;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class PerfectInfoActivity extends BaseActivity {
     @Bind(R.id.editBodyWeight)    FormEditText mEditBodyWeight;
     @Bind(R.id.editTeachingExperience)    FormEditText mEditTeachingExperience;
     @Bind(R.id.tvGender)    TextView mTvGender;
-    @Bind(R.id.editOrganisation)    FormEditText mEditOrganisation;
+    @Bind(R.id.editOrganisation)    EditText mEditOrganisation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

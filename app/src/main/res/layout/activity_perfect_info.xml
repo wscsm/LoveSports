@@ -33,13 +33,13 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <mobi.imuse.lovesports.widget.OverScrollView
-        android:layout_below="@id/toolbar"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:background="@color/md_white_1000"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:background="@color/md_white_1000"
         android:scrollbars="none"
         >
 
@@ -449,7 +449,7 @@
                     android:textSize="@dimen/font_size_large"
                     />
 
-                <com.andreabaccega.widget.FormEditText
+                <EditText
                     android:id="@+id/editOrganisation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -461,12 +461,94 @@
                     android:singleLine="true"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testType="nocheck"
-                    tools:text="Michael"
+                    tools:text="网球协会"
                     />
             </LinearLayout>
 
+            <!-- 擅长信息 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dip"
+                android:text="@string/title_skills"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/font_size_extra_large"
+                />
+
+            <EditText
+                android:id="@+id/editSkills"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLength="512"
+                android:maxLines="6"
+                android:minLines="2"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingLeft="@dimen/activity_padding"
+                android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/edittext_padding"
+                android:singleLine="false"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                tools:text="网球协会"
+                />
+
+            <!-- 详细全面介绍信息 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dip"
+                android:text="@string/title_detailed_introduction"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/font_size_extra_large"
+                />
+
+            <EditText
+                android:id="@+id/editDetailIntroduction"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLength="512"
+                android:maxLines="10"
+                android:minLines="5"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingLeft="@dimen/activity_padding"
+                android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/edittext_padding"
+                android:singleLine="false"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                tools:text="网球协会"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="32dip"
+                >
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dip"
+                    android:layout_marginRight="16dip"
+                    android:layout_marginTop="32dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_common"
+                    android:padding="@dimen/activity_padding"
+                    android:text="@string/title_submit"
+                    android:textColor="@color/icons"
+                    android:textSize="@dimen/font_size_large"
+                    />
+
+            </FrameLayout>
         </LinearLayout>
-    </mobi.imuse.lovesports.widget.OverScrollView>
+    </ScrollView>
 </LinearLayout>
