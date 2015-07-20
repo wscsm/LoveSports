@@ -16,6 +16,7 @@
         android:id="@+id/llFunctionsCircle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_box"
         android:layout_below="@id/imageSlider"
         android:divider="@drawable/divider_horizon"
         android:orientation="horizontal"
