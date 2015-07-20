@@ -43,5 +43,6 @@ public class PerfectInfoActivity extends BaseActivity {
         Intent intent = new Intent(PerfectInfoActivity.this, LoveSportsActivity.class);
         intent.putExtra("key", 6);
         startActivity(intent);
+        this.finish();
     }
 }
