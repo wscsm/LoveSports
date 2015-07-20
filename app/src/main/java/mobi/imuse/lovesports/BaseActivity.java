@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import mobi.imuse.lovesports.util.SystemBarTintManager;
 
 public class BaseActivity extends AppCompatActivity {
+    private int key = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    protected void setSystemBar(){
+    protected void setSystemBar() {
         //设定状态栏的颜色，当版本大于4.4时起作用
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
@@ -24,4 +25,5 @@ public class BaseActivity extends AppCompatActivity {
             tintManager.setNavigationBarTintResource(R.color.primary_dark);
         }
     }
+
 }

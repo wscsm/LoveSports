@@ -27,7 +27,6 @@ public class LoveSportsActivity extends BaseActivity {
         setSystemBar();
         setSupportActionBar(mToolbar);
 
-
     }
 
     @OnClick(R.id.tvButtonLocalPhoto)
@@ -68,4 +67,7 @@ public class LoveSportsActivity extends BaseActivity {
                 break;
         }
     }
+
+
+
 }
