@@ -30,9 +30,10 @@
             >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/md_red_A700"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle_free_consultation"
                 android:gravity="center"
                 android:textColor="@color/icons"
                 tools:text="0.00"
@@ -42,6 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="@dimen/activity_padding"
+                android:paddingBottom="@dimen/activity_padding"
                 android:text="我的收入(元)"
                 android:textColor="@color/primary_text"
                 />
@@ -55,9 +58,10 @@
             >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/md_red_A200"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle_free_consultation"
                 android:gravity="center"
                 android:textColor="@color/icons"
                 tools:text="4.5"
@@ -67,6 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="@dimen/activity_padding"
+                android:paddingBottom="@dimen/activity_padding"
                 android:text="用户评价"
                 android:textColor="@color/primary_text"
                 />
@@ -80,9 +86,10 @@
             >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/md_green_900"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle_free_consultation"
                 android:gravity="center"
                 android:textColor="@color/icons"
                 />
@@ -91,6 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="@dimen/activity_padding"
+                android:paddingBottom="@dimen/activity_padding"
                 android:text="免费咨询"
                 android:textColor="@color/primary_text"
                 />
