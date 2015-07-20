@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -26,6 +27,7 @@ import mobi.imuse.lovesports.R;
 public class HomeFragment extends Fragment {
 
     @Bind(R.id.imageSlider) SliderLayout mImageSlider;
+    @Bind(R.id.swipeRefreshLayout)    PullRefreshLayout mSwipeRefreshLayout;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -63,6 +65,17 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, rootView);
         initImageSlider();
 
+        mSwipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 4000);
+            }
+        });
         return rootView;
     }
 

@@ -1,138 +1,151 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/md_white_1000"
-                tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
+<com.baoyz.widget.PullRefreshLayout android:id="@+id/swipeRefreshLayout"
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
     >
 
-    <com.daimajia.slider.library.SliderLayout
-        android:id="@+id/imageSlider"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/llFunctions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageSlider"
-        android:background="@drawable/bg_underline"
-        android:divider="@drawable/divider_horizon"
-        android:orientation="horizontal"
-        android:showDividers="middle"
+        android:layout_height="match_parent"
+        android:background="@color/md_white_1000"
         >
 
         <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_white_1000"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_padding"
-            android:paddingTop="@dimen/activity_padding"
             >
 
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSlider"
+                android:background="@drawable/bg_underline"
+                android:divider="@drawable/divider_horizon"
+                android:orientation="horizontal"
+                android:showDividers="middle"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_padding"
+                    android:paddingTop="@dimen/activity_padding"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvRevenue"
+                        android:layout_width="60dip"
+                        android:layout_height="60dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/circle_revenue"
+                        android:gravity="center"
+                        android:textColor="@color/icons"
+                        android:textSize="@dimen/font_size_middle"
+                        tools:text="0.00"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/activity_padding"
+                        android:text="我的收入(元)"
+                        android:textColor="@color/primary_text"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_padding"
+                    android:paddingTop="@dimen/activity_padding"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvEvaluation"
+                        android:layout_width="60dip"
+                        android:layout_height="60dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/circle_evaluation"
+                        android:gravity="center"
+                        android:textColor="@color/icons"
+                        android:textSize="@dimen/font_size_middle"
+                        tools:text="4.5"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/activity_padding"
+                        android:text="用户评价"
+                        android:textColor="@color/primary_text"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_padding"
+                    android:paddingTop="@dimen/activity_padding"
+                    >
+
+                    <TextView
+                        android:layout_width="60dip"
+                        android:layout_height="60dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/circle_free_consultation"
+                        android:gravity="center"
+                        android:textColor="@color/icons"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/activity_padding"
+                        android:text="免费咨询"
+                        android:textColor="@color/primary_text"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/tvRevenue"
-                android:layout_width="60dip"
-                android:layout_height="60dip"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/circle_revenue"
-                android:gravity="center"
-                android:textColor="@color/icons"
-                android:textSize="@dimen/font_size_middle"
-                tools:text="0.00"
+                android:id="@+id/btnLastConsultation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/title_last_consultation"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/font_size_large"
                 />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="@dimen/activity_padding"
-                android:text="我的收入(元)"
-                android:textColor="@color/primary_text"
+                android:layout_height="match_parent"
+                android:layout_below="@id/btnLastConsultation"
+                android:background="@drawable/bg_box"
                 />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_padding"
-            android:paddingTop="@dimen/activity_padding"
-            >
-
-            <TextView
-                android:id="@+id/tvEvaluation"
-                android:layout_width="60dip"
-                android:layout_height="60dip"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/circle_evaluation"
-                android:gravity="center"
-                android:textColor="@color/icons"
-                android:textSize="@dimen/font_size_middle"
-                tools:text="4.5"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="@dimen/activity_padding"
-                android:text="用户评价"
-                android:textColor="@color/primary_text"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_padding"
-            android:paddingTop="@dimen/activity_padding"
-            >
-
-            <TextView
-                android:layout_width="60dip"
-                android:layout_height="60dip"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/circle_free_consultation"
-                android:gravity="center"
-                android:textColor="@color/icons"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="@dimen/activity_padding"
-                android:text="免费咨询"
-                android:textColor="@color/primary_text"
-                />
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/btnLastConsultation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/llFunctions"
-        android:layout_centerVertical="true"
-        android:background="@drawable/btn_grey"
-        android:drawableRight="@drawable/ic_arrow_right"
-        android:padding="@dimen/activity_padding"
-        android:text="@string/title_last_consultation"
-        android:textColor="@color/primary_text"
-        android:textSize="@dimen/font_size_large"
-        />
-
-    <TextView
-        android:layout_below="@id/btnLastConsultation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_box"
-        />
-</RelativeLayout>
+    </ScrollView>
+</com.baoyz.widget.PullRefreshLayout>
