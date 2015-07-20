@@ -16,70 +16,87 @@
         app:contentInsetStart="0dp"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="0.0px"
             >
 
+            <!-- 标题文字; -->
             <TextView
-                android:layout_width="0dip"
+                android:id="@+id/tvTitleName"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1.0"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="88dip"
+                android:layout_marginRight="88dip"
+                android:ellipsize="end"
                 android:gravity="center"
-                android:text="One Item One Item One Item"
-                android:textColor="@color/primary_text"
-
+                android:singleLine="true"
+                android:text="@string/title_lovesport_coach"
+                android:textColor="@color/icons"
+                android:textSize="@dimen/font_size_large"
                 />
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="One Item One Item One Item"
-                android:textColor="@color/primary_text"
+            <!-- 左按钮 -->
+            <ImageView
+                android:id="@+id/tvBtnLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:background="@drawable/ic_action_list"
+                android:clickable="true"
+                android:contentDescription="@null"
+                />
+            <!-- 右按钮 -->
+            <ImageView
+                android:id="@+id/tvBtnRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:background="@drawable/ic_arrow_left"
                 />
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="One Item One Item One Item"
-                android:textColor="@color/primary_text"
-                />
-        </LinearLayout>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/tvButtonLocalPhoto"
         android:layout_width="match_parent"
         android:layout_height="40dip"
-        android:layout_marginTop="10dip"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
+        android:layout_marginTop="10dip"
         android:background="@color/accent"
+        android:gravity="center"
+        android:text="选取照片"
         android:textColor="@color/primary_text"
-        android:text="选取照片" />
+        />
+
     <TextView
         android:id="@+id/tvButtonTakePhoto"
-        android:layout_above="@id/tvButtonLocalPhoto"
         android:layout_width="match_parent"
         android:layout_height="40dip"
+        android:layout_above="@id/tvButtonLocalPhoto"
         android:layout_marginTop="10dip"
-        android:gravity="center"
         android:background="@color/accent"
+        android:gravity="center"
+        android:text="拍照"
         android:textColor="@color/primary_text"
-        android:text="拍照" />
+        />
 
     <ImageView
         android:id="@+id/ivClipped"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerInside"
         android:layout_above="@id/tvButtonTakePhoto"
         android:layout_below="@id/toolbar"
-        android:contentDescription="@null" />
+        android:contentDescription="@null"
+        android:scaleType="centerInside"
+        />
 </RelativeLayout>
