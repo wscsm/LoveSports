@@ -22,6 +22,7 @@ public class PerfectInfoActivity extends BaseActivity {
     @Bind(R.id.editBodyWeight)    FormEditText mEditBodyWeight;
     @Bind(R.id.editTeachingExperience)    FormEditText mEditTeachingExperience;
     @Bind(R.id.tvGender)    TextView mTvGender;
+    @Bind(R.id.editOrganisation)    FormEditText mEditOrganisation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
