@@ -31,10 +31,10 @@ public class LoveSportsActivity extends BaseActivity {
 
     private void initImageSlider() {
         HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("牛肝菌蘑菇", "http://pic1.sc.chinaz.com/files/pic/pic9/201504/apic10875.jpg");
-        url_maps.put("法国香肠", "http://pic1.sc.chinaz.com/files/pic/pic9/201504/apic10863.jpg");
-        url_maps.put("绿竹笋", "http://pic.sc.chinaz.com/files/pic/pic9/201504/apic10922.jpg");
-        url_maps.put("红葡萄酒", "http://pics.sc.chinaz.com/files/pic/pic9/201505/apic11282.jpg");
+        url_maps.put("网球", "http://img.taopic.com/uploads/allimg/130102/240404-13010222592682.jpg");
+        url_maps.put("高尔夫球", "http://img.taopic.com/uploads/allimg/130102/240404-13010223060638.jpg");
+        url_maps.put("保龄球", "http://pic1.nipic.com/2008-10-14/20081014133644627_2.jpg");
+        url_maps.put("射击", "http://image2.sina.com.cn/ty/o/2002-07-31/3_6-12-44-13_20020731214725.jpg");
         for(String name : url_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
