@@ -57,4 +57,13 @@
 
     <string name="title_last_consultation">Last Consultation</string>
 
+    <string name="left_menu_home_page">Home Page</string>
+    <string name="left_menu_my_consultation">My Consultation</string>
+    <string name="left_menu_price_settting">Price Setting</string>
+
+    <string name="left_menu_my_photoes">My Photoes</string>
+    <string name="left_menu_my_video">My Introduction Video</string>
+    <string name="left_menu_teaching_video">My Teaching Video</string>
+
+    <string name="left_menu_more_settings">More Settings</string>
 </resources>

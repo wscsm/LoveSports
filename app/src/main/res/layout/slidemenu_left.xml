@@ -1,0 +1,196 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_white_1000"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical"
+        android:paddingBottom="32dip"
+        >
+
+        <!-- 头像这一栏; -->
+        <RelativeLayout
+            android:id="@+id/rlAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="72.0dip"
+            android:alpha="0.8"
+            android:background="@color/primary"
+            android:clickable="true"
+            >
+
+            <!-- 头像; -->
+            <ImageView
+                android:id="@+id/ivAvatarImage"
+                android:layout_width="48.0dip"
+                android:layout_height="48.0dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="32.0dip"
+                android:src="@drawable/avatar_default"
+                />
+
+            <ImageView
+                android:id="@+id/ivArrowRightAnchor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:contentDescription="@null"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_arrow_right_reverse"
+                />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="match_parent"
+                android:layout_height="24.0dip"
+                android:layout_alignTop="@id/ivAvatarImage"
+                android:layout_toLeftOf="@id/ivArrowRightAnchor"
+                android:layout_toRightOf="@id/ivAvatarImage"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_padding"
+                android:textColor="@color/icons"
+                tools:text="SuYanLu"
+                />
+
+            <TextView
+                android:id="@+id/tvMobilePhone"
+                android:layout_width="match_parent"
+                android:layout_height="24.0dip"
+                android:layout_below="@id/tvUserName"
+                android:layout_toLeftOf="@id/ivArrowRightAnchor"
+                android:layout_toRightOf="@id/ivAvatarImage"
+                android:drawableLeft="@drawable/ic_mobile_phone"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_padding"
+                android:textColor="@color/icons"
+                tools:text="18951627023"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_up_underline"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            >
+
+            <TextView
+                android:id="@+id/leftMiHomePage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_home_page"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <TextView
+                android:id="@+id/leftMiMyConsultation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_my_consultation"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <TextView
+                android:id="@+id/leftMiPriceSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_price_settting"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="32dip"
+            android:background="@drawable/bg_up_underline"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            >
+
+            <TextView
+                android:id="@+id/leftMiMyPhotoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_my_photoes"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <TextView
+                android:id="@+id/leftMiMyVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_my_video"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+
+            <TextView
+                android:id="@+id/leftMiTeachingVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_teaching_video"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="32dip"
+            android:paddingBottom="1dip"
+            android:background="@drawable/bg_up_underline"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            >
+
+            <TextView
+                android:id="@+id/leftMiMoreSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_grey"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:padding="@dimen/edittext_padding"
+                android:text="@string/left_menu_more_settings"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/font_size_large"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

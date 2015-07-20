@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, rootView);
         initImageSlider();
 
+        mSwipeRefreshLayout.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL);
         mSwipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -73,7 +74,7 @@ public class HomeFragment extends Fragment {
                     public void run() {
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
-                }, 4000);
+                }, 2000);
             }
         });
         return rootView;
@@ -101,10 +102,9 @@ public class HomeFragment extends Fragment {
             mImageSlider.addSlider(textSliderView);
         }
         mImageSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-//        mImageSlider.setPresetTransformer(SliderLayout.Transformer.Default);
         mImageSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mImageSlider.setCustomAnimation(new DescriptionAnimation());
-        mImageSlider.setDuration(4000);
+        mImageSlider.setDuration(3000);
     }
 
 

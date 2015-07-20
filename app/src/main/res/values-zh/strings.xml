@@ -45,5 +45,12 @@
     <string name="title_submit">提交</string>
     <string name="title_lovesport_coach">好酷动教练版</string>
     <string name="title_last_consultation">最新咨询</string>
+    <string name="left_menu_home_page">首页</string>
+    <string name="left_menu_more_settings">更多设置</string>
+    <string name="left_menu_my_consultation">我的咨询</string>
+    <string name="left_menu_my_video">我的视频介绍</string>
+    <string name="left_menu_my_photoes">我的照片</string>
+    <string name="left_menu_price_settting">设置价格</string>
+    <string name="left_menu_teaching_video">我的教学视频</string>
 
 </resources>
