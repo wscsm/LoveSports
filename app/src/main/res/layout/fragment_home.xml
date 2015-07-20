@@ -1,15 +1,100 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="mobi.imuse.lovesports.fragment.HomeFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
+    >
 
     <com.daimajia.slider.library.SliderLayout
-        android:layout_below="@id/toolbar"
         android:id="@+id/imageSlider"
         android:layout_width="match_parent"
         android:layout_height="200dip"
         />
 
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/llFunctionsCircle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageSlider"
+        android:divider="@drawable/divider_horizon"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        >
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_red_A700"
+                android:gravity="center"
+                android:textColor="@color/icons"
+                tools:text="0.00"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="我的收入(元)"
+                android:textColor="@color/primary_text"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_red_A200"
+                android:gravity="center"
+                android:textColor="@color/icons"
+                tools:text="4.5"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="用户评价"
+                android:textColor="@color/primary_text"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_green_900"
+                android:gravity="center"
+                android:textColor="@color/icons"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="免费咨询"
+                android:textColor="@color/primary_text"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
