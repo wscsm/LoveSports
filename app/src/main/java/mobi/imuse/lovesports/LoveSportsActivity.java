@@ -1,23 +1,23 @@
 package mobi.imuse.lovesports;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
+import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import mobi.imuse.avatar.CropperActivity;
-import mobi.imuse.lovesports.util.SLog;
 
 public class LoveSportsActivity extends BaseActivity {
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
-    @Bind(R.id.ivClipped)    ImageView mIvClipped;
+    @Bind(R.id.imageSlider) SliderLayout mImageSlider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,38 @@ public class LoveSportsActivity extends BaseActivity {
         ButterKnife.bind(this);
         setSystemBar();
         setSupportActionBar(mToolbar);
-
+        initImageSlider();
     }
 
+    private void initImageSlider() {
+        HashMap<String,String> url_maps = new HashMap<String, String>();
+        url_maps.put("牛肝菌蘑菇", "http://pic1.sc.chinaz.com/files/pic/pic9/201504/apic10875.jpg");
+        url_maps.put("法国香肠", "http://pic1.sc.chinaz.com/files/pic/pic9/201504/apic10863.jpg");
+        url_maps.put("绿竹笋", "http://pic.sc.chinaz.com/files/pic/pic9/201504/apic10922.jpg");
+        url_maps.put("红葡萄酒", "http://pics.sc.chinaz.com/files/pic/pic9/201505/apic11282.jpg");
+        for(String name : url_maps.keySet()){
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(name)
+                    .image(url_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+//                    .setOnSliderClickListener(this); // must implements BaseSliderView.OnSliderClickListener
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle().putString("extra",name);
+
+            mImageSlider.addSlider(textSliderView);
+        }
+        mImageSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+//        mImageSlider.setPresetTransformer(SliderLayout.Transformer.Default);
+        mImageSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mImageSlider.setCustomAnimation(new DescriptionAnimation());
+        mImageSlider.setDuration(4000);
+    }
+
+/*
     @OnClick(R.id.tvButtonLocalPhoto)
     public void onPickPhotoClick() {
         Intent intent = new Intent(this, CropperActivity.class);
@@ -67,7 +96,5 @@ public class LoveSportsActivity extends BaseActivity {
                 break;
         }
     }
-
-
-
+*/
 }

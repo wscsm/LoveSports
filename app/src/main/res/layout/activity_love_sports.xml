@@ -66,37 +66,12 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tvButtonLocalPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="40dip"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dip"
-        android:background="@color/accent"
-        android:gravity="center"
-        android:text="选取照片"
-        android:textColor="@color/primary_text"
-        />
-
-    <TextView
-        android:id="@+id/tvButtonTakePhoto"
-        android:layout_width="match_parent"
-        android:layout_height="40dip"
-        android:layout_above="@id/tvButtonLocalPhoto"
-        android:layout_marginTop="10dip"
-        android:background="@color/accent"
-        android:gravity="center"
-        android:text="拍照"
-        android:textColor="@color/primary_text"
-        />
-
-    <ImageView
-        android:id="@+id/ivClipped"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/tvButtonTakePhoto"
+    <com.daimajia.slider.library.SliderLayout
         android:layout_below="@id/toolbar"
-        android:contentDescription="@null"
-        android:scaleType="centerInside"
+        android:id="@+id/imageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
         />
+
+
 </RelativeLayout>
