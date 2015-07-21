@@ -3,7 +3,6 @@ package mobi.imuse.lovesports;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,12 +10,12 @@ import android.widget.TextView;
 import com.andreabaccega.widget.FormEditText;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import mobi.imuse.pickview.TimeActionSheet;
 import mobi.imuse.pickview.TimePopupWindow;
 
 public class PerfectInfoActivity extends BaseActivity {
@@ -71,6 +70,11 @@ public class PerfectInfoActivity extends BaseActivity {
     // 获取生日;
     @OnClick(R.id.rlBirthday)
     public void onRlBirthdayClick(){
+        TimeActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelableOnTouchOutside(true)
+                .setType(TimePopupWindow.Type.YEAR_MONTH_DAY)
+                .show();
+/*
         //时间选择器
         pwBirthdayTime = new TimePopupWindow(PerfectInfoActivity.this, TimePopupWindow.Type.YEAR_MONTH_DAY);
         pwBirthdayTime.setRange(1970, 2100);
@@ -96,5 +100,6 @@ public class PerfectInfoActivity extends BaseActivity {
         }
         //弹出时间选择器
         pwBirthdayTime.showAtLocation(findViewById(R.id.activityPerfectInfo), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0, date);
+*/
     }
 }
