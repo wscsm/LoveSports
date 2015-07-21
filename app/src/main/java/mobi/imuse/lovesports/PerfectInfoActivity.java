@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.andreabaccega.widget.FormEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -34,6 +35,8 @@ public class PerfectInfoActivity extends BaseActivity {
     @Bind(R.id.editSkills)  EditText mEditSkills;
     @Bind(R.id.editDetailIntroduction)  EditText mEditeditDetailIntroduction;
 
+    private TimePopupWindow pwBirthdayTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,16 @@ public class PerfectInfoActivity extends BaseActivity {
         ButterKnife.bind(this);
         setSystemBar();
         setSupportActionBar(mToolbar);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (pwBirthdayTime.isShowing()) {
+            pwBirthdayTime.dismiss();
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 
     @OnClick(R.id.btnSubmit)
@@ -58,19 +71,30 @@ public class PerfectInfoActivity extends BaseActivity {
     // 获取生日;
     @OnClick(R.id.rlBirthday)
     public void onRlBirthdayClick(){
-        TimePopupWindow pwTime;
         //时间选择器
-        pwTime = new TimePopupWindow(PerfectInfoActivity.this, TimePopupWindow.Type.YEAR_MONTH_DAY);
-        pwTime.setRange(1970, 2100);
+        pwBirthdayTime = new TimePopupWindow(PerfectInfoActivity.this, TimePopupWindow.Type.YEAR_MONTH_DAY);
+        pwBirthdayTime.setRange(1970, 2100);
         //时间选择后回调
-        pwTime.setOnTimeSelectListener(new TimePopupWindow.OnTimeSelectListener() {
+        pwBirthdayTime.setOnTimeSelectListener(new TimePopupWindow.OnTimeSelectListener() {
 
             @Override
             public void onTimeSelect(Date date) {
                 mTvBirthday.setText(getTime(date));
             }
         });
+        String currentBirthday = mTvBirthday.getText().toString();
+        String[] a = currentBirthday.split("-");
+        Date date;
+        if (currentBirthday != null && !currentBirthday.equals("")){
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(a[0]), Integer.parseInt(a[1])-1, Integer.parseInt(a[2]));
+            date = new Date(cal.getTimeInMillis());
+
+        }
+        else{
+            date = new Date();
+        }
         //弹出时间选择器
-        pwTime.showAtLocation(mTvBirthday, Gravity.BOTTOM, 0, 0, new Date());
+        pwBirthdayTime.showAtLocation(findViewById(R.id.activityPerfectInfo), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0, date);
     }
 }

@@ -2,7 +2,7 @@ package mobi.imuse.pickview;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,7 +39,8 @@ public class TimePopupWindow extends PopupWindow implements OnClickListener {
 		super(context);
 		this.setWidth(LayoutParams.MATCH_PARENT);
 		this.setHeight(LayoutParams.WRAP_CONTENT);
-		this.setBackgroundDrawable(new BitmapDrawable());// 这样设置才能点击屏幕外dismiss窗口
+		ColorDrawable dw = new ColorDrawable(0x80000000);
+		this.setBackgroundDrawable(dw);// 这样设置才能点击屏幕外dismiss窗口
 		this.setOutsideTouchable(true);
 		this.setAnimationStyle(R.style.timepopwindow_anim_style);
 
@@ -68,7 +69,7 @@ public class TimePopupWindow extends PopupWindow implements OnClickListener {
 		int hours = calendar.get(Calendar.HOUR_OF_DAY);
 		int minute = calendar.get(Calendar.MINUTE);
 		wheelTime.setPicker(year, month, day, hours, minute);
-		
+
 		setContentView(rootView);
 	}
 
