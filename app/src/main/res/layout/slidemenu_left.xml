@@ -65,30 +65,30 @@
                 android:layout_toRightOf="@id/flAvatarImage"
                 android:layout_centerVertical="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dip"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:id="@+id/tvUserName"
                     android:layout_width="match_parent"
                     android:layout_height="0dip"
-                    android:layout_weight="1.0"
-                    android:gravity="bottom"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:textColor="@color/icons"
                     android:paddingLeft="4dip"
                     android:text="Suyanlu"
                     />
 
-                <TextView
-                    android:id="@+id/tvMobilePhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip"
-                    android:layout_weight="1.0"
-                    android:drawableLeft="@drawable/ic_mobile_phone"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/icons"
-                    android:text="18951627023"
-                    />
+                    <TextView
+                        android:id="@+id/tvMobilePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1.0"
+                        android:drawableLeft="@drawable/ic_mobile_phone"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/icons"
+                        android:text="18951627023"
+                        />
             </LinearLayout>
         </RelativeLayout>
 
