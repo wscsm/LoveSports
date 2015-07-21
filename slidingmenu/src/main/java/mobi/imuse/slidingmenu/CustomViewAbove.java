@@ -329,9 +329,21 @@ public class CustomViewAbove extends ViewGroup {
 
 	private boolean isInIgnoredView(MotionEvent ev) {
 		Rect rect = new Rect();
+        // must use global coor to judge whether the point ev in the view or not.
+        int[] location = new int[2];
 		for (View v : mIgnoredViews) {
 			v.getHitRect(rect);
-			if (rect.contains((int)ev.getX(), (int)ev.getY())) return true;
+            v.getLocationOnScreen(location);
+            rect.bottom = location[1]+rect.height();
+            rect.right = location[0] + rect.width();
+            rect.top = location[1];
+            rect.left = location[0];
+//            Log.d("SlidingMenu", String.format("point:[ x:%.2f, y:%.2f ], hit rect:[ top:%d, left:%d, bottom:%d, right:%d ]",
+//                    ev.getRawX(), ev.getRawY(), rect.top, rect.left, rect.bottom, rect.right));
+
+			if (rect.contains((int)ev.getRawX(), (int)ev.getRawY())){
+                return true;
+            }
 		}
 		return false;
 	}
