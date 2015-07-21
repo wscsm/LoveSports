@@ -329,6 +329,7 @@ public class CustomViewAbove extends ViewGroup {
 
 	private boolean isInIgnoredView(MotionEvent ev) {
 		Rect rect = new Rect();
+        // begin : modified by suyanlu;
         // must use global coor to judge whether the point ev in the view or not.
         int[] location = new int[2];
 		for (View v : mIgnoredViews) {
@@ -345,6 +346,7 @@ public class CustomViewAbove extends ViewGroup {
                 return true;
             }
 		}
+        // end: modified by suyanlu;
 		return false;
 	}
 
