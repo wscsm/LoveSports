@@ -1,3 +1,4 @@
+<!--
 <com.baoyz.widget.PullRefreshLayout
     android:id="@+id/swipeRefreshLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,6 +8,15 @@
     tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
     >
 
+-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
+        >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -149,4 +159,4 @@
                 />
         </LinearLayout>
     </ScrollView>
-</com.baoyz.widget.PullRefreshLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -4,15 +4,16 @@ package mobi.imuse.lovesports.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.baoyz.widget.PullRefreshLayout;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.HashMap;
 
@@ -25,11 +26,12 @@ import mobi.imuse.lovesports.R;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends BackHandledFragment {
+public class HomeFragment extends BackHandledFragment implements SwipeRefreshLayout.OnRefreshListener{
     private static final String TAG = HomeFragment.class.getSimpleName();
 
     @Bind(R.id.imageSlider) SliderLayout mImageSlider;
-    @Bind(R.id.swipeRefreshLayout)    PullRefreshLayout mSwipeRefreshLayout;
+//    @Bind(R.id.swipeRefreshLayout)    PullRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.swipeRefreshLayout)    SwipeRefreshLayout mSwipeRefreshLayout;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -79,6 +81,28 @@ public class HomeFragment extends BackHandledFragment {
         ButterKnife.bind(this, rootView);
         initImageSlider();
 
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.md_red_A700,
+                R.color.md_green_A700,
+                R.color.md_blue_A700);
+
+        // 下面这一段为了避免在ImageSlider上滑动的时候导致SwipeRefreshLayout下拉;
+        mImageSlider.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                enableDisableSwipeRefresh(state == ViewPagerEx.SCROLL_STATE_IDLE);
+            }
+        });
+/*
         mSwipeRefreshLayout.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL);
         mSwipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
@@ -91,9 +115,16 @@ public class HomeFragment extends BackHandledFragment {
                 }, 1000);
             }
         });
+*/
 
         mListener.onImageSliderInitilized(mImageSlider);
         return rootView;
+    }
+
+    protected void enableDisableSwipeRefresh(boolean enable) {
+        if (mSwipeRefreshLayout != null) {
+            mSwipeRefreshLayout.setEnabled(enable);
+        }
     }
 
     private void initImageSlider() {
@@ -121,6 +152,16 @@ public class HomeFragment extends BackHandledFragment {
         mImageSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mImageSlider.setCustomAnimation(new DescriptionAnimation());
         mImageSlider.setDuration(3000);
+    }
+
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 
     public interface OnHomeFragmentListener{
