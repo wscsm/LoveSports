@@ -37,10 +37,21 @@
                 android:singleLine="true"
                 android:text="@string/title_lovesport_coach"
                 android:textColor="@color/icons"
-                android:textSize="@dimen/font_size_large"
+                android:textSize="@dimen/font_size_extra_large"
                 />
 
             <!-- 左按钮 -->
+            <TextView
+                android:id="@+id/tvBtnLeft"
+                android:layout_width="36dip"
+                android:layout_height="36dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:background="@drawable/ic_action_list"
+                android:clickable="true"
+                android:contentDescription="@null"
+                />
+<!--
             <ImageView
                 android:id="@+id/tvBtnLeft"
                 android:layout_width="wrap_content"
@@ -51,7 +62,19 @@
                 android:clickable="true"
                 android:contentDescription="@null"
                 />
+-->
             <!-- 右按钮 -->
+            <TextView
+                android:id="@+id/tvBtnRight"
+                android:layout_width="36dip"
+                android:layout_height="36dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:background="@drawable/ic_action_message"
+                />
+<!--
             <ImageView
                 android:id="@+id/tvBtnRight"
                 android:layout_width="wrap_content"
@@ -62,6 +85,7 @@
                 android:clickable="true"
                 android:background="@drawable/ic_action_message"
                 />
+-->
 
             <!-- 右文字按钮 -->
             <TextView

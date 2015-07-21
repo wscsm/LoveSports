@@ -7,10 +7,11 @@ import android.view.View;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import mobi.imuse.lovesports.fragment.HomeFragment;
 import mobi.imuse.slidingmenu.SlidingMenu;
 
-public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnHomeFragmentListener{
+public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnHomeFragmentListener {
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
@@ -34,30 +35,54 @@ public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnH
 
     }
 
-    protected void initSlidingMenu(){
+    protected void initSlidingMenu() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenWidth = dm.widthPixels;
 
-        if (menu == null){
+        if (menu == null) {
             menu = new SlidingMenu(this);
             menu.setMode(SlidingMenu.LEFT_RIGHT);
             menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
             menu.setShadowWidth(15);
-            menu.setShadowDrawable(R.drawable.shadow);
-            menu.setBehindOffset((int) (screenWidth * (1-0.618)));
+            menu.setShadowDrawable(R.drawable.left_menu_shadow);
+            menu.setBehindOffset((int) (screenWidth * (1 - 0.618)));
 //            menuLeft.setBehindScrollScale(1.0f);
             menu.setFadeDegree(0.35f);
             menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
             menu.setMenu(R.layout.slidemenu_left);
             menu.setSecondaryMenu(R.layout.slidemenu_right);
-            menu.setSecondaryShadowDrawable(R.drawable.shadow);
+            menu.setSecondaryShadowDrawable(R.drawable.right_menu_shadow);
         }
     }
 
     @Override
     public void onImageSliderInitilized(View slider) {
         menu.addIgnoredView(slider);
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (menu.isMenuShowing()){
+            menu.showContent(true);
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
+    @OnClick(R.id.tvBtnLeft)
+    public void onBtnLeftClick(){
+        if (!menu.isMenuShowing()){
+            menu.showMenu(true);
+        }
+    }
+
+    @OnClick(R.id.tvBtnRight)
+    public void onBtnRightClick(){
+        if (!menu.isMenuShowing()){
+            menu.showSecondaryMenu(true);
+        }
     }
 /*
     @OnClick(R.id.tvButtonLocalPhoto)

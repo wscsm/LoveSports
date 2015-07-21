@@ -66,4 +66,6 @@
     <string name="left_menu_teaching_video">My Teaching Video</string>
 
     <string name="left_menu_more_settings">More Settings</string>
+
+    <string name="title_right_menu">Message Center</string>
 </resources>

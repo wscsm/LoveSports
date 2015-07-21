@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
                     public void run() {
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
-                }, 2000);
+                }, 1000);
             }
         });
 
@@ -132,5 +132,4 @@ public class HomeFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 }

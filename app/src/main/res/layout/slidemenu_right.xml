@@ -14,7 +14,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:singleLine="true"
-        android:text="@string/title_perfect_info"
+        android:text="@string/title_right_menu"
         android:textColor="@color/icons"
         android:textSize="@dimen/font_size_large"
         />

@@ -52,5 +52,6 @@
     <string name="left_menu_my_photoes">我的照片</string>
     <string name="left_menu_price_settting">设置价格</string>
     <string name="left_menu_teaching_video">我的教学视频</string>
+    <string name="title_right_menu">消息中心</string>
 
 </resources>

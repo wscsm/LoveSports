@@ -1,9 +1,10 @@
-<com.baoyz.widget.PullRefreshLayout android:id="@+id/swipeRefreshLayout"
-                                    xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:tools="http://schemas.android.com/tools"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
+<com.baoyz.widget.PullRefreshLayout
+    android:id="@+id/swipeRefreshLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mobi.imuse.lovesports.fragment.HomeFragment"
     >
 
     <ScrollView
@@ -24,7 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dip"
                 />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,9 +143,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dip"
                 android:layout_below="@id/btnLastConsultation"
                 android:background="@drawable/bg_box"
+                android:minHeight="100dip"
                 />
         </LinearLayout>
     </ScrollView>
