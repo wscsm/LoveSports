@@ -1,5 +1,6 @@
 package mobi.imuse.lovesports;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -8,15 +9,21 @@ import android.view.View;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import mobi.imuse.lovesports.fragment.BackHandledFragment;
 import mobi.imuse.lovesports.fragment.HomeFragment;
+import mobi.imuse.lovesports.util.T;
 import mobi.imuse.slidingmenu.SlidingMenu;
 
-public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnHomeFragmentListener {
+public class LoveSportsActivity extends BaseActivity implements BackHandledFragment.BackHandlerInterface, HomeFragment.OnHomeFragmentListener {
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
-    @Bind(R.id.toolbar)    Toolbar mToolbar;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
 
     private SlidingMenu menu;
+
+    private BackHandledFragment selectedFragment;
+    private static long back_pressed; //按两次back退出;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,27 +69,50 @@ public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnH
     }
 
     @Override
-    public void onBackPressed(){
-        if (menu.isMenuShowing()){
+    public void onBackPressed() {
+        if (menu.isMenuShowing()) {
             menu.showContent(true);
+            return;
         }
-        else{
-            super.onBackPressed();
+
+        if (selectedFragment == null || !selectedFragment.onBackPressed()) {
+            // Selected fragment did not consume the back press event.
+            if (back_pressed + 2000 > System.currentTimeMillis()) {
+                // 实现Home键效果
+                Intent i = new Intent(Intent.ACTION_MAIN);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addCategory(Intent.CATEGORY_HOME);
+                startActivity(i);
+            }
+            else {
+                T.showShort(getBaseContext(), "再按一次退出");
+            }
+            back_pressed = System.currentTimeMillis();
         }
     }
 
     @OnClick(R.id.tvBtnLeft)
-    public void onBtnLeftClick(){
-        if (!menu.isMenuShowing()){
+    public void onBtnLeftClick() {
+        if (!menu.isMenuShowing()) {
             menu.showMenu(true);
         }
     }
 
     @OnClick(R.id.tvBtnRight)
-    public void onBtnRightClick(){
-        if (!menu.isMenuShowing()){
+    public void onBtnRightClick() {
+        if (!menu.isMenuShowing()) {
             menu.showSecondaryMenu(true);
         }
+    }
+
+    @Override
+    public void setSelectedFragment(BackHandledFragment backHandledFragment) {
+        if (this.selectedFragment == backHandledFragment){
+            return;
+        }
+
+        this.selectedFragment = backHandledFragment;
+
     }
 /*
     @OnClick(R.id.tvButtonLocalPhoto)

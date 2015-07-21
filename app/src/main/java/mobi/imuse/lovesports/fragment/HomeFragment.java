@@ -25,7 +25,8 @@ import mobi.imuse.lovesports.R;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BackHandledFragment {
+    private static final String TAG = HomeFragment.class.getSimpleName();
 
     @Bind(R.id.imageSlider) SliderLayout mImageSlider;
     @Bind(R.id.swipeRefreshLayout)    PullRefreshLayout mSwipeRefreshLayout;
@@ -50,6 +51,16 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public String getTagText() {
+        return TAG;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
     }
 
     @Override

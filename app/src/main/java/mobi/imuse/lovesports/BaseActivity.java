@@ -1,9 +1,13 @@
 package mobi.imuse.lovesports;
 
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 
+import de.greenrobot.event.EventBus;
+import mobi.imuse.lovesports.model.NullEvent;
 import mobi.imuse.lovesports.util.SystemBarTintManager;
 
 public class BaseActivity extends AppCompatActivity {
@@ -25,5 +29,36 @@ public class BaseActivity extends AppCompatActivity {
             tintManager.setNavigationBarTintResource(R.color.primary_dark);
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    // This method will be called when a MessageEvent is posted
+    public void onEvent(NullEvent eventObj) {
+    }
+
+    protected int getActionBarSize() {
+        TypedValue typedValue = new TypedValue();
+        int[] textSizeAttr = new int[]{R.attr.actionBarSize};
+        int indexOfAttrTextSize = 0;
+        TypedArray a = obtainStyledAttributes(typedValue.data, textSizeAttr);
+        int actionBarSize = a.getDimensionPixelSize(indexOfAttrTextSize, -1);
+        a.recycle();
+        return actionBarSize;
+    }
+
+    protected int getScreenHeight() {
+        return findViewById(android.R.id.content).getHeight();
+    }
+
 
 }
