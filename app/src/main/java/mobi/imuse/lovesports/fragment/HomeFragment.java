@@ -1,6 +1,7 @@
 package mobi.imuse.lovesports.fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,6 +35,8 @@ public class HomeFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private OnHomeFragmentListener mListener;
 
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -77,6 +80,8 @@ public class HomeFragment extends Fragment {
                 }, 2000);
             }
         });
+
+        mListener.onImageSliderInitilized(mImageSlider);
         return rootView;
     }
 
@@ -107,5 +112,25 @@ public class HomeFragment extends Fragment {
         mImageSlider.setDuration(3000);
     }
 
+    public interface OnHomeFragmentListener{
+        public void onImageSliderInitilized(View slider);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnHomeFragmentListener) activity;
+        }
+        catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnHomeFragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
 }

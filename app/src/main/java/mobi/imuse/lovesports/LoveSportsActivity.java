@@ -3,13 +3,14 @@ package mobi.imuse.lovesports;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.View;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import mobi.imuse.lovesports.fragment.HomeFragment;
 import mobi.imuse.slidingmenu.SlidingMenu;
 
-public class LoveSportsActivity extends BaseActivity {
+public class LoveSportsActivity extends BaseActivity implements HomeFragment.OnHomeFragmentListener{
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
@@ -26,8 +27,9 @@ public class LoveSportsActivity extends BaseActivity {
 
         initSlidingMenu();
 
+        HomeFragment hf = HomeFragment.newInstance("p1", "p2");
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.fl_container, HomeFragment.newInstance("p1", "p2")).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fl_container, hf).commit();
         }
 
     }
@@ -51,6 +53,11 @@ public class LoveSportsActivity extends BaseActivity {
             menu.setSecondaryMenu(R.layout.slidemenu_right);
             menu.setSecondaryShadowDrawable(R.drawable.shadow);
         }
+    }
+
+    @Override
+    public void onImageSliderInitilized(View slider) {
+        menu.addIgnoredView(slider);
     }
 /*
     @OnClick(R.id.tvButtonLocalPhoto)
