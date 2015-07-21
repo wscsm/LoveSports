@@ -18,20 +18,35 @@
             android:id="@+id/rlAvatar"
             android:layout_width="match_parent"
             android:layout_height="72.0dip"
-            android:alpha="0.8"
             android:background="@color/primary"
             android:clickable="true"
             >
 
             <!-- 头像; -->
-            <ImageView
-                android:id="@+id/ivAvatarImage"
-                android:layout_width="48.0dip"
-                android:layout_height="48.0dip"
+            <FrameLayout
+                android:id="@+id/flAvatarImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="32.0dip"
-                android:src="@drawable/avatar_default"
-                />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin" >
+
+                <ImageView
+                    android:id="@+id/ivAvatarImage"
+                    android:layout_width="48.0dip"
+                    android:layout_height="48.0dip"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/avatar_default"
+                    />
+                <ImageView
+                    android:id="@+id/iv_mask_op"
+                    android:layout_width="64.0dip"
+                    android:layout_height="64.0dip"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/circle_mask" />
+            </FrameLayout>
 
             <ImageView
                 android:id="@+id/ivArrowRightAnchor"
@@ -45,32 +60,35 @@
                 android:src="@drawable/ic_arrow_right_reverse"
                 />
 
-            <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="match_parent"
-                android:layout_height="24.0dip"
-                android:layout_alignTop="@id/ivAvatarImage"
+            <LinearLayout
                 android:layout_toLeftOf="@id/ivArrowRightAnchor"
-                android:layout_toRightOf="@id/ivAvatarImage"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_padding"
-                android:textColor="@color/icons"
-                tools:text="SuYanLu"
-                />
+                android:layout_toRightOf="@id/flAvatarImage"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:textColor="@color/icons"
+                    tools:text="SuYanLu"
+                    />
 
-            <TextView
-                android:id="@+id/tvMobilePhone"
-                android:layout_width="match_parent"
-                android:layout_height="24.0dip"
-                android:layout_below="@id/tvUserName"
-                android:layout_toLeftOf="@id/ivArrowRightAnchor"
-                android:layout_toRightOf="@id/ivAvatarImage"
-                android:drawableLeft="@drawable/ic_mobile_phone"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_padding"
-                android:textColor="@color/icons"
-                tools:text="18951627023"
-                />
+                <TextView
+                    android:id="@+id/tvMobilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/ic_mobile_phone"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/icons"
+                    tools:text="18951627023"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
