@@ -102,22 +102,9 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
                 enableDisableSwipeRefresh(state == ViewPagerEx.SCROLL_STATE_IDLE);
             }
         });
-/*
-        mSwipeRefreshLayout.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL);
-        mSwipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mSwipeRefreshLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSwipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 1000);
-            }
-        });
-*/
 
         mListener.onImageSliderInitilized(mImageSlider);
+
         return rootView;
     }
 
