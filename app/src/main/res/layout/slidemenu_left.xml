@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10.0dip"
+                android:layout_marginRight="@dimen/edittext_padding"
                 android:contentDescription="@null"
                 android:duplicateParentState="true"
                 android:src="@drawable/ic_arrow_right_reverse"
@@ -75,7 +75,8 @@
                     android:layout_weight="1.0"
                     android:gravity="bottom"
                     android:textColor="@color/icons"
-                    tools:text="SuYanLu"
+                    android:paddingLeft="4dip"
+                    android:text="Suyanlu"
                     />
 
                 <TextView
@@ -86,7 +87,7 @@
                     android:drawableLeft="@drawable/ic_mobile_phone"
                     android:gravity="center_vertical"
                     android:textColor="@color/icons"
-                    tools:text="18951627023"
+                    android:text="18951627023"
                     />
             </LinearLayout>
         </RelativeLayout>
