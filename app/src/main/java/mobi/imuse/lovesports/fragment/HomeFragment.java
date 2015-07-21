@@ -84,7 +84,8 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.md_red_A700,
                 R.color.md_green_A700,
-                R.color.md_blue_A700);
+                R.color.md_blue_A700,
+                R.color.md_cyan_A700);
 
         // 下面这一段为了避免在ImageSlider上滑动的时候导致SwipeRefreshLayout下拉;
         mImageSlider.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
