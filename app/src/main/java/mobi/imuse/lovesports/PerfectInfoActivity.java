@@ -17,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.pickview.TimePicker;
+import mobi.imuse.pickview.lib.WheelTime;
 
 public class PerfectInfoActivity extends BaseActivity {
 
@@ -79,7 +80,7 @@ public class PerfectInfoActivity extends BaseActivity {
         int[] range = {1970, 2038};
 
         TimePicker.createBuilder(this, getSupportFragmentManager())
-                .setType(TimePicker.Type.YEAR_MONTH_DAY)
+                .setType(WheelTime.Type.YEAR_MONTH_DAY)
                 .setCyclic(true)
                 .setDateSelected(date)
                 .setCancelableOnTouchOutside(true)

@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import mobi.imuse.pickview.R;
-import mobi.imuse.pickview.TimePicker;
 
 
 public class WheelTime {
@@ -21,8 +20,11 @@ public class WheelTime {
 	private WheelView wv_hours;
 	private WheelView wv_mins;
 	public int screenheight;
-	
-	private TimePicker.Type type;
+
+	public enum Type {
+		ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN
+	}// 四种选择模式，年月日时分，年月日，时分，月日时分
+	private Type type;
 	private static int START_YEAR = 1990, END_YEAR = 2100;
 
 	public View getView() {
@@ -52,10 +54,10 @@ public class WheelTime {
 	public WheelTime(View view) {
 		super();
 		this.view = view;
-		type = TimePicker.Type.ALL;
+		type = Type.ALL;
 		setView(view);
 	}
-	public WheelTime(View view,TimePicker.Type type) {
+	public WheelTime(View view,Type type) {
 		super();
 		this.view = view;
 		this.type = type;

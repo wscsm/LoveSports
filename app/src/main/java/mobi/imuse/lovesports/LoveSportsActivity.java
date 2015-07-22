@@ -85,6 +85,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
                 startActivity(i);
             }
             else {
+                // 沉浸模式下用Activity作为Context会导致Toast文字错位；
                 T.showShort(getBaseContext(), "再按一次退出");
             }
             back_pressed = System.currentTimeMillis();

@@ -32,7 +32,7 @@ import mobi.imuse.pickview.lib.WheelTime;
  *
  * @author Sai
  */
-public class TimePicker extends Fragment implements OnClickListener {
+public class DialogPlusTimePicker extends Fragment implements OnClickListener {
 
     private static final String ARG_CANCELABLE_ONTOUCHOUTSIDE = "cancelable_ontouchoutside";
     private static final String ARG_TYPE = "type";
@@ -313,14 +313,14 @@ public class TimePicker extends Fragment implements OnClickListener {
 
     public static class Builder {
 
-        TimePicker timePicker;
+        DialogPlusTimePicker timePicker;
         private FragmentManager mFragmentManager;
         private String mTag = "timePicker";
 
         public Builder(Context context, FragmentManager fragmentManager) {
             mFragmentManager = fragmentManager;
             if (timePicker == null) {
-                timePicker = (TimePicker) Fragment.instantiate(context, TimePicker.class.getName(), prepareArguments());
+                timePicker = (DialogPlusTimePicker) Fragment.instantiate(context, DialogPlusTimePicker.class.getName(), prepareArguments());
             }
             // 初始化;
             init();
@@ -379,7 +379,7 @@ public class TimePicker extends Fragment implements OnClickListener {
             return bundle;
         }
 
-        public TimePicker show() {
+        public DialogPlusTimePicker show() {
             timePicker.show(mFragmentManager, mTag);
             return timePicker;
         }
