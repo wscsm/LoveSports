@@ -16,7 +16,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mobi.imuse.pickview.TimePopupWindow;
+import mobi.imuse.pickview.TimePicker;
 
 public class PerfectInfoActivity extends BaseActivity {
 
@@ -78,13 +78,13 @@ public class PerfectInfoActivity extends BaseActivity {
 
         int[] range = {1970, 2038};
 
-        TimePopupWindow.createBuilder(this, getSupportFragmentManager())
-                .setType(TimePopupWindow.Type.YEAR_MONTH_DAY)
+        TimePicker.createBuilder(this, getSupportFragmentManager())
+                .setType(TimePicker.Type.YEAR_MONTH_DAY)
                 .setCyclic(true)
                 .setDateSelected(date)
                 .setCancelableOnTouchOutside(true)
                 .setRange(range)
-                .setListener(new TimePopupWindow.OnTimeSelectListener() {
+                .setListener(new TimePicker.OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date) {
                         mTvBirthday.setText(getTime(date));

@@ -32,7 +32,7 @@ import mobi.imuse.pickview.lib.WheelTime;
  *
  * @author Sai
  */
-public class TimePopupWindow extends Fragment implements OnClickListener {
+public class TimePicker extends Fragment implements OnClickListener {
     public enum Type {
         ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN
     }// 四种选择模式，年月日时分，年月日，时分，月日时分
@@ -316,17 +316,17 @@ public class TimePopupWindow extends Fragment implements OnClickListener {
 
     public static class Builder {
 
-        TimePopupWindow actionSheet;
+        TimePicker timePicker;
         private FragmentManager mFragmentManager;
-        private String mTag = "actionSheet";
+        private String mTag = "timePicker";
 
         public Builder(Context context, FragmentManager fragmentManager) {
             mFragmentManager = fragmentManager;
-            actionSheet = (TimePopupWindow) Fragment.instantiate(context, TimePopupWindow.class.getName(), prepareArguments());
+            timePicker = (TimePicker) Fragment.instantiate(context, TimePicker.class.getName(), prepareArguments());
         }
 
-        public Builder setType(TimePopupWindow.Type type) {
-            actionSheet.setType(type);
+        public Builder setType(TimePicker.Type type) {
+            timePicker.setType(type);
             return this;
         }
 
@@ -336,27 +336,27 @@ public class TimePopupWindow extends Fragment implements OnClickListener {
         }
 
         public Builder setListener(OnTimeSelectListener listener) {
-            actionSheet.setOnTimeSelectListener(listener);
+            timePicker.setOnTimeSelectListener(listener);
             return this;
         }
 
         public Builder setCancelableOnTouchOutside(boolean cancelable) {
-            actionSheet.setCancelableOnTouchOutside(cancelable);
+            timePicker.setCancelableOnTouchOutside(cancelable);
             return this;
         }
 
         public Builder setDateSelected(Date dateSelected){
-            actionSheet.setDateSelected(dateSelected);
+            timePicker.setDateSelected(dateSelected);
             return this;
         }
 
         public Builder setRange(int[] range){
-            actionSheet.setRange(range);
+            timePicker.setRange(range);
             return this;
         }
 
         public Builder setCyclic(boolean cyclic){
-            actionSheet.setCyclic(cyclic);
+            timePicker.setCyclic(cyclic);
             return this;
         }
 
@@ -365,9 +365,9 @@ public class TimePopupWindow extends Fragment implements OnClickListener {
             return bundle;
         }
 
-        public TimePopupWindow show() {
-            actionSheet.show(mFragmentManager, mTag);
-            return actionSheet;
+        public TimePicker show() {
+            timePicker.show(mFragmentManager, mTag);
+            return timePicker;
         }
 
     }

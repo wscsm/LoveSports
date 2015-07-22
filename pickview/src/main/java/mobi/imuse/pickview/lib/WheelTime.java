@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import mobi.imuse.pickview.R;
-import mobi.imuse.pickview.TimePopupWindow;
+import mobi.imuse.pickview.TimePicker;
 
 
 public class WheelTime {
@@ -22,7 +22,7 @@ public class WheelTime {
 	private WheelView wv_mins;
 	public int screenheight;
 	
-	private TimePopupWindow.Type type;
+	private TimePicker.Type type;
 	private static int START_YEAR = 1990, END_YEAR = 2100;
 
 	public View getView() {
@@ -52,10 +52,10 @@ public class WheelTime {
 	public WheelTime(View view) {
 		super();
 		this.view = view;
-		type = TimePopupWindow.Type.ALL;
+		type = TimePicker.Type.ALL;
 		setView(view);
 	}
-	public WheelTime(View view,TimePopupWindow.Type type) {
+	public WheelTime(View view,TimePicker.Type type) {
 		super();
 		this.view = view;
 		this.type = type;
