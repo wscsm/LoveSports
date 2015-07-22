@@ -10,15 +10,14 @@ import android.widget.TextView;
 import com.andreabaccega.widget.FormEditText;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mobi.imuse.pickview.DialogPlusOptionsPicker;
 import mobi.imuse.pickview.DialogPlusTimePicker;
+import mobi.imuse.pickview.GenderPicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
 public class PerfectInfoActivity extends BaseActivity {
@@ -111,20 +110,14 @@ public class PerfectInfoActivity extends BaseActivity {
     }
     @OnClick(R.id.rlGender)
     public void onRlGenderClick(){
-        final ArrayList<String> genders = new ArrayList<>();
-        genders.add("UnKnown");
-        genders.add("Male");
-        genders.add("Female");
-        DialogPlusOptionsPicker.instance(this)
-                .setPicker(genders)
-                .setSelectOptions(0)
-                .setCyclic(false)
-                .setOnoptionsSelectListener(new DialogPlusOptionsPicker.OnOptionsSelectListener() {
+        String gender = mTvGender.getText().toString();
+        GenderPicker.instance(this)
+                .setGenderSelectListener(new GenderPicker.OnGenderSelectListener() {
                     @Override
-                    public void onOptionsSelect(int options1, int options2, int options3) {
-                        mTvGender.setText(genders.get(options1));
+                    public void onGenderSelected(int selected) {
+                        mTvGender.setText(GenderPicker.Gender.getGender(selected).zhValue());
                     }
                 })
-                .show();
+                .show(gender);
     }
 }
