@@ -322,7 +322,9 @@ public class TimePicker extends Fragment implements OnClickListener {
 
         public Builder(Context context, FragmentManager fragmentManager) {
             mFragmentManager = fragmentManager;
-            timePicker = (TimePicker) Fragment.instantiate(context, TimePicker.class.getName(), prepareArguments());
+            if (timePicker == null) {
+                timePicker = (TimePicker) Fragment.instantiate(context, TimePicker.class.getName(), prepareArguments());
+            }
         }
 
         public Builder setType(TimePicker.Type type) {
