@@ -162,6 +162,7 @@
                     android:layout_marginRight="16dip"
                     android:gravity="center_vertical|right"
                     android:padding="@dimen/edittext_padding"
+                    android:textSize="@dimen/font_size_large"
                     tools:text="Male"
                     />
             </RelativeLayout>
@@ -199,6 +200,7 @@
                     android:gravity="center_vertical|right"
                     android:padding="@dimen/edittext_padding"
                     tools:text="2015-07-19"
+                    android:textSize="@dimen/font_size_large"
                     />
             </RelativeLayout>
 
@@ -235,6 +237,7 @@
                     android:gravity="center_vertical|right"
                     android:padding="@dimen/edittext_padding"
                     tools:text="江苏省南京市"
+                    android:textSize="@dimen/font_size_large"
                     />
             </RelativeLayout>
 
@@ -280,6 +283,7 @@
                     android:layout_marginRight="16dip"
                     android:gravity="center_vertical|right"
                     android:padding="@dimen/edittext_padding"
+                    android:textSize="@dimen/font_size_large"
                     tools:text="网球"
                     />
             </RelativeLayout>
