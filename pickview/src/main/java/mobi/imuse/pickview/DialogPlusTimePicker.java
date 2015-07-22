@@ -43,9 +43,32 @@ public class DialogPlusTimePicker {
     private boolean bCyclic = false; // 是否循环显示;
     private OnTimeSelectListener mListener;
 
-    public void show(Context context) {
+    private static DialogPlusTimePicker instance;
 
+    public static DialogPlusTimePicker instance(Context context){
+        if (instance == null){
+            instance = new DialogPlusTimePicker(context);
+        }
+        instance.init();
+        return instance;
+    }
+
+    private DialogPlusTimePicker(Context context){
         mContext = context;
+    }
+
+    public void init() {
+        if (instance != null) {
+            int[] a = {1970, 2038};
+            this.setType(WheelTime.Type.ALL)
+                    .setOnTimeSelectListener(null)
+                    .setDateSelected(null)
+                    .setRange(a)
+                    .setCyclic(false);
+        }
+    }
+
+    public void show() {
         if (dialog != null && dialog.isShowing()) {
             return;
         }
@@ -140,19 +163,12 @@ public class DialogPlusTimePicker {
         return rootView;
     }
 
-    public WheelTime.Type getType() {
-        return mType;
-    }
-
-    public void setType(WheelTime.Type mType) {
+    public DialogPlusTimePicker setType(WheelTime.Type mType) {
         this.mType = mType;
+        return this;
     }
 
-    public Date getDateSelected() {
-        return mDateSelected;
-    }
-
-    public void setDateSelected(Date mDateSelected) {
+    public DialogPlusTimePicker setDateSelected(Date mDateSelected) {
         this.mDateSelected = mDateSelected;
         Calendar calendar = Calendar.getInstance();
         if (wheelTime != null) {
@@ -167,103 +183,32 @@ public class DialogPlusTimePicker {
             int minute = calendar.get(Calendar.MINUTE);
             wheelTime.setPicker(year, month, day, hours, minute);
         }
-
+        return this;
     }
 
-    public int[] getRange() {
-        return range;
-    }
-
-    public void setRange(int[] range) {
-        this.range[0] = range[0];
-        this.range[1] = range[1];
+    public DialogPlusTimePicker setRange(int[] range) {
+        this.range = range;
 
         WheelTime.setSTART_YEAR(this.range[START_YEAR]);
         WheelTime.setEND_YEAR(this.range[END_YEAR]);
+        return this;
     }
 
-    public boolean isCyclic() {
-        return bCyclic;
-    }
-
-    public void setCyclic(boolean bCyclic) {
+    public DialogPlusTimePicker setCyclic(boolean bCyclic) {
         this.bCyclic = bCyclic;
         if (wheelTime != null) {
             wheelTime.setCyclic(this.bCyclic);
         }
+        return this;
     }
 
-    public OnTimeSelectListener getListener() {
-        return mListener;
-    }
-
-    public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
+    public DialogPlusTimePicker setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
         this.mListener = timeSelectListener;
+        return this;
     }
 
     public interface OnTimeSelectListener {
         public void onTimeSelect(Date date);
-
     }
 
-    public static Builder createBuilder(Context context) {
-        return new Builder(context);
-    }
-
-    public static class Builder {
-
-        Context mContext;
-        DialogPlusTimePicker timePicker;
-
-        public Builder(Context context) {
-            mContext = context;
-            if (timePicker == null) {
-                timePicker = new DialogPlusTimePicker();
-            }
-            // 初始化;
-            init();
-        }
-
-        public void init() {
-            if (timePicker != null) {
-                setType(WheelTime.Type.ALL);
-                setListener(null);
-                setDateSelected(null);
-                int[] a = {1970, 2038};
-                setRange(a);
-                setCyclic(false);
-            }
-        }
-
-        public Builder setType(WheelTime.Type type) {
-            timePicker.setType(type);
-            return this;
-        }
-
-        public Builder setListener(OnTimeSelectListener listener) {
-            timePicker.setOnTimeSelectListener(listener);
-            return this;
-        }
-
-        public Builder setDateSelected(Date dateSelected) {
-            timePicker.setDateSelected(dateSelected);
-            return this;
-        }
-
-        public Builder setRange(int[] range) {
-            timePicker.setRange(range);
-            return this;
-        }
-
-        public Builder setCyclic(boolean cyclic) {
-            timePicker.setCyclic(cyclic);
-            return this;
-        }
-
-        public DialogPlusTimePicker show() {
-            timePicker.show(mContext);
-            return timePicker;
-        }
-
-    }
 }
