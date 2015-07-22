@@ -325,6 +325,21 @@ public class TimePicker extends Fragment implements OnClickListener {
             if (timePicker == null) {
                 timePicker = (TimePicker) Fragment.instantiate(context, TimePicker.class.getName(), prepareArguments());
             }
+            // 初始化;
+            init();
+        }
+
+        public void init(){
+            if (timePicker != null){
+                setType(Type.ALL);
+                setTag(mTag);
+                setListener(null);
+                setCancelableOnTouchOutside(false);
+                setDateSelected(null);
+                int[] a = {1970, 2038};
+                setRange(a);
+                setCyclic(false);
+            }
         }
 
         public Builder setType(TimePicker.Type type) {
