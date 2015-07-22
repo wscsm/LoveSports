@@ -16,7 +16,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mobi.imuse.pickview.TimePicker;
+import mobi.imuse.pickview.DialogPlusTimePicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
 public class PerfectInfoActivity extends BaseActivity {
@@ -79,6 +79,19 @@ public class PerfectInfoActivity extends BaseActivity {
 
         int[] range = {1970, 2038};
 
+        DialogPlusTimePicker.createBuilder(this)
+                .setType(WheelTime.Type.YEAR_MONTH_DAY)
+                .setCyclic(true)
+                .setDateSelected(date)
+                .setRange(range)
+                .setListener(new DialogPlusTimePicker.OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date) {
+                        mTvBirthday.setText(getTime(date));
+                    }
+                })
+                .show();
+/*
         TimePicker.createBuilder(this, getSupportFragmentManager())
                 .setType(WheelTime.Type.YEAR_MONTH_DAY)
                 .setCyclic(true)
@@ -92,39 +105,6 @@ public class PerfectInfoActivity extends BaseActivity {
                     }
                 })
                 .show();
-
-/*
-        TimePopupWindow.createBuilder(this, getSupportFragmentManager())
-                .setCancelableOnTouchOutside(true)
-                .setType(TimePopupWindow.Type.YEAR_MONTH_DAY)
-                .show();
-*/
-/*
-        //时间选择器
-        pwBirthdayTime = new TimePopupWindow(PerfectInfoActivity.this, TimePopupWindow.Type.YEAR_MONTH_DAY);
-        pwBirthdayTime.setRange(1970, 2100);
-        //时间选择后回调
-        pwBirthdayTime.setOnTimeSelectListener(new TimePopupWindow.OnTimeSelectListener() {
-
-            @Override
-            public void onTimeSelect(Date date) {
-                mTvBirthday.setText(getTime(date));
-            }
-        });
-        String currentBirthday = mTvBirthday.getText().toString();
-        String[] a = currentBirthday.split("-");
-        Date date;
-        if (currentBirthday != null && !currentBirthday.equals("")){
-            Calendar cal = Calendar.getInstance();
-            cal.set(Integer.parseInt(a[0]), Integer.parseInt(a[1])-1, Integer.parseInt(a[2]));
-            date = new Date(cal.getTimeInMillis());
-
-        }
-        else{
-            date = new Date();
-        }
-        //弹出时间选择器
-        pwBirthdayTime.showAtLocation(findViewById(R.id.activityPerfectInfo), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0, date);
 */
     }
 }

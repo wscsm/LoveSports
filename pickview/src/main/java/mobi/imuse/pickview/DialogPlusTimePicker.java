@@ -1,24 +1,22 @@
 package mobi.imuse.pickview;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.Holder;
+import com.orhanobut.dialogplus.OnCancelListener;
+import com.orhanobut.dialogplus.OnClickListener;
+import com.orhanobut.dialogplus.OnDismissListener;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -32,116 +30,94 @@ import mobi.imuse.pickview.lib.WheelTime;
  *
  * @author Sai
  */
-public class DialogPlusTimePicker extends Fragment implements OnClickListener {
+public class DialogPlusTimePicker {
 
-    private static final String ARG_CANCELABLE_ONTOUCHOUTSIDE = "cancelable_ontouchoutside";
-    private static final String ARG_TYPE = "type";
-
-    private static final int TRANSLATE_DURATION = 200;
-    private static final int ALPHA_DURATION = 300;
-
-    private View mView;
-    private LinearLayout mPanel; // 扩展pw_time.xml;
-    private ViewGroup mGroup;
-    private View mBg;
+    Context mContext;
+    private DialogPlus dialog;
     private WheelTime wheelTime;
 
-    private boolean mDismissed = true;
     private WheelTime.Type mType = WheelTime.Type.ALL;
-
+    private Date mDateSelected; // 选中的日期;
     private static final int START_YEAR = 0;
     private static final int END_YEAR = 1;
-
-    private Date mDateSelected; // 选中的日期;
     private int[] range = {1970, 2038};
-
     private boolean bCyclic = false; // 是否循环显示;
-
-    private boolean bCancelableOnTouchOutside = false; // 界面外是否可以dismiss;
-
-    private static final String TAG_BG = "timebg";
-    private static final String TAG_SUBMIT = "submit";
-    private static final String TAG_CANCEL = "cancel";
-
     private OnTimeSelectListener mListener;
 
-    public void show(FragmentManager manager, String tag) {
-        if (!mDismissed) {
+    public void show(Context context) {
+
+        mContext = context;
+        if (dialog != null && dialog.isShowing()) {
             return;
         }
-        mDismissed = false;
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.add(this, tag);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
 
-    public void dismiss() {
-        if (mDismissed) {
-            return;
+        if (dialog != null) {
+            dialog.dismiss();
+            dialog = null;
         }
-        mDismissed = true;
-        getFragmentManager().popBackStack();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.remove(this);
-        ft.commit();
+        Holder holder = new ViewHolder(createView());
+
+        View footer = new View(mContext);
+        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getNavigationBarHeight()));
+        dialog = DialogPlus.newDialog(mContext)
+                .setContentHolder(holder)
+                .setGravity(Gravity.BOTTOM)
+                .setOnDismissListener(dismissListener)
+                .setOnCancelListener(cancelListener)
+                .setOnClickListener(clickListener)
+                .setExpanded(false)
+                .setCancelable(true)
+                .setFooter(footer)
+                .create();
+        dialog.show();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    OnDismissListener dismissListener = new OnDismissListener() {
+        @Override
+        public void onDismiss(DialogPlus dialog) {
+        }
+    };
 
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm.isActive()) {
-            View focusView = getActivity().getCurrentFocus();
-            if (focusView != null) {
-                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+    OnCancelListener cancelListener = new OnCancelListener() {
+        @Override
+        public void onCancel(DialogPlus dialog) {
+        }
+    };
+
+    OnClickListener clickListener = new OnClickListener() {
+        @Override
+        public void onClick(DialogPlus dialog, View view) {
+            int viewId = view.getId();
+            if (viewId == R.id.btnSubmit) {
+                try {
+                    Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                    mListener.onTimeSelect(date);
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            dialog.dismiss();
+        }
+    };
+
+    private int getNavigationBarHeight(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Resources resources = mContext.getResources();
+            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                return resources.getDimensionPixelSize(resourceId);
             }
         }
-
-        mView = createView();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            mView.setFitsSystemWindows(true);
-        }
-
-        mGroup = (ViewGroup) getActivity().getWindow().getDecorView();
-
-        mGroup.addView(mView);
-        mBg.startAnimation(createAlphaInAnimation());
-        mPanel.startAnimation(createTranslationInAnimation());
-
-
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return 0;
     }
-
     private View createView() {
-        FrameLayout parent = new FrameLayout(getActivity());
-        parent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        mBg = new View(getActivity());
-        mBg.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        mBg.setBackgroundColor(Color.argb(136, 0, 0, 0));
-        mBg.setTag(TAG_BG);
-        mBg.setOnClickListener(this);
+        LayoutInflater mLayoutInflater = LayoutInflater.from(mContext);
+        LinearLayout rootView = (LinearLayout) mLayoutInflater.inflate(R.layout.pw_time, null);
 
-        LayoutInflater mLayoutInflater = LayoutInflater.from(getActivity());
-        mPanel = (LinearLayout) mLayoutInflater.inflate(R.layout.pw_time, null);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        params.gravity = Gravity.BOTTOM;
-        mPanel.setLayoutParams(params);
-        mPanel.setOrientation(LinearLayout.VERTICAL);
-
-        parent.addView(mBg);
-        parent.addView(mPanel);
-
-        // -----确定和取消按钮
-        View btnSubmit = mPanel.findViewById(R.id.btnSubmit);
-        btnSubmit.setTag(TAG_SUBMIT);
-        View btnCancel = mPanel.findViewById(R.id.btnCancel);
-        btnCancel.setTag(TAG_CANCEL);
-        btnSubmit.setOnClickListener(this);
-        btnCancel.setOnClickListener(this);
         // ----时间转轮
-        final View timepickerview = mPanel.findViewById(R.id.timepicker);
-        ScreenInfo screenInfo = new ScreenInfo(getActivity());
+        final View timepickerview = rootView.findViewById(R.id.timepicker);
+        ScreenInfo screenInfo = new ScreenInfo((AppCompatActivity) mContext);
         wheelTime = new WheelTime(timepickerview, mType);
 
         wheelTime.screenheight = screenInfo.getHeight();
@@ -162,75 +138,7 @@ public class DialogPlusTimePicker extends Fragment implements OnClickListener {
         wheelTime.setPicker(year, month, day, hours, minute);
 
         wheelTime.setCyclic(bCyclic);
-        return parent;
-    }
-
-    @Override
-    public void onDestroyView() {
-        mPanel.startAnimation(createTranslationOutAnimation());
-        mBg.startAnimation(createAlphaOutAnimation());
-        mView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mGroup.removeView(mView);
-            }
-        }, ALPHA_DURATION);
-
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onClick(View v) {
-        String tag = (String) v.getTag();
-        if (tag != null && tag.equals(TAG_BG) && !isCancelableOnTouchOutside()) {
-            return;
-        }
-
-        if (tag == null || tag.equals(TAG_CANCEL)) {
-            dismiss();
-            return;
-        }
-        else {
-            if (mListener != null) {
-                try {
-                    Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
-                    mListener.onTimeSelect(date);
-                }
-                catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-            dismiss();
-            return;
-        }
-    }
-
-    private Animation createTranslationInAnimation() {
-        int type = TranslateAnimation.RELATIVE_TO_SELF;
-        TranslateAnimation an = new TranslateAnimation(type, 0, type, 0, type, 1, type, 0);
-        an.setDuration(TRANSLATE_DURATION);
-        return an;
-    }
-
-    private Animation createAlphaInAnimation() {
-        AlphaAnimation an = new AlphaAnimation(0, 1);
-        an.setDuration(ALPHA_DURATION);
-        return an;
-    }
-
-    private Animation createTranslationOutAnimation() {
-        int type = TranslateAnimation.RELATIVE_TO_SELF;
-        TranslateAnimation an = new TranslateAnimation(type, 0, type, 0, type, 0, type, 1);
-        an.setDuration(TRANSLATE_DURATION);
-        an.setFillAfter(true);
-        return an;
-    }
-
-    private Animation createAlphaOutAnimation() {
-        AlphaAnimation an = new AlphaAnimation(1, 0);
-        an.setDuration(ALPHA_DURATION);
-        an.setFillAfter(true);
-        return an;
+        return rootView;
     }
 
     public WheelTime.Type getType() {
@@ -286,15 +194,7 @@ public class DialogPlusTimePicker extends Fragment implements OnClickListener {
         }
     }
 
-    public boolean isCancelableOnTouchOutside() {
-        return bCancelableOnTouchOutside;
-    }
-
-    public void setCancelableOnTouchOutside(boolean bCancelableOnTouchOutside) {
-        this.bCancelableOnTouchOutside = bCancelableOnTouchOutside;
-    }
-
-    public OnTimeSelectListener getmListener() {
+    public OnTimeSelectListener getListener() {
         return mListener;
     }
 
@@ -307,31 +207,28 @@ public class DialogPlusTimePicker extends Fragment implements OnClickListener {
 
     }
 
-    public static Builder createBuilder(Context context, FragmentManager fragmentManager) {
-        return new Builder(context, fragmentManager);
+    public static Builder createBuilder(Context context) {
+        return new Builder(context);
     }
 
     public static class Builder {
 
+        Context mContext;
         DialogPlusTimePicker timePicker;
-        private FragmentManager mFragmentManager;
-        private String mTag = "timePicker";
 
-        public Builder(Context context, FragmentManager fragmentManager) {
-            mFragmentManager = fragmentManager;
+        public Builder(Context context) {
+            mContext = context;
             if (timePicker == null) {
-                timePicker = (DialogPlusTimePicker) Fragment.instantiate(context, DialogPlusTimePicker.class.getName(), prepareArguments());
+                timePicker = new DialogPlusTimePicker();
             }
             // 初始化;
             init();
         }
 
-        public void init(){
-            if (timePicker != null){
+        public void init() {
+            if (timePicker != null) {
                 setType(WheelTime.Type.ALL);
-                setTag(mTag);
                 setListener(null);
-                setCancelableOnTouchOutside(false);
                 setDateSelected(null);
                 int[] a = {1970, 2038};
                 setRange(a);
@@ -344,32 +241,22 @@ public class DialogPlusTimePicker extends Fragment implements OnClickListener {
             return this;
         }
 
-        public Builder setTag(String tag) {
-            mTag = tag;
-            return this;
-        }
-
         public Builder setListener(OnTimeSelectListener listener) {
             timePicker.setOnTimeSelectListener(listener);
             return this;
         }
 
-        public Builder setCancelableOnTouchOutside(boolean cancelable) {
-            timePicker.setCancelableOnTouchOutside(cancelable);
-            return this;
-        }
-
-        public Builder setDateSelected(Date dateSelected){
+        public Builder setDateSelected(Date dateSelected) {
             timePicker.setDateSelected(dateSelected);
             return this;
         }
 
-        public Builder setRange(int[] range){
+        public Builder setRange(int[] range) {
             timePicker.setRange(range);
             return this;
         }
 
-        public Builder setCyclic(boolean cyclic){
+        public Builder setCyclic(boolean cyclic) {
             timePicker.setCyclic(cyclic);
             return this;
         }
@@ -380,7 +267,7 @@ public class DialogPlusTimePicker extends Fragment implements OnClickListener {
         }
 
         public DialogPlusTimePicker show() {
-            timePicker.show(mFragmentManager, mTag);
+            timePicker.show(mContext);
             return timePicker;
         }
 
