@@ -109,6 +109,18 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
         return rootView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        mImageSlider.startAutoCycle();
+    }
+
+    @Override
+    public void onStop() {
+        mImageSlider.stopAutoCycle();
+        super.onStop();
+    }
+
     protected void enableDisableSwipeRefresh(boolean enable) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setEnabled(enable);

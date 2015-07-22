@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- font size definition; -->
+    <dimen name="font_size_extra_large">22.0sp</dimen>
+    <dimen name="font_size_large">18.0sp</dimen>
+    <dimen name="font_size_middle">16.0sp</dimen>
+    <dimen name="font_size_small">14.0sp</dimen>
+    <dimen name="font_size_extra_small">12.0sp</dimen>
+
+</resources>

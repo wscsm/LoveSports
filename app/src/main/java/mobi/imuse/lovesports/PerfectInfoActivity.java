@@ -10,12 +10,12 @@ import android.widget.TextView;
 import com.andreabaccega.widget.FormEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mobi.imuse.pickview.TimeActionSheet;
 import mobi.imuse.pickview.TimePopupWindow;
 
 public class PerfectInfoActivity extends BaseActivity {
@@ -34,8 +34,6 @@ public class PerfectInfoActivity extends BaseActivity {
     @Bind(R.id.editSkills)  EditText mEditSkills;
     @Bind(R.id.editDetailIntroduction)  EditText mEditeditDetailIntroduction;
 
-    private TimePopupWindow pwBirthdayTime;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +45,7 @@ public class PerfectInfoActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (pwBirthdayTime.isShowing()) {
-            pwBirthdayTime.dismiss();
-        }
-        else{
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
 
     @OnClick(R.id.btnSubmit)
@@ -70,10 +63,41 @@ public class PerfectInfoActivity extends BaseActivity {
     // 获取生日;
     @OnClick(R.id.rlBirthday)
     public void onRlBirthdayClick(){
-        TimeActionSheet.createBuilder(this, getSupportFragmentManager())
+        String currentBirthday = mTvBirthday.getText().toString();
+        String[] a = currentBirthday.split("-");
+        Date date;
+        if (currentBirthday != null && !currentBirthday.equals("")){
+            Calendar cal = Calendar.getInstance();
+            cal.set(Integer.parseInt(a[0]), Integer.parseInt(a[1])-1, Integer.parseInt(a[2]));
+            date = new Date(cal.getTimeInMillis());
+
+        }
+        else{
+            date = new Date();
+        }
+
+        int[] range = {1970, 2038};
+
+        TimePopupWindow.createBuilder(this, getSupportFragmentManager())
+                .setType(TimePopupWindow.Type.YEAR_MONTH_DAY)
+                .setCyclic(true)
+                .setDateSelected(date)
+                .setCancelableOnTouchOutside(true)
+                .setRange(range)
+                .setListener(new TimePopupWindow.OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date) {
+                        mTvBirthday.setText(getTime(date));
+                    }
+                })
+                .show();
+
+/*
+        TimePopupWindow.createBuilder(this, getSupportFragmentManager())
                 .setCancelableOnTouchOutside(true)
                 .setType(TimePopupWindow.Type.YEAR_MONTH_DAY)
                 .show();
+*/
 /*
         //时间选择器
         pwBirthdayTime = new TimePopupWindow(PerfectInfoActivity.this, TimePopupWindow.Type.YEAR_MONTH_DAY);

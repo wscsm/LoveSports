@@ -1,13 +1,24 @@
 package mobi.imuse.pickview;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.PopupWindow;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -18,150 +29,346 @@ import mobi.imuse.pickview.lib.WheelTime;
 
 /**
  * 时间选择器
- * 
+ *
  * @author Sai
- * 
  */
-public class TimePopupWindow extends PopupWindow implements OnClickListener {
-	public enum Type {
-		ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN
-	}// 四种选择模式，年月日时分，年月日，时分，月日时分
+public class TimePopupWindow extends Fragment implements OnClickListener {
+    public enum Type {
+        ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN
+    }// 四种选择模式，年月日时分，年月日，时分，月日时分
 
-	private View rootView; // 总的布局
-	WheelTime wheelTime;
-	private View btnSubmit, btnCancel;
-	private static final String TAG_SUBMIT = "submit";
-	private static final String TAG_CANCEL = "cancel";
-	private OnTimeSelectListener timeSelectListener;
+    private static final String ARG_CANCELABLE_ONTOUCHOUTSIDE = "cancelable_ontouchoutside";
+    private static final String ARG_TYPE = "type";
 
-	@SuppressWarnings("deprecation")
-	public TimePopupWindow(Context context, Type type) {
-		super(context);
-		this.setWidth(LayoutParams.MATCH_PARENT);
-		this.setHeight(LayoutParams.WRAP_CONTENT);
-		ColorDrawable dw = new ColorDrawable(0x80000000);
-		this.setBackgroundDrawable(dw);// 这样设置才能点击屏幕外dismiss窗口
-		this.setOutsideTouchable(true);
-		this.setAnimationStyle(R.style.timepopwindow_anim_style);
+    private static final int TRANSLATE_DURATION = 200;
+    private static final int ALPHA_DURATION = 300;
 
-		LayoutInflater mLayoutInflater = LayoutInflater.from(context);
-		rootView = mLayoutInflater.inflate(R.layout.pw_time, null);
-		// -----确定和取消按钮
-		btnSubmit = rootView.findViewById(R.id.btnSubmit);
-		btnSubmit.setTag(TAG_SUBMIT);
-		btnCancel = rootView.findViewById(R.id.btnCancel);
-		btnCancel.setTag(TAG_CANCEL);
-		btnSubmit.setOnClickListener(this);
-		btnCancel.setOnClickListener(this);
-		// ----时间转轮
-		final View timepickerview = rootView.findViewById(R.id.timepicker);
-		ScreenInfo screenInfo = new ScreenInfo((Activity) context);
-		wheelTime = new WheelTime(timepickerview, type);
+    private View mView;
+    private LinearLayout mPanel; // 扩展pw_time.xml;
+    private ViewGroup mGroup;
+    private View mBg;
+    private WheelTime wheelTime;
 
-		wheelTime.screenheight = screenInfo.getHeight();
+    private boolean mDismissed = true;
+    private Type mType = Type.ALL;
 
-		//默认选中当前时间
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(System.currentTimeMillis());
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH);
-		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		int hours = calendar.get(Calendar.HOUR_OF_DAY);
-		int minute = calendar.get(Calendar.MINUTE);
-		wheelTime.setPicker(year, month, day, hours, minute);
+    private static final int START_YEAR = 0;
+    private static final int END_YEAR = 1;
 
-		setContentView(rootView);
-	}
+    private Date mDateSelected; // 选中的日期;
+    private int[] range = {1970, 2038};
 
-	/**
-	 * 设置可以选择的时间范围
-	 * 
-	 * @param START_YEAR
-	 * @param END_YEAR
-	 */
-	public void setRange(int START_YEAR, int END_YEAR) {
-		WheelTime.setSTART_YEAR(START_YEAR);
-		WheelTime.setEND_YEAR(END_YEAR);
-	}
+    private boolean bCyclic = false; // 是否循环显示;
 
-	/**
-	 * 设置选中时间
-	 * @param date
-	 */
-	public void setTime(Date date) {
-		Calendar calendar = Calendar.getInstance();
-		if (date == null)
-			calendar.setTimeInMillis(System.currentTimeMillis());
-		else
-			calendar.setTime(date);
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH);
-		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		int hours = calendar.get(Calendar.HOUR_OF_DAY);
-		int minute = calendar.get(Calendar.MINUTE);
-		wheelTime.setPicker(year, month, day, hours, minute);
-	}
+    private boolean bCancelableOnTouchOutside = false; // 界面外是否可以dismiss;
 
-	/**
-	 * 指定选中的时间，显示选择器
-	 * 
-	 * @param parent
-	 * @param gravity
-	 * @param x
-	 * @param y
-	 * @param date
-	 */
-	public void showAtLocation(View parent, int gravity, int x, int y, Date date) {
-		Calendar calendar = Calendar.getInstance();
-		if (date == null)
-			calendar.setTimeInMillis(System.currentTimeMillis());
-		else
-			calendar.setTime(date);
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH);
-		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		int hours = calendar.get(Calendar.HOUR_OF_DAY);
-		int minute = calendar.get(Calendar.MINUTE);
-		wheelTime.setPicker(year, month, day, hours, minute);
-		update();
-		super.showAtLocation(parent, gravity, x, y);
-	}
+    private static final String TAG_BG = "timebg";
+    private static final String TAG_SUBMIT = "submit";
+    private static final String TAG_CANCEL = "cancel";
 
-	/**
-	 * 设置是否循环滚动
-	 * 
-	 * @param cyclic
-	 */
-	public void setCyclic(boolean cyclic) {
-		wheelTime.setCyclic(cyclic);
-	}
+    private OnTimeSelectListener mListener;
 
-	@Override
-	public void onClick(View v) {
-		String tag = (String) v.getTag();
-		if (tag.equals(TAG_CANCEL)) {
-			dismiss();
-			return;
-		} else {
-			if (timeSelectListener != null) {
-				try {
-					Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
-					timeSelectListener.onTimeSelect(date);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-			}
-			dismiss();
-			return;
-		}
-	}
+    public void show(FragmentManager manager, String tag) {
+        if (!mDismissed) {
+            return;
+        }
+        mDismissed = false;
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.add(this, tag);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
 
-	public interface OnTimeSelectListener {
-		public void onTimeSelect(Date date);
-	}
+    public void dismiss() {
+        if (mDismissed) {
+            return;
+        }
+        mDismissed = true;
+        getFragmentManager().popBackStack();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.remove(this);
+        ft.commit();
+    }
 
-	public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
-		this.timeSelectListener = timeSelectListener;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            View focusView = getActivity().getCurrentFocus();
+            if (focusView != null) {
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            }
+        }
+
+        mView = createView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            mView.setFitsSystemWindows(true);
+        }
+
+        mGroup = (ViewGroup) getActivity().getWindow().getDecorView();
+
+        mGroup.addView(mView);
+        mBg.startAnimation(createAlphaInAnimation());
+        mPanel.startAnimation(createTranslationInAnimation());
+
+
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    private View createView() {
+        FrameLayout parent = new FrameLayout(getActivity());
+        parent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        mBg = new View(getActivity());
+        mBg.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        mBg.setBackgroundColor(Color.argb(136, 0, 0, 0));
+        mBg.setTag(TAG_BG);
+        mBg.setOnClickListener(this);
+
+        LayoutInflater mLayoutInflater = LayoutInflater.from(getActivity());
+        mPanel = (LinearLayout) mLayoutInflater.inflate(R.layout.pw_time, null);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.BOTTOM;
+        mPanel.setLayoutParams(params);
+        mPanel.setOrientation(LinearLayout.VERTICAL);
+
+        parent.addView(mBg);
+        parent.addView(mPanel);
+
+        // -----确定和取消按钮
+        View btnSubmit = mPanel.findViewById(R.id.btnSubmit);
+        btnSubmit.setTag(TAG_SUBMIT);
+        View btnCancel = mPanel.findViewById(R.id.btnCancel);
+        btnCancel.setTag(TAG_CANCEL);
+        btnSubmit.setOnClickListener(this);
+        btnCancel.setOnClickListener(this);
+        // ----时间转轮
+        final View timepickerview = mPanel.findViewById(R.id.timepicker);
+        ScreenInfo screenInfo = new ScreenInfo(getActivity());
+        wheelTime = new WheelTime(timepickerview, mType);
+
+        wheelTime.screenheight = screenInfo.getHeight();
+
+        //默认选中当前时间
+        Calendar calendar = Calendar.getInstance();
+        if (mDateSelected == null) {
+            calendar.setTimeInMillis(System.currentTimeMillis());
+        }
+        else {
+            calendar.setTime(mDateSelected);
+        }
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        wheelTime.setPicker(year, month, day, hours, minute);
+
+        wheelTime.setCyclic(bCyclic);
+        return parent;
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPanel.startAnimation(createTranslationOutAnimation());
+        mBg.startAnimation(createAlphaOutAnimation());
+        mView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mGroup.removeView(mView);
+            }
+        }, ALPHA_DURATION);
+
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onClick(View v) {
+        String tag = (String) v.getTag();
+        if (tag != null && tag.equals(TAG_BG) && !isCancelableOnTouchOutside()) {
+            return;
+        }
+
+        if (tag == null || tag.equals(TAG_CANCEL)) {
+            dismiss();
+            return;
+        }
+        else {
+            if (mListener != null) {
+                try {
+                    Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                    mListener.onTimeSelect(date);
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            dismiss();
+            return;
+        }
+    }
+
+    private Animation createTranslationInAnimation() {
+        int type = TranslateAnimation.RELATIVE_TO_SELF;
+        TranslateAnimation an = new TranslateAnimation(type, 0, type, 0, type, 1, type, 0);
+        an.setDuration(TRANSLATE_DURATION);
+        return an;
+    }
+
+    private Animation createAlphaInAnimation() {
+        AlphaAnimation an = new AlphaAnimation(0, 1);
+        an.setDuration(ALPHA_DURATION);
+        return an;
+    }
+
+    private Animation createTranslationOutAnimation() {
+        int type = TranslateAnimation.RELATIVE_TO_SELF;
+        TranslateAnimation an = new TranslateAnimation(type, 0, type, 0, type, 0, type, 1);
+        an.setDuration(TRANSLATE_DURATION);
+        an.setFillAfter(true);
+        return an;
+    }
+
+    private Animation createAlphaOutAnimation() {
+        AlphaAnimation an = new AlphaAnimation(1, 0);
+        an.setDuration(ALPHA_DURATION);
+        an.setFillAfter(true);
+        return an;
+    }
+
+    public Type getType() {
+        return mType;
+    }
+
+    public void setType(Type mType) {
+        this.mType = mType;
+    }
+
+    public Date getDateSelected() {
+        return mDateSelected;
+    }
+
+    public void setDateSelected(Date mDateSelected) {
+        this.mDateSelected = mDateSelected;
+        Calendar calendar = Calendar.getInstance();
+        if (wheelTime != null) {
+            if (this.mDateSelected == null)
+                calendar.setTimeInMillis(System.currentTimeMillis());
+            else
+                calendar.setTime(this.mDateSelected);
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int hours = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
+            wheelTime.setPicker(year, month, day, hours, minute);
+        }
+
+    }
+
+    public int[] getRange() {
+        return range;
+    }
+
+    public void setRange(int[] range) {
+        this.range[0] = range[0];
+        this.range[1] = range[1];
+
+        WheelTime.setSTART_YEAR(this.range[START_YEAR]);
+        WheelTime.setEND_YEAR(this.range[END_YEAR]);
+    }
+
+    public boolean isCyclic() {
+        return bCyclic;
+    }
+
+    public void setCyclic(boolean bCyclic) {
+        this.bCyclic = bCyclic;
+        if (wheelTime != null) {
+            wheelTime.setCyclic(this.bCyclic);
+        }
+    }
+
+    public boolean isCancelableOnTouchOutside() {
+        return bCancelableOnTouchOutside;
+    }
+
+    public void setCancelableOnTouchOutside(boolean bCancelableOnTouchOutside) {
+        this.bCancelableOnTouchOutside = bCancelableOnTouchOutside;
+    }
+
+    public OnTimeSelectListener getmListener() {
+        return mListener;
+    }
+
+    public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
+        this.mListener = timeSelectListener;
+    }
+
+    public interface OnTimeSelectListener {
+        public void onTimeSelect(Date date);
+
+    }
+
+    public static Builder createBuilder(Context context, FragmentManager fragmentManager) {
+        return new Builder(context, fragmentManager);
+    }
+
+    public static class Builder {
+
+        TimePopupWindow actionSheet;
+        private FragmentManager mFragmentManager;
+        private String mTag = "actionSheet";
+
+        public Builder(Context context, FragmentManager fragmentManager) {
+            mFragmentManager = fragmentManager;
+            actionSheet = (TimePopupWindow) Fragment.instantiate(context, TimePopupWindow.class.getName(), prepareArguments());
+        }
+
+        public Builder setType(TimePopupWindow.Type type) {
+            actionSheet.setType(type);
+            return this;
+        }
+
+        public Builder setTag(String tag) {
+            mTag = tag;
+            return this;
+        }
+
+        public Builder setListener(OnTimeSelectListener listener) {
+            actionSheet.setOnTimeSelectListener(listener);
+            return this;
+        }
+
+        public Builder setCancelableOnTouchOutside(boolean cancelable) {
+            actionSheet.setCancelableOnTouchOutside(cancelable);
+            return this;
+        }
+
+        public Builder setDateSelected(Date dateSelected){
+            actionSheet.setDateSelected(dateSelected);
+            return this;
+        }
+
+        public Builder setRange(int[] range){
+            actionSheet.setRange(range);
+            return this;
+        }
+
+        public Builder setCyclic(boolean cyclic){
+            actionSheet.setCyclic(cyclic);
+            return this;
+        }
+
+        public Bundle prepareArguments() {
+            Bundle bundle = new Bundle();
+            return bundle;
+        }
+
+        public TimePopupWindow show() {
+            actionSheet.show(mFragmentManager, mTag);
+            return actionSheet;
+        }
+
+    }
 }
