@@ -3,7 +3,6 @@ package mobi.imuse.pickview;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -259,11 +258,6 @@ public class DialogPlusTimePicker {
         public Builder setCyclic(boolean cyclic) {
             timePicker.setCyclic(cyclic);
             return this;
-        }
-
-        public Bundle prepareArguments() {
-            Bundle bundle = new Bundle();
-            return bundle;
         }
 
         public DialogPlusTimePicker show() {
