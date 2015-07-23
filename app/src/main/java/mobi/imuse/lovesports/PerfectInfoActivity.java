@@ -17,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.actionsheet.ActionSheet;
+import mobi.imuse.lovesports.util.T;
 import mobi.imuse.pickview.CityPicker;
 import mobi.imuse.pickview.GenderPicker;
 import mobi.imuse.pickview.TimePicker;
@@ -136,12 +137,12 @@ public class PerfectInfoActivity extends BaseActivity {
 
                     @Override
                     public void onCancel(ActionSheet actionSheet) {
-
+                        T.showShort(PerfectInfoActivity.this, "Cancel is clicked.");
                     }
 
                     @Override
                     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-
+                        T.showShort(PerfectInfoActivity.this, "Menu Item["+index+"] is Clicked.");
                     }
                 })
                 .show();
