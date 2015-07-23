@@ -136,9 +136,9 @@ public class CityPicker {
         int idxProvince = -1;
         int idxCity = -1;
         if (province != null && city != null) {
-            for (String strProvince : stringListProvinces) {
-                if (strProvince.equals(province)) {
-                    idxProvince = stringListCityOfProvinces.indexOf(strProvince);
+            for(int i=0; i<stringListProvinces.size(); i++){
+                if (province.equals(stringListProvinces.get(i))){
+                    idxProvince = i;
                     break;
                 }
             }
@@ -148,9 +148,9 @@ public class CityPicker {
             }
             else {
                 ArrayList<String> strListCity = stringListCityOfProvinces.get(idxProvince);
-                for (String strCity : strListCity) {
-                    if (strCity.equals(city)) {
-                        idxCity = stringListCityOfProvinces.indexOf(strCity);
+                for (int i=0; i<strListCity.size(); i++) {
+                    if (city.equals(strListCity.get(i))) {
+                        idxCity = i;
                         break;
                     }
                 }

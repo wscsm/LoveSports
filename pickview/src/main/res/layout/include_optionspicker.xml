@@ -6,20 +6,20 @@
     android:orientation="horizontal" >
      <mobi.imuse.pickview.lib.WheelView
          android:id="@+id/options1"
-         android:layout_width="0dip"
+         android:layout_width="wrap_content"
          android:layout_weight="1"
          android:layout_height="wrap_content" />
 
      <mobi.imuse.pickview.lib.WheelView
          android:id="@+id/options2"
-         android:layout_width="0dip"
+         android:layout_width="wrap_content"
          android:layout_weight="1"
          android:layout_height="wrap_content" />
 
      <mobi.imuse.pickview.lib.WheelView
          android:id="@+id/options3"
-         android:layout_width="0dip"
+         android:layout_width="wrap_content"
          android:layout_weight="1"
          android:layout_height="wrap_content" />
-     
+
 </LinearLayout>
