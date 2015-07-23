@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.orhanobut.dialogplus.DialogPlus;
@@ -78,7 +79,7 @@ public class ActionSheet{
 
     private Attributes readAttribute() {
         Attributes attrs = new Attributes(mContext);
-        TypedArray a = mContext.getTheme().obtainStyledAttributes(null, R.styleable.ActionSheet, R.attr.actionSheetStyle, 0);
+        TypedArray a = mContext.getTheme().obtainStyledAttributes(null, R.styleable.ActionSheet, R.attr.actionSheetStyle, R.style.ActionSheetStyleIOS7);
         Drawable background = a.getDrawable(R.styleable.ActionSheet_actionSheetBackground);
         if (background != null) {
             attrs.background = background;
@@ -121,6 +122,7 @@ public class ActionSheet{
         footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, NavigationBarUtil.getNavigationBarHeight(mContext)));
         DialogPlus.newDialog(mContext)
                 .setContentHolder(holder)
+                .setBackgroundColorResourceId(android.R.color.transparent)
                 .setGravity(Gravity.BOTTOM)
                 .setOnClickListener(clickListener)
                 .setExpanded(false)
@@ -151,10 +153,17 @@ public class ActionSheet{
 
     private View createView() {
         mAttrs = readAttribute();
+        FrameLayout parent = new FrameLayout(mContext);
+        parent.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,  ViewGroup.LayoutParams.WRAP_CONTENT));
+        parent.setBackgroundColor(mContext.getResources().getColor(android.R.color.transparent));
         mPanel = new LinearLayout(mContext);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.BOTTOM;
+        mPanel.setLayoutParams(params);
         mPanel.setOrientation(LinearLayout.VERTICAL);
+        parent.addView(mPanel);
         createItems();
-        return mPanel;
+        return parent;
     }
 
     @SuppressWarnings("deprecation")
