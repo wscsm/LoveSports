@@ -150,6 +150,7 @@ public class ActionSheet{
     };
 
     private View createView() {
+        mAttrs = readAttribute();
         mPanel = new LinearLayout(mContext);
         mPanel.setOrientation(LinearLayout.VERTICAL);
         createItems();
@@ -235,6 +236,10 @@ public class ActionSheet{
 
     public void setOtherButtonTitles(String[] otherButtonTitles){
         this.mOtherButtonTitles = otherButtonTitles;
+    }
+
+    public static Builder createBuilder(Context context) {
+        return new Builder(context);
     }
 
     public static class Builder {

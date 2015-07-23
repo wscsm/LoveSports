@@ -74,7 +74,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.andreabaccega/android-form-edittext/1.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.specyci/residemenu/1.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/net.danlew/android.joda/2.7.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
@@ -104,13 +103,13 @@
     <orderEntry type="library" exported="" name="android.joda-2.7.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="easemobchat_2.2.1" level="project" />
-    <orderEntry type="library" exported="" name="residemenu-1.6" level="project" />
-    <orderEntry type="library" exported="" name="joda-time-2.7-no-tzdb" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
+    <orderEntry type="library" exported="" name="joda-time-2.7-no-tzdb" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.1" level="project" />
     <orderEntry type="module" module-name="imageslider" exported="" />
     <orderEntry type="module" module-name="avatar" exported="" />
     <orderEntry type="module" module-name="pickview" exported="" />
     <orderEntry type="module" module-name="slidingmenu" exported="" />
+    <orderEntry type="module" module-name="actionsheet" exported="" />
   </component>
 </module>

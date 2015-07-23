@@ -16,9 +16,10 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import mobi.imuse.actionsheet.ActionSheet;
 import mobi.imuse.pickview.CityPicker;
-import mobi.imuse.pickview.TimePicker;
 import mobi.imuse.pickview.GenderPicker;
+import mobi.imuse.pickview.TimePicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
 public class PerfectInfoActivity extends BaseActivity {
@@ -121,5 +122,28 @@ public class PerfectInfoActivity extends BaseActivity {
                     }
                 })
                 .show(province, city);
+    }
+
+    @OnClick(R.id.rlAvatar)
+    public void onRlAvatarClick(){
+        ActionSheet.createBuilder(this)
+                .setOtherButtonTitles("Pick From Library", "Take Photo")
+                .setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet) {
+
+                    }
+
+                    @Override
+                    public void onCancel(ActionSheet actionSheet) {
+
+                    }
+
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+
+                    }
+                })
+                .show();
     }
 }
