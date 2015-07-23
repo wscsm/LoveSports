@@ -29,7 +29,7 @@ import mobi.imuse.pickview.lib.WheelTime;
  *
  * @author Sai
  */
-public class DialogPlusTimePicker {
+public class TimePicker {
 
     Context mContext;
     private DialogPlus dialog;
@@ -43,17 +43,17 @@ public class DialogPlusTimePicker {
     private boolean bCyclic = false; // 是否循环显示;
     private OnTimeSelectListener mListener;
 
-    private static DialogPlusTimePicker instance;
+    private static TimePicker instance;
 
-    public static DialogPlusTimePicker instance(Context context){
+    public static TimePicker instance(Context context){
         if (instance == null){
-            instance = new DialogPlusTimePicker(context);
+            instance = new TimePicker(context);
         }
         instance.init();
         return instance;
     }
 
-    private DialogPlusTimePicker(Context context){
+    private TimePicker(Context context){
         mContext = context;
     }
 
@@ -163,12 +163,12 @@ public class DialogPlusTimePicker {
         return rootView;
     }
 
-    public DialogPlusTimePicker setType(WheelTime.Type mType) {
+    public TimePicker setType(WheelTime.Type mType) {
         this.mType = mType;
         return this;
     }
 
-    public DialogPlusTimePicker setDateSelected(Date mDateSelected) {
+    public TimePicker setDateSelected(Date mDateSelected) {
         this.mDateSelected = mDateSelected;
         Calendar calendar = Calendar.getInstance();
         if (wheelTime != null) {
@@ -186,7 +186,7 @@ public class DialogPlusTimePicker {
         return this;
     }
 
-    public DialogPlusTimePicker setRange(int[] range) {
+    public TimePicker setRange(int[] range) {
         this.range = range;
 
         WheelTime.setSTART_YEAR(this.range[START_YEAR]);
@@ -194,7 +194,7 @@ public class DialogPlusTimePicker {
         return this;
     }
 
-    public DialogPlusTimePicker setCyclic(boolean bCyclic) {
+    public TimePicker setCyclic(boolean bCyclic) {
         this.bCyclic = bCyclic;
         if (wheelTime != null) {
             wheelTime.setCyclic(this.bCyclic);
@@ -202,7 +202,7 @@ public class DialogPlusTimePicker {
         return this;
     }
 
-    public DialogPlusTimePicker setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
+    public TimePicker setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
         this.mListener = timeSelectListener;
         return this;
     }

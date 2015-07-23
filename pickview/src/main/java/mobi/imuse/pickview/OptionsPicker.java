@@ -25,22 +25,22 @@ import mobi.imuse.pickview.lib.WheelOptions;
  *
  * @author Sai
  */
-public class DialogPlusOptionsPicker {
+public class OptionsPicker {
     Context mContext;
     private DialogPlus dialog;
 
     private WheelOptions wheelOptions;
     private OnOptionsSelectListener optionsSelectListener;
 
-    private static DialogPlusOptionsPicker instance;
+    private static OptionsPicker instance;
 
-    private DialogPlusOptionsPicker(Context context) {
+    private OptionsPicker(Context context) {
         mContext = context;
     }
 
-    public static DialogPlusOptionsPicker instance(Context context) {
+    public static OptionsPicker instance(Context context) {
         if (instance == null) {
-            instance = new DialogPlusOptionsPicker(context);
+            instance = new OptionsPicker(context);
         }
         instance.init();
         return instance;
@@ -116,53 +116,53 @@ public class DialogPlusOptionsPicker {
         return 0;
     }
 
-    public DialogPlusOptionsPicker setPicker(ArrayList<String> optionsItems) {
+    public OptionsPicker setPicker(ArrayList<String> optionsItems) {
         wheelOptions.setPicker(optionsItems, null, null, false);
         return this;
     }
 
-    public DialogPlusOptionsPicker setPicker(ArrayList<String> options1Items, ArrayList<ArrayList<String>> options2Items, boolean linkage) {
+    public OptionsPicker setPicker(ArrayList<String> options1Items, ArrayList<ArrayList<String>> options2Items, boolean linkage) {
         wheelOptions.setPicker(options1Items, options2Items, null, linkage);
         return this;
     }
 
-    public DialogPlusOptionsPicker setPicker(ArrayList<String> options1Items, ArrayList<ArrayList<String>> options2Items,
+    public OptionsPicker setPicker(ArrayList<String> options1Items, ArrayList<ArrayList<String>> options2Items,
                                              ArrayList<ArrayList<ArrayList<String>>> options3Items, boolean linkage) {
         wheelOptions.setPicker(options1Items, options2Items, options3Items, linkage);
         return this;
     }
 
-    public DialogPlusOptionsPicker setSelectOptions(int option1) {
+    public OptionsPicker setSelectOptions(int option1) {
         wheelOptions.setCurrentItems(option1, 0, 0);
         return this;
     }
 
-    public DialogPlusOptionsPicker setSelectOptions(int option1, int option2) {
+    public OptionsPicker setSelectOptions(int option1, int option2) {
         wheelOptions.setCurrentItems(option1, option2, 0);
         return this;
     }
 
-    public DialogPlusOptionsPicker setSelectOptions(int option1, int option2, int option3) {
+    public OptionsPicker setSelectOptions(int option1, int option2, int option3) {
         wheelOptions.setCurrentItems(option1, option2, option3);
         return this;
     }
 
-    public DialogPlusOptionsPicker setLabels(String label1) {
+    public OptionsPicker setLabels(String label1) {
         wheelOptions.setLabels(label1, null, null);
         return this;
     }
 
-    public DialogPlusOptionsPicker setLabels(String label1, String label2) {
+    public OptionsPicker setLabels(String label1, String label2) {
         wheelOptions.setLabels(label1, label2, null);
         return this;
     }
 
-    public DialogPlusOptionsPicker setLabels(String label1, String label2, String label3) {
+    public OptionsPicker setLabels(String label1, String label2, String label3) {
         wheelOptions.setLabels(label1, label2, label3);
         return this;
     }
 
-    public DialogPlusOptionsPicker setCyclic(boolean cyclic) {
+    public OptionsPicker setCyclic(boolean cyclic) {
         wheelOptions.setCyclic(cyclic);
         return this;
     }
@@ -171,7 +171,7 @@ public class DialogPlusOptionsPicker {
         public void onOptionsSelect(int options1, int options2, int options3);
     }
 
-    public DialogPlusOptionsPicker setOnoptionsSelectListener(OnOptionsSelectListener optionsSelectListener) {
+    public OptionsPicker setOnoptionsSelectListener(OnOptionsSelectListener optionsSelectListener) {
         this.optionsSelectListener = optionsSelectListener;
         return this;
     }

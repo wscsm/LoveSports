@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.pickview.CityPicker;
-import mobi.imuse.pickview.DialogPlusTimePicker;
+import mobi.imuse.pickview.TimePicker;
 import mobi.imuse.pickview.GenderPicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
@@ -82,12 +82,12 @@ public class PerfectInfoActivity extends BaseActivity {
 
         int[] range = {1970, 2038};
 
-        DialogPlusTimePicker.instance(this)
+        TimePicker.instance(this)
                 .setType(WheelTime.Type.YEAR_MONTH_DAY)
                 .setCyclic(true)
                 .setDateSelected(date)
                 .setRange(range)
-                .setOnTimeSelectListener(new DialogPlusTimePicker.OnTimeSelectListener() {
+                .setOnTimeSelectListener(new TimePicker.OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date) {
                         mTvBirthday.setText(getTime(date));

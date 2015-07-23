@@ -19,7 +19,7 @@ import mobi.imuse.pickview.lib.WheelOptions;
  * @author Sai
  *
  */
-public class OptionsPopupWindow extends PopupWindow implements OnClickListener {
+public class PopupOptionsPicker extends PopupWindow implements OnClickListener {
 	private View rootView; // 总的布局
 	WheelOptions wheelOptions;
 	private View btnSubmit, btnCancel;
@@ -27,7 +27,7 @@ public class OptionsPopupWindow extends PopupWindow implements OnClickListener {
 	private static final String TAG_SUBMIT = "submit";
 	private static final String TAG_CANCEL = "cancel";
 
-	public OptionsPopupWindow(Context context) {
+	public PopupOptionsPicker(Context context) {
 		super(context);
 		this.setWidth(LayoutParams.MATCH_PARENT);
 		this.setHeight(LayoutParams.WRAP_CONTENT);
