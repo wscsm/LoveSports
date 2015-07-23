@@ -228,6 +228,19 @@
                     />
 
                 <TextView
+                    android:layout_toLeftOf="@+id/tvCity"
+                    android:id="@+id/tvProvince"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingTop="@dimen/edittext_padding"
+                    android:paddingBottom="@dimen/edittext_padding"
+                    tools:text="江苏省"
+                    android:textSize="@dimen/font_size_large"
+                    />
+                <TextView
                     android:id="@+id/tvCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -235,8 +248,10 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="16dip"
                     android:gravity="center_vertical|right"
-                    android:padding="@dimen/edittext_padding"
-                    tools:text="江苏省南京市"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:paddingTop="@dimen/edittext_padding"
+                    android:paddingBottom="@dimen/edittext_padding"
+                    tools:text="南京市"
                     android:textSize="@dimen/font_size_large"
                     />
             </RelativeLayout>

@@ -191,7 +191,7 @@ public class CityPicker {
     // 获取城市信息
     private void getaddressinfo() {
         // 读取城市信息string
-        String area_str = FileUtil.readAssets(mContext, "area.json");
+        String area_str = FileUtil.readAssets(mContext, "city.json");
         Gson gson = new Gson();
         CityJsonModel data = gson.fromJson(area_str, CityJsonModel.class);
         // begin: added by suyanlu;

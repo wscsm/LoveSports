@@ -16,6 +16,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import mobi.imuse.pickview.CityPicker;
 import mobi.imuse.pickview.DialogPlusTimePicker;
 import mobi.imuse.pickview.GenderPicker;
 import mobi.imuse.pickview.lib.WheelTime;
@@ -26,6 +27,7 @@ public class PerfectInfoActivity extends BaseActivity {
     @Bind(R.id.ivAvatarImage)    ImageView mIvAvatarImage;
     @Bind(R.id.editRealName)    FormEditText mEditRealName;
     @Bind(R.id.tvBirthday)    TextView mTvBirthday;
+    @Bind(R.id.tvProvince)  TextView mTvProvince;
     @Bind(R.id.tvCity)    TextView mTvCity;
     @Bind(R.id.tvSportGame)    TextView mTvSportGame;
     @Bind(R.id.editBodyLength)    FormEditText mEditBodyLength;
@@ -119,5 +121,20 @@ public class PerfectInfoActivity extends BaseActivity {
                     }
                 })
                 .show(gender);
+    }
+
+    @OnClick(R.id.rlCity)
+    public void onRlCityClick(){
+        String province = mTvProvince.getText().toString();
+        String city = mTvCity.getText().toString();
+        CityPicker.instance(this)
+                .setCitySelectListener(new CityPicker.OnCitySelectListener() {
+                    @Override
+                    public void onCitySelected(String province, String city) {
+                        mTvProvince.setText(province);
+                        mTvCity.setText(city);
+                    }
+                })
+                .show(province, city);
     }
 }
