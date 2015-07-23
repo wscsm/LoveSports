@@ -1,0 +1,648 @@
+{
+	"Provinces":
+	[
+		{
+			"Name": "北京",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101010100", "Name": "东城区" },
+				{ "CityWeatherCode": "101010100", "Name": "西城区" },
+				{ "CityWeatherCode": "101010100", "Name": "崇文区" },
+				{ "CityWeatherCode": "101010100", "Name": "宣武区" },
+				{ "CityWeatherCode": "101010100", "Name": "朝阳区" },
+				{ "CityWeatherCode": "101010100", "Name": "丰台区" },
+				{ "CityWeatherCode": "101010100", "Name": "石景山区" },
+				{ "CityWeatherCode": "101010100", "Name": "海淀区" },
+				{ "CityWeatherCode": "101010100", "Name": "房山区" },
+				{ "CityWeatherCode": "101010100", "Name": "通州区" },
+				{ "CityWeatherCode": "101010100", "Name": "顺义区" },
+				{ "CityWeatherCode": "101010100", "Name": "昌平区" },
+				{ "CityWeatherCode": "101010100", "Name": "大兴区" },
+				{ "CityWeatherCode": "101010100", "Name": "怀柔区" },
+				{ "CityWeatherCode": "101010100", "Name": "平谷区" },
+				{ "CityWeatherCode": "101010100", "Name": "密云区" },
+				{ "CityWeatherCode": "101010100", "Name": "延庆区" }
+			]
+		},
+		{
+			"Name": "天津",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101030100", "Name": "和平区" },
+				{ "CityWeatherCode": "101030100", "Name": "河东区" },
+				{ "CityWeatherCode": "101030100", "Name": "河西区" },
+				{ "CityWeatherCode": "101030100", "Name": "南开区" },
+				{ "CityWeatherCode": "101030100", "Name": "河北区" },
+				{ "CityWeatherCode": "101030100", "Name": "红挢区" },
+				{ "CityWeatherCode": "101030100", "Name": "塘沽区" },
+				{ "CityWeatherCode": "101030100", "Name": "汉沽区" },
+				{ "CityWeatherCode": "101030100", "Name": "大港区" },
+				{ "CityWeatherCode": "101030100", "Name": "东丽区" },
+				{ "CityWeatherCode": "101030100", "Name": "西青区" },
+				{ "CityWeatherCode": "101030100", "Name": "津南区" },
+				{ "CityWeatherCode": "101030100", "Name": "北辰区" },
+				{ "CityWeatherCode": "101030100", "Name": "武清区" },
+				{ "CityWeatherCode": "101030100", "Name": "宝坻区" },
+				{ "CityWeatherCode": "101030100", "Name": "宁河区" },
+				{ "CityWeatherCode": "101030100", "Name": "静海区" },
+				{ "CityWeatherCode": "101030100", "Name": "蓟县区" }
+			]
+		},
+		{
+			"Name": "上海",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101020100", "Name": "黄浦区" },
+				{ "CityWeatherCode": "101020100", "Name": "卢湾区" },
+				{ "CityWeatherCode": "101020100", "Name": "徐汇区" },
+				{ "CityWeatherCode": "101020100", "Name": "长宁区" },
+				{ "CityWeatherCode": "101020100", "Name": "静安区" },
+				{ "CityWeatherCode": "101020100", "Name": "普陀区" },
+				{ "CityWeatherCode": "101020100", "Name": "闸北区" },
+				{ "CityWeatherCode": "101020100", "Name": "虹口区" },
+				{ "CityWeatherCode": "101020100", "Name": "杨浦区" },
+				{ "CityWeatherCode": "101020100", "Name": "闵行区" },
+				{ "CityWeatherCode": "101020100", "Name": "宝山区" },
+				{ "CityWeatherCode": "101020100", "Name": "嘉定区" },
+				{ "CityWeatherCode": "101020100", "Name": "浦东新区" },
+				{ "CityWeatherCode": "101020100", "Name": "金山区" },
+				{ "CityWeatherCode": "101020100", "Name": "松江区" },
+				{ "CityWeatherCode": "101020100", "Name": "南汇区" },
+				{ "CityWeatherCode": "101020100", "Name": "奉贤区" },
+				{ "CityWeatherCode": "101020100", "Name": "青浦区" },
+				{ "CityWeatherCode": "101020100", "Name": "崇明区" }
+			]
+		},
+		{
+			"Name": "广东",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101280101", "Name": "广州" },
+				{ "CityWeatherCode": "101280601", "Name": "深圳" },
+				{ "CityWeatherCode": "101281601", "Name": "东莞" },
+				{ "CityWeatherCode": "101280800", "Name": "佛山" },
+				{ "CityWeatherCode": "101280701", "Name": "珠海" },
+				{ "CityWeatherCode": "101281701", "Name": "中山" },
+				{ "CityWeatherCode": "101280201", "Name": "韶关" },
+				{ "CityWeatherCode": "101280501", "Name": "汕头" },
+				{ "CityWeatherCode": "101281101", "Name": "江门" },
+				{ "CityWeatherCode": "101281001", "Name": "湛江" },
+				{ "CityWeatherCode": "101282001", "Name": "茂名" },
+				{ "CityWeatherCode": "101280901", "Name": "肇庆" },
+				{ "CityWeatherCode": "101280301", "Name": "惠州" },
+				{ "CityWeatherCode": "101280401", "Name": "梅州" },
+				{ "CityWeatherCode": "101282101", "Name": "汕尾" },
+				{ "CityWeatherCode": "101281201", "Name": "河源" },
+				{ "CityWeatherCode": "101281801", "Name": "阳江" },
+				{ "CityWeatherCode": "101281301", "Name": "清远" },
+				{ "CityWeatherCode": "101281501", "Name": "潮州" },
+				{ "CityWeatherCode": "101281901", "Name": "揭阳" },
+				{ "CityWeatherCode": "101281401", "Name": "云浮" }
+			]
+		},
+		{
+			"Name": "江苏",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101190101", "Name": "南京" },
+				{ "CityWeatherCode": "101190201", "Name": "无锡" },
+				{ "CityWeatherCode": "101190401", "Name": "苏州" },
+				{ "CityWeatherCode": "101191101", "Name": "常州" },
+				{ "CityWeatherCode": "101190601", "Name": "扬州" },
+				{ "CityWeatherCode": "101190301", "Name": "镇江" },
+				{ "CityWeatherCode": "101190501", "Name": "南通" },
+				{ "CityWeatherCode": "101190802", "Name": "徐州" },
+				{ "CityWeatherCode": "101191001", "Name": "连云港" },
+				{ "CityWeatherCode": "101190901", "Name": "淮安" },
+				{ "CityWeatherCode": "101190701", "Name": "盐城" },
+				{ "CityWeatherCode": "101191201", "Name": "泰州" },
+				{ "CityWeatherCode": "101191301", "Name": "宿迁" }
+			]
+		},
+		{
+			"Name": "浙江",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101210101", "Name": "杭州" },
+				{ "CityWeatherCode": "101210401", "Name": "宁波" },
+				{ "CityWeatherCode": "101210701", "Name": "温州" },
+				{ "CityWeatherCode": "101210301", "Name": "嘉兴" },
+				{ "CityWeatherCode": "101210201", "Name": "湖州" },
+				{ "CityWeatherCode": "101210501", "Name": "绍兴" },
+				{ "CityWeatherCode": "101210901", "Name": "金华" },
+				{ "CityWeatherCode": "101211001", "Name": "衢州" },
+				{ "CityWeatherCode": "101211101", "Name": "舟山" },
+				{ "CityWeatherCode": "101210601", "Name": "台州" },
+				{ "CityWeatherCode": "101210801", "Name": "丽水" }
+			]
+		},
+		{
+			"Name": "湖南",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101250101", "Name": "长沙" },
+				{ "CityWeatherCode": "101250805", "Name": "新化" },
+				{ "CityWeatherCode": "101250301", "Name": "株洲" },
+				{ "CityWeatherCode": "101250201", "Name": "湘潭" },
+				{ "CityWeatherCode": "101250401", "Name": "衡阳" },
+				{ "CityWeatherCode": "101250910", "Name": "邵阳" },
+				{ "CityWeatherCode": "101251001", "Name": "岳阳" },
+				{ "CityWeatherCode": "101250601", "Name": "常德" },
+				{ "CityWeatherCode": "101251101", "Name": "张家界" },
+				{ "CityWeatherCode": "101250700", "Name": "益阳" },
+				{ "CityWeatherCode": "101250501", "Name": "郴州" },
+				{ "CityWeatherCode": "101251401", "Name": "永州" },
+				{ "CityWeatherCode": "101251201", "Name": "怀化" },
+				{ "CityWeatherCode": "101250801", "Name": "娄底" },
+				{ "CityWeatherCode": "101251101", "Name": "湘西" }
+			]
+		},
+		{
+			"Name": "河北",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101090101", "Name": "石家庄" },
+				{ "CityWeatherCode": "101090501", "Name": "唐山" },
+				{ "CityWeatherCode": "101091101", "Name": "秦皇岛" },
+				{ "CityWeatherCode": "101091001", "Name": "邯郸" },
+				{ "CityWeatherCode": "101090901", "Name": "邢台" },
+				{ "CityWeatherCode": "101090201", "Name": "保定" },
+				{ "CityWeatherCode": "101090301", "Name": "张家口" },
+				{ "CityWeatherCode": "101090402", "Name": "承德" },
+				{ "CityWeatherCode": "101090701", "Name": "沧州" },
+				{ "CityWeatherCode": "101090601", "Name": "廊坊" },
+				{ "CityWeatherCode": "101090801", "Name": "衡水" }
+			]
+		},
+		{
+			"Name": "山西",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101100101", "Name": "太原" },
+				{ "CityWeatherCode": "101100203", "Name": "大同" },
+				{ "CityWeatherCode": "101100301", "Name": "阳泉" },
+				{ "CityWeatherCode": "101100501", "Name": "长治" },
+				{ "CityWeatherCode": "101100601", "Name": "晋城" },
+				{ "CityWeatherCode": "101100901", "Name": "朔州" },
+				{ "CityWeatherCode": "101100401", "Name": "晋中" },
+				{ "CityWeatherCode": "101100801", "Name": "运城" },
+				{ "CityWeatherCode": "101101001", "Name": "忻州" },
+				{ "CityWeatherCode": "101100701", "Name": "临汾" },
+				{ "CityWeatherCode": "101101100", "Name": "吕梁" }
+			]
+		},
+		{
+			"Name": "内蒙古",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101080106", "Name": "呼和浩特" },
+				{ "CityWeatherCode": "101080201", "Name": "包头" },
+				{ "CityWeatherCode": "101080301", "Name": "乌海" },
+				{ "CityWeatherCode": "101080601", "Name": "赤峰" },
+				{ "CityWeatherCode": "101080501", "Name": "通辽" },
+				{ "CityWeatherCode": "101080701", "Name": "鄂尔多斯" },
+				{ "CityWeatherCode": "101081000", "Name": "呼伦贝尔" },
+				{ "CityWeatherCode": "101080201", "Name": "巴彦淖尔" },
+				{ "CityWeatherCode": "101080106", "Name": "乌兰察布" },
+				{ "CityWeatherCode": "101300506", "Name": "兴安" },
+				{ "CityWeatherCode": "101080106", "Name": "锡林郭勒" },
+				{ "CityWeatherCode": "101081201", "Name": "阿拉善左旗" },
+                { "CityWeatherCode": "101081202", "Name": "阿拉善右旗" }
+			]
+		},
+		{
+			"Name": "辽宁",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101070101", "Name": "沈阳" },
+				{ "CityWeatherCode": "101070201", "Name": "大连" },
+				{ "CityWeatherCode": "101070301", "Name": "鞍山" },
+				{ "CityWeatherCode": "101070401", "Name": "抚顺" },
+				{ "CityWeatherCode": "101070501", "Name": "本溪" },
+				{ "CityWeatherCode": "101070601", "Name": "丹东" },
+				{ "CityWeatherCode": "101070701", "Name": "锦州" },
+				{ "CityWeatherCode": "101070801", "Name": "营口" },
+				{ "CityWeatherCode": "101070901", "Name": "阜新" },
+				{ "CityWeatherCode": "101071001", "Name": "辽阳" },
+				{ "CityWeatherCode": "101071301", "Name": "盘锦" },
+				{ "CityWeatherCode": "101071101", "Name": "铁岭" },
+				{ "CityWeatherCode": "101071201", "Name": "朝阳" },
+				{ "CityWeatherCode": "101071401", "Name": "葫芦岛" }
+			]
+		},
+		{
+			"Name": "吉林",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101060101", "Name": "长春" },
+				{ "CityWeatherCode": "101060201", "Name": "吉林" },
+				{ "CityWeatherCode": "101060401", "Name": "四平" },
+				{ "CityWeatherCode": "101060701", "Name": "辽源" },
+				{ "CityWeatherCode": "101060501", "Name": "通化" },
+				{ "CityWeatherCode": "101060901", "Name": "白山" },
+				{ "CityWeatherCode": "101060801", "Name": "松原" },
+				{ "CityWeatherCode": "101060601", "Name": "白城" },
+				{ "CityWeatherCode": "101060312", "Name": "延边" }
+			]
+		},
+		{
+			"Name": "黑龙江",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101050101", "Name": "哈尔滨" },
+				{ "CityWeatherCode": "101050201", "Name": "齐齐哈尔" },
+				{ "CityWeatherCode": "101051101", "Name": "鸡西" },
+				{ "CityWeatherCode": "101051201", "Name": "鹤岗" },
+				{ "CityWeatherCode": "101051301", "Name": "双鸭山" },
+				{ "CityWeatherCode": "101050901", "Name": "大庆" },
+				{ "CityWeatherCode": "101050801", "Name": "伊春" },
+				{ "CityWeatherCode": "101050401", "Name": "佳木斯" },
+				{ "CityWeatherCode": "101051002", "Name": "七台河" },
+				{ "CityWeatherCode": "101050301", "Name": "牡丹江" },
+				{ "CityWeatherCode": "101050601", "Name": "黑河" },
+				{ "CityWeatherCode": "101050501", "Name": "绥化" },
+				{ "CityWeatherCode": "101050701", "Name": "大兴安岭" }
+			]
+		},
+		{
+			"Name": "安徽",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101220101", "Name": "合肥" },
+				{ "CityWeatherCode": "101220301", "Name": "芜湖" },
+				{ "CityWeatherCode": "101220201", "Name": "蚌埠" },
+				{ "CityWeatherCode": "101220401", "Name": "淮南" },
+				{ "CityWeatherCode": "101220501", "Name": "马鞍山" },
+				{ "CityWeatherCode": "101221201", "Name": "淮北" },
+				{ "CityWeatherCode": "101221301", "Name": "铜陵" },
+				{ "CityWeatherCode": "101220601", "Name": "安庆" },
+				{ "CityWeatherCode": "101221008", "Name": "黄山" },
+				{ "CityWeatherCode": "101221101", "Name": "滁州" },
+				{ "CityWeatherCode": "101220801", "Name": "阜阳" },
+				{ "CityWeatherCode": "101220701", "Name": "宿州" },
+				{ "CityWeatherCode": "101221601", "Name": "巢湖" },
+				{ "CityWeatherCode": "101221501", "Name": "六安" },
+				{ "CityWeatherCode": "101220901", "Name": "亳州" },
+				{ "CityWeatherCode": "101221701", "Name": "池州" },
+				{ "CityWeatherCode": "101221401", "Name": "宣城" }
+			]
+		},
+		{
+			"Name": "福建",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101230101", "Name": "福州" },
+				{ "CityWeatherCode": "101230201", "Name": "厦门" },
+				{ "CityWeatherCode": "101230401", "Name": "莆田" },
+				{ "CityWeatherCode": "101230801", "Name": "三明" },
+				{ "CityWeatherCode": "101230501", "Name": "泉州" },
+				{ "CityWeatherCode": "101230601", "Name": "漳州" },
+				{ "CityWeatherCode": "101230901", "Name": "南平" },
+				{ "CityWeatherCode": "101230701", "Name": "龙岩" },
+				{ "CityWeatherCode": "101230301", "Name": "宁德" }
+			]
+		},
+		{
+			"Name": "江西",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101240101", "Name": "南昌" },
+				{ "CityWeatherCode": "101240801", "Name": "景德镇" },
+				{ "CityWeatherCode": "101240901", "Name": "萍乡" },
+				{ "CityWeatherCode": "101240201", "Name": "九江" },
+				{ "CityWeatherCode": "101241001", "Name": "新余" },
+				{ "CityWeatherCode": "101241101", "Name": "鹰潭" },
+				{ "CityWeatherCode": "101240701", "Name": "赣州" },
+				{ "CityWeatherCode": "101240501", "Name": "宜春" },
+				{ "CityWeatherCode": "101240601", "Name": "吉安" },
+				{ "CityWeatherCode": "101240401", "Name": "抚州" },
+				{ "CityWeatherCode": "101240301", "Name": "上饶" }
+			]
+		},
+		{
+			"Name": "山东",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101120101", "Name": "济南" },
+				{ "CityWeatherCode": "101120201", "Name": "青岛" },
+				{ "CityWeatherCode": "101120301", "Name": "淄博" },
+				{ "CityWeatherCode": "101121401", "Name": "枣庄" },
+				{ "CityWeatherCode": "101121201", "Name": "东营" },
+				{ "CityWeatherCode": "101120501", "Name": "烟台" },
+				{ "CityWeatherCode": "101120601", "Name": "潍坊" },
+				{ "CityWeatherCode": "101120701", "Name": "济宁" },
+				{ "CityWeatherCode": "101120801", "Name": "泰安" },
+				{ "CityWeatherCode": "101121301", "Name": "威海" },
+				{ "CityWeatherCode": "101121501", "Name": "日照" },
+				{ "CityWeatherCode": "101121601", "Name": "莱芜" },
+				{ "CityWeatherCode": "101120901", "Name": "临沂" },
+				{ "CityWeatherCode": "101120401", "Name": "德州" },
+				{ "CityWeatherCode": "101121701", "Name": "聊城" },
+				{ "CityWeatherCode": "101121101", "Name": "滨州" },
+				{ "CityWeatherCode": "101121001", "Name": "菏泽" }
+			]
+		},
+		{
+			"Name": "河南",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101180101", "Name": "郑州" },
+				{ "CityWeatherCode": "101180801", "Name": "开封" },
+				{ "CityWeatherCode": "101180901", "Name": "洛阳" },
+				{ "CityWeatherCode": "101180501", "Name": "平顶山" },
+				{ "CityWeatherCode": "101180201", "Name": "安阳" },
+				{ "CityWeatherCode": "101181201", "Name": "鹤壁" },
+				{ "CityWeatherCode": "101180301", "Name": "新乡" },
+				{ "CityWeatherCode": "101181101", "Name": "焦作" },
+				{ "CityWeatherCode": "101181301", "Name": "濮阳" },
+				{ "CityWeatherCode": "101180401", "Name": "许昌" },
+				{ "CityWeatherCode": "101181501", "Name": "漯河" },
+				{ "CityWeatherCode": "101181701", "Name": "三门峡" },
+				{ "CityWeatherCode": "101180701", "Name": "南阳" },
+				{ "CityWeatherCode": "101181001", "Name": "商丘" },
+				{ "CityWeatherCode": "101180601", "Name": "信阳" },
+				{ "CityWeatherCode": "101181401", "Name": "周口" },
+				{ "CityWeatherCode": "101181601", "Name": "驻马店" },
+				{ "CityWeatherCode": "101181801", "Name": "济源" }
+			]
+		},
+		{
+			"Name": "湖北",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101200101", "Name": "武汉" },
+				{ "CityWeatherCode": "101200601", "Name": "黄石" },
+				{ "CityWeatherCode": "101201101", "Name": "十堰" },
+				{ "CityWeatherCode": "101200901", "Name": "宜昌" },
+				{ "CityWeatherCode": "101200201", "Name": "襄樊" },
+				{ "CityWeatherCode": "101200301", "Name": "鄂州" },
+				{ "CityWeatherCode": "101201401", "Name": "荆门" },
+				{ "CityWeatherCode": "101200401", "Name": "孝感" },
+				{ "CityWeatherCode": "101200801", "Name": "荆州" },
+				{ "CityWeatherCode": "101200501", "Name": "黄冈" },
+				{ "CityWeatherCode": "101200701", "Name": "咸宁" },
+				{ "CityWeatherCode": "101201301", "Name": "随州" },
+				{ "CityWeatherCode": "101201001", "Name": "恩施" },
+				{ "CityWeatherCode": "101201601", "Name": "仙桃" },
+				{ "CityWeatherCode": "101201701", "Name": "潜江" },
+				{ "CityWeatherCode": "101201501", "Name": "天门" },
+				{ "CityWeatherCode": "101201201", "Name": "神农架" }
+			]
+		},
+		{
+			"Name": "广西",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101300101", "Name": "南宁" },
+				{ "CityWeatherCode": "101300301", "Name": "柳州" },
+				{ "CityWeatherCode": "101300501", "Name": "桂林" },
+				{ "CityWeatherCode": "101300601", "Name": "梧州" },
+				{ "CityWeatherCode": "101301301", "Name": "北海" },
+				{ "CityWeatherCode": "101301401", "Name": "防城港" },
+				{ "CityWeatherCode": "101301101", "Name": "钦州" },
+				{ "CityWeatherCode": "101300801", "Name": "贵港" },
+				{ "CityWeatherCode": "101300901", "Name": "玉林" },
+				{ "CityWeatherCode": "101301001", "Name": "百色" },
+				{ "CityWeatherCode": "101300701", "Name": "贺州" },
+				{ "CityWeatherCode": "101301201", "Name": "河池" },
+				{ "CityWeatherCode": "101300401", "Name": "来宾" },
+				{ "CityWeatherCode": "101300201", "Name": "崇左" }
+			]
+		},
+		{
+			"Name": "海南",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101310101", "Name": "海口" },
+				{ "CityWeatherCode": "101310201", "Name": "三亚" },
+				{ "CityWeatherCode": "101310222", "Name": "五指山" },
+				{ "CityWeatherCode": "101310211", "Name": "琼海" },
+				{ "CityWeatherCode": "101310205", "Name": "儋州" },
+				{ "CityWeatherCode": "101310212", "Name": "文昌" },
+				{ "CityWeatherCode": "101310215", "Name": "万宁" },
+				{ "CityWeatherCode": "101310202", "Name": "东方" },
+				{ "CityWeatherCode": "101310209", "Name": "定安" },
+				{ "CityWeatherCode": "101310210", "Name": "屯昌" },
+				{ "CityWeatherCode": "101310204", "Name": "澄迈" },
+				{ "CityWeatherCode": "101310203", "Name": "临高" },
+				{ "CityWeatherCode": "101310207", "Name": "白沙" },
+				{ "CityWeatherCode": "101310206", "Name": "昌江" },
+				{ "CityWeatherCode": "101310221", "Name": "乐东" },
+				{ "CityWeatherCode": "101310216", "Name": "陵水" },
+				{ "CityWeatherCode": "101310214", "Name": "保亭" },
+				{ "CityWeatherCode": "101310208", "Name": "琼中" },
+				{ "CityWeatherCode": "101310217", "Name": "西沙" },
+				{ "CityWeatherCode": "101310220", "Name": "南沙" },
+				{ "CityWeatherCode": "101310220", "Name": "中沙" }
+			]
+		},
+		{
+			"Name": "重庆",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101040100", "Name": "渝中区" },
+				{ "CityWeatherCode": "101040100", "Name": "大渡口区" },
+				{ "CityWeatherCode": "101040100", "Name": "江北区" },
+				{ "CityWeatherCode": "101040100", "Name": "沙坪坝区" },
+				{ "CityWeatherCode": "101040100", "Name": "九龙坡区" },
+				{ "CityWeatherCode": "101040100", "Name": "南岸区" },
+				{ "CityWeatherCode": "101040100", "Name": "北碚区" },
+				{ "CityWeatherCode": "101040100", "Name": "万盛区" },
+				{ "CityWeatherCode": "101040100", "Name": "双挢区" },
+				{ "CityWeatherCode": "101040100", "Name": "渝北区" },
+				{ "CityWeatherCode": "101040100", "Name": "巴南区" },
+				{ "CityWeatherCode": "101040100", "Name": "万州区" },
+				{ "CityWeatherCode": "101040100", "Name": "涪陵区" },
+				{ "CityWeatherCode": "101040100", "Name": "黔江区" },
+				{ "CityWeatherCode": "101040100", "Name": "长寿区" },
+				{ "CityWeatherCode": "101040100", "Name": "江津区" },
+				{ "CityWeatherCode": "101040100", "Name": "合川区" },
+				{ "CityWeatherCode": "101040100", "Name": "永川区" },
+				{ "CityWeatherCode": "101040100", "Name": "南川区" },
+				{ "CityWeatherCode": "101040100", "Name": "綦江区" },
+				{ "CityWeatherCode": "101040100", "Name": "潼南区" },
+				{ "CityWeatherCode": "101040100", "Name": "铜梁区" },
+				{ "CityWeatherCode": "101040100", "Name": "大足区" },
+				{ "CityWeatherCode": "101040100", "Name": "荣昌区" },
+				{ "CityWeatherCode": "101040100", "Name": "壁山区" },
+				{ "CityWeatherCode": "101040100", "Name": "垫江区" },
+				{ "CityWeatherCode": "101040100", "Name": "武隆区" },
+				{ "CityWeatherCode": "101040100", "Name": "丰都区" },
+				{ "CityWeatherCode": "101040100", "Name": "城口区" },
+				{ "CityWeatherCode": "101040100", "Name": "梁平区" },
+				{ "CityWeatherCode": "101040100", "Name": "开县区" },
+				{ "CityWeatherCode": "101040100", "Name": "巫溪区" },
+				{ "CityWeatherCode": "101040100", "Name": "巫山区" },
+				{ "CityWeatherCode": "101040100", "Name": "奉节区" },
+				{ "CityWeatherCode": "101040100", "Name": "云阳区" },
+				{ "CityWeatherCode": "101040100", "Name": "忠县区" },
+				{ "CityWeatherCode": "101040100", "Name": "石柱区" },
+				{ "CityWeatherCode": "101040100", "Name": "彭水区" },
+				{ "CityWeatherCode": "101040100", "Name": "酉阳区" },
+				{ "CityWeatherCode": "101040100", "Name": "秀山区" }
+			]
+		},
+		{
+			"Name": "四川",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101270101", "Name": "成都" },
+				{ "CityWeatherCode": "101270301", "Name": "自贡" },
+				{ "CityWeatherCode": "101270201", "Name": "攀枝花" },
+				{ "CityWeatherCode": "101271001", "Name": "泸州" },
+				{ "CityWeatherCode": "101272001", "Name": "德阳" },
+				{ "CityWeatherCode": "101270401", "Name": "绵阳" },
+				{ "CityWeatherCode": "101272101", "Name": "广元" },
+				{ "CityWeatherCode": "101270701", "Name": "遂宁" },
+				{ "CityWeatherCode": "101271201", "Name": "内江" },
+				{ "CityWeatherCode": "101271401", "Name": "乐山" },
+				{ "CityWeatherCode": "101270501", "Name": "南充" },
+				{ "CityWeatherCode": "101271501", "Name": "眉山" },
+				{ "CityWeatherCode": "101271101", "Name": "宜宾" },
+				{ "CityWeatherCode": "101270801", "Name": "广安" },
+				{ "CityWeatherCode": "101270607", "Name": "达川" },
+				{ "CityWeatherCode": "101271701", "Name": "雅安" },
+				{ "CityWeatherCode": "101270901", "Name": "巴中" },
+				{ "CityWeatherCode": "101271301", "Name": "资阳" },
+				{ "CityWeatherCode": "101271901", "Name": "阿坝" },
+				{ "CityWeatherCode": "101271801", "Name": "甘孜" },
+				{ "CityWeatherCode": "101271601", "Name": "凉山" }
+			]
+		},
+		{
+			"Name": "贵州",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101260101", "Name": "贵阳" },
+				{ "CityWeatherCode": "101260801", "Name": "六盘水" },
+				{ "CityWeatherCode": "101260201", "Name": "遵义" },
+				{ "CityWeatherCode": "101260301", "Name": "安顺" },
+				{ "CityWeatherCode": "101260601", "Name": "铜仁" },
+				{ "CityWeatherCode": "101260601", "Name": "黔西南" },
+				{ "CityWeatherCode": "101260701", "Name": "毕节" },
+				{ "CityWeatherCode": "101260601", "Name": "黔东南" },
+				{ "CityWeatherCode": "101260601", "Name": "黔南" }
+			]
+		},
+		{
+			"Name": "云南",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101290101", "Name": "昆明" },
+				{ "CityWeatherCode": "101290401", "Name": "曲靖" },
+				{ "CityWeatherCode": "101290701", "Name": "玉溪" },
+				{ "CityWeatherCode": "101290501", "Name": "保山" },
+				{ "CityWeatherCode": "101291001", "Name": "昭通" },
+				{ "CityWeatherCode": "101291401", "Name": "丽江" },
+				{ "CityWeatherCode": "101290905", "Name": "普洱" },
+				{ "CityWeatherCode": "101291101", "Name": "临沧" },
+				{ "CityWeatherCode": "101290801", "Name": "楚雄" },
+				{ "CityWeatherCode": "101290301", "Name": "红河" },
+				{ "CityWeatherCode": "101290601", "Name": "文山" },
+				{ "CityWeatherCode": "101290905", "Name": "西双版纳" },
+				{ "CityWeatherCode": "101290201", "Name": "大理" },
+				{ "CityWeatherCode": "101291501", "Name": "德宏" },
+				{ "CityWeatherCode": "101291201", "Name": "怒江" },
+				{ "CityWeatherCode": "101291401", "Name": "迪庆" }
+			]
+		},
+		{
+			"Name": "西藏",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101140101", "Name": "拉萨" },
+				{ "CityWeatherCode": "101140501", "Name": "昌都" },
+				{ "CityWeatherCode": "101140301", "Name": "山南" },
+				{ "CityWeatherCode": "101140201", "Name": "日喀则" },
+				{ "CityWeatherCode": "101140601", "Name": "那曲" },
+				{ "CityWeatherCode": "101140701", "Name": "阿里" },
+				{ "CityWeatherCode": "101140401", "Name": "林芝" }
+			]
+		},
+		{
+			"Name": "陕西",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101110101", "Name": "西安" },
+				{ "CityWeatherCode": "101111001", "Name": "铜川" },
+				{ "CityWeatherCode": "101110901", "Name": "宝鸡" },
+				{ "CityWeatherCode": "101110200", "Name": "咸阳" },
+				{ "CityWeatherCode": "101110501", "Name": "渭南" },
+				{ "CityWeatherCode": "101110300", "Name": "延安" },
+				{ "CityWeatherCode": "101110801", "Name": "汉中" },
+				{ "CityWeatherCode": "101110401", "Name": "榆林" },
+				{ "CityWeatherCode": "101110701", "Name": "安康" },
+				{ "CityWeatherCode": "101110601", "Name": "商洛" }
+			]
+		},
+		{
+			"Name": "甘肃",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101160101", "Name": "兰州" },
+				{ "CityWeatherCode": "101160801", "Name": "嘉峪关" },
+				{ "CityWeatherCode": "101160601", "Name": "金昌" },
+				{ "CityWeatherCode": "101161301", "Name": "白银" },
+				{ "CityWeatherCode": "101160901", "Name": "天水" },
+				{ "CityWeatherCode": "101160501", "Name": "武威" },
+				{ "CityWeatherCode": "101160701", "Name": "张掖" },
+				{ "CityWeatherCode": "101160301", "Name": "平凉" },
+				{ "CityWeatherCode": "101160801", "Name": "酒泉" },
+				{ "CityWeatherCode": "101160401", "Name": "庆阳" },
+				{ "CityWeatherCode": "101160201", "Name": "定西" },
+				{ "CityWeatherCode": "101272101", "Name": "陇南" },
+				{ "CityWeatherCode": "101161101", "Name": "临夏" },
+				{ "CityWeatherCode": "101050204", "Name": "甘南" }
+			]
+		},
+		{
+			"Name": "青海",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101150101", "Name": "西宁" },
+				{ "CityWeatherCode": "101150201", "Name": "海东" },
+				{ "CityWeatherCode": "101150801", "Name": "海北" },
+				{ "CityWeatherCode": "101150301", "Name": "黄南" },
+				{ "CityWeatherCode": "101150401", "Name": "海南" },
+				{ "CityWeatherCode": "101150501", "Name": "果洛" },
+				{ "CityWeatherCode": "101150601", "Name": "玉树" },
+				{ "CityWeatherCode": "101150601", "Name": "梅西" }
+			]
+		},
+		{
+			"Name": "宁夏",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101170101", "Name": "银川" },
+				{ "CityWeatherCode": "101170201", "Name": "石嘴山" },
+				{ "CityWeatherCode": "101170301", "Name": "吴忠" },
+				{ "CityWeatherCode": "101170401", "Name": "固原" },
+				{ "CityWeatherCode": "101170501", "Name": "中卫" }
+			]
+		},
+		{
+			"Name": "新疆",
+			"Cities":
+			[
+				{ "CityWeatherCode": "101130101", "Name": "乌鲁木齐" },
+				{ "CityWeatherCode": "101130201", "Name": "克拉玛依" },
+				{ "CityWeatherCode": "101130501", "Name": "吐鲁番" },
+				{ "CityWeatherCode": "101131201", "Name": "哈密" },
+				{ "CityWeatherCode": "101130401", "Name": "昌吉" },
+				{ "CityWeatherCode": "101130201", "Name": "博尔塔拉" },
+				{ "CityWeatherCode": "101130501", "Name": "巴音郭楞" },
+				{ "CityWeatherCode": "101130801", "Name": "阿克苏" },
+				{ "CityWeatherCode": "101130901", "Name": "克孜勒苏" },
+				{ "CityWeatherCode": "101130901", "Name": "喀什" },
+				{ "CityWeatherCode": "101131301", "Name": "和田" },
+				{ "CityWeatherCode": "101130201", "Name": "伊犁" },
+				{ "CityWeatherCode": "101131101", "Name": "塔城" },
+				{ "CityWeatherCode": "101131401", "Name": "阿勒泰" },
+				{ "CityWeatherCode": "101130301", "Name": "石河子" },
+				{ "CityWeatherCode": "101130701", "Name": "阿拉尔" },
+				{ "CityWeatherCode": "101130901", "Name": "图木舒克" },
+				{ "CityWeatherCode": "101130901", "Name": "五家渠" }
+			]
+		}
+	]
+}

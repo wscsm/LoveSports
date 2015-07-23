@@ -145,26 +145,32 @@ public class CityPicker {
         // TODO: 获取省份和城市的索引后设置进去;
         int idxProvince = -1;
         int idxCity = -1;
-        for (String strProvince:stringListProvinces){
-            if (strProvince.equals(province)){
-                idxProvince = stringListCityOfProvinces.indexOf(strProvince);
-                break;
-            }
-        }
-        if (idxProvince == -1){
-            idxProvince = 0;
-            idxCity = 0;
-        }
-        else{
-            ArrayList<String> strListCity = stringListCityOfProvinces.get(idxProvince);
-            for (String strCity:strListCity){
-                if (strCity.equals(city)){
-                    idxCity = stringListCityOfProvinces.indexOf(strCity);
+        if (province != null && city != null) {
+            for (String strProvince : stringListProvinces) {
+                if (strProvince.equals(province)) {
+                    idxProvince = stringListCityOfProvinces.indexOf(strProvince);
                     break;
                 }
             }
+            if (idxProvince == -1) {
+                idxProvince = 0;
+                idxCity = 0;
+            }
+            else {
+                ArrayList<String> strListCity = stringListCityOfProvinces.get(idxProvince);
+                for (String strCity : strListCity) {
+                    if (strCity.equals(city)) {
+                        idxCity = stringListCityOfProvinces.indexOf(strCity);
+                        break;
+                    }
+                }
+            }
+            if (idxCity == -1) {
+                idxCity = 0;
+            }
         }
-        if (idxCity == -1){
+        else{
+            idxProvince = 0;
             idxCity = 0;
         }
         wheelOptions.setCurrentItems(idxProvince, idxCity, 0);
@@ -214,10 +220,11 @@ public class CityPicker {
         for (CityInfo province : province_list) {
             stringListProvinces.add(province.getCity_name());
             ArrayList<String> cityOfProvince = new ArrayList<>();
-            List<CityInfo> citys = city_map.get(province.getCity_name());
+            List<CityInfo> citys = city_map.get(province.getId());
             for (CityInfo city : citys) {
                 cityOfProvince.add(city.getCity_name());
             }
+            stringListCityOfProvinces.add(cityOfProvince);
         }
         // end: added by suyanlu;
     }
