@@ -94,21 +94,6 @@ public class PerfectInfoActivity extends BaseActivity {
                     }
                 })
                 .show();
-/*
-        TimePicker.createBuilder(this, getSupportFragmentManager())
-                .setType(WheelTime.Type.YEAR_MONTH_DAY)
-                .setCyclic(true)
-                .setDateSelected(date)
-                .setCancelableOnTouchOutside(true)
-                .setRange(range)
-                .setListener(new TimePicker.OnTimeSelectListener() {
-                    @Override
-                    public void onTimeSelect(Date date) {
-                        mTvBirthday.setText(getTime(date));
-                    }
-                })
-                .show();
-*/
     }
     @OnClick(R.id.rlGender)
     public void onRlGenderClick(){
