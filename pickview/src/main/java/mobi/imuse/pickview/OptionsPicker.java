@@ -17,6 +17,7 @@ import com.orhanobut.dialogplus.ViewHolder;
 
 import java.util.ArrayList;
 
+import mobi.imuse.pickview.lib.NavigationBarUtil;
 import mobi.imuse.pickview.lib.ScreenInfo;
 import mobi.imuse.pickview.lib.WheelOptions;
 
@@ -56,8 +57,9 @@ public class OptionsPicker {
             dialog = null;
         }
         Holder holder = new ViewHolder(R.layout.pw_options);
+        // 只有在4.4以上版本，采用这个View来填充下面导航栏的位置，避免错位.
         View footer = new View(mContext);
-        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getNavigationBarHeight()));
+        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, NavigationBarUtil.getNavigationBarHeight(mContext)));
         dialog = DialogPlus.newDialog(mContext)
                 .setContentHolder(holder)
                 .setGravity(Gravity.BOTTOM)

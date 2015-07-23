@@ -2,8 +2,6 @@ package mobi.imuse.pickview;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +18,7 @@ import java.util.ArrayList;
 
 import mobi.imuse.pickview.city.CityJsonModel;
 import mobi.imuse.pickview.city.FileUtil;
+import mobi.imuse.pickview.lib.NavigationBarUtil;
 import mobi.imuse.pickview.lib.ScreenInfo;
 import mobi.imuse.pickview.lib.WheelOptions;
 
@@ -62,7 +61,8 @@ public class CityPicker {
         }
         Holder holder = new ViewHolder(R.layout.pw_options);
         View footer = new View(mContext);
-        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getNavigationBarHeight()));
+        // 只有在4.4以上版本，采用这个View来填充下面导航栏的位置，避免错位.
+        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, NavigationBarUtil.getNavigationBarHeight(mContext)));
         dialog = DialogPlus.newDialog(mContext)
                 .setContentHolder(holder)
                 .setGravity(Gravity.BOTTOM)
@@ -114,17 +114,6 @@ public class CityPicker {
             dialog.dismiss();
         }
     };
-
-    private int getNavigationBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Resources resources = mContext.getResources();
-            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
-            if (resourceId > 0) {
-                return resources.getDimensionPixelSize(resourceId);
-            }
-        }
-        return 0;
-    }
 
     private CityPicker setPicker(ArrayList<String> province, ArrayList<ArrayList<String>> city) {
         wheelOptions.setPicker(province, city, null, true);

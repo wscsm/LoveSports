@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="mobi.imuse.actionsheet">
+    <uses-sdk tools:overrideLibrary="com.orhanobut.dialogplus"/>
+
+    <application
+        android:theme="@style/ActionSheetStyleIOS7"
+        />
+</manifest>
