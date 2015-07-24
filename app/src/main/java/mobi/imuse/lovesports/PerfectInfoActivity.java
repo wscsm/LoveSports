@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
+import com.bumptech.glide.Glide;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,6 +18,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.actionsheet.ActionSheet;
+import mobi.imuse.avatar.CropperActivity;
+import mobi.imuse.lovesports.util.SLog;
 import mobi.imuse.lovesports.util.T;
 import mobi.imuse.pickview.CityPicker;
 import mobi.imuse.pickview.GenderPicker;
@@ -25,6 +28,7 @@ import mobi.imuse.pickview.TimePicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
 public class PerfectInfoActivity extends BaseActivity {
+    private static final String TAG = PerfectInfoActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
     @Bind(R.id.ivAvatarImage)    ImageView mIvAvatarImage;
@@ -133,17 +137,24 @@ public class PerfectInfoActivity extends BaseActivity {
                 .setListener(new ActionSheet.ActionSheetListener() {
                     @Override
                     public void onDismiss(ActionSheet actionSheet) {
-
                     }
 
                     @Override
                     public void onCancel(ActionSheet actionSheet) {
-                        T.showShort(PerfectInfoActivity.this, "Cancel is clicked.");
                     }
 
                     @Override
                     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
                         T.showShort(PerfectInfoActivity.this, "Menu Item[" + index + "] is Clicked.");
+                        if (index == 0) { // pick;
+                            startPickPhoto();
+                        }
+                        else if (index == 1) { // take;
+                            startTakePhoto();
+                        }
+                        else{
+
+                        }
                     }
                 })
                 .show();
@@ -160,5 +171,42 @@ public class PerfectInfoActivity extends BaseActivity {
                     }
                 })
                 .show(sportgame);
+    }
+
+    private void startPickPhoto() {
+        Intent intent = new Intent(this, CropperActivity.class);
+        intent.putExtra("PickWay", "PICK");
+        startActivityForResult(intent, 10001);
+    }
+
+    private void startTakePhoto() {
+        Intent intent = new Intent(this, CropperActivity.class);
+        intent.putExtra("PickWay", "TAKE");
+        startActivityForResult(intent, 10002);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_CANCELED) {
+            SLog.d(TAG, "Canceled Avatar Capture.");
+            return;
+        }
+        // 根据上面发送过去的请求码来区别
+        switch (requestCode) {
+            case 10001:
+            case 10002:
+                final String path = data.getStringExtra("CropperPhotoPath");
+                SLog.d(TAG, "CropperPhotoPath = " + path);
+                if (path != null && path.length() > 0) {
+                    Glide.with(this)
+                            .load(path)
+                            .asBitmap()
+                            .fitCenter()
+                            .into(mIvAvatarImage);
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

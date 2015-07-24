@@ -120,6 +120,7 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
         super.onStop();
     }
 
+    // 避免下拉刷新和左右滑动的ImageSlider产生冲突;
     protected void enableDisableSwipeRefresh(boolean enable) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setEnabled(enable);
