@@ -23,6 +23,7 @@ import java.util.*;
  * En: a simple set like data structure for counting unique elements. not thread safe.
  * this is also useful for calculating histograms.
  */
+@SuppressWarnings("unchecked")
 public class CountingSet<T> implements Iterable<T> {
 
     private final Map<T, Integer> map;

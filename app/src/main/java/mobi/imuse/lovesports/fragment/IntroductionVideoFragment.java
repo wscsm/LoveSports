@@ -11,10 +11,10 @@ import mobi.imuse.lovesports.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MyVideoFragment#newInstance} factory method to
+ * Use the {@link IntroductionVideoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyVideoFragment extends Fragment {
+public class IntroductionVideoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,8 +34,8 @@ public class MyVideoFragment extends Fragment {
      * @return A new instance of fragment MyVideoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyVideoFragment newInstance(String param1, String param2) {
-        MyVideoFragment fragment = new MyVideoFragment();
+    public static IntroductionVideoFragment newInstance(String param1, String param2) {
+        IntroductionVideoFragment fragment = new IntroductionVideoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -43,7 +43,7 @@ public class MyVideoFragment extends Fragment {
         return fragment;
     }
 
-    public MyVideoFragment() {
+    public IntroductionVideoFragment() {
         // Required empty public constructor
     }
 

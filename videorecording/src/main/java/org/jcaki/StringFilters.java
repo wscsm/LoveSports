@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 import static org.jcaki.Preconditions.checkArgument;
 import static org.jcaki.Preconditions.checkNotNull;
 
+@SuppressWarnings("unchecked")
 class StringFilters {
 
     public static final Filter PASS_ALL = new AllPassFilter();

@@ -47,6 +47,7 @@ import static org.jcaki.Preconditions.checkNotNull;
 /**
  * this class has IO operations
  */
+@SuppressWarnings("unchecked")
 public class IOs {
 
     private static final int BYTE_BUFFER_SIZE = 1 << 16;
