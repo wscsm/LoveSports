@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.lovesports.fragment.BackHandledFragment;
 import mobi.imuse.lovesports.fragment.HomeFragment;
+import mobi.imuse.lovesports.fragment.IntroductionVideoFragment;
 import mobi.imuse.lovesports.util.T;
 import mobi.imuse.slidingmenu.SlidingMenu;
 
@@ -61,6 +62,13 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
             menu.setSecondaryMenu(R.layout.slidemenu_right);
             menu.setSecondaryShadowDrawable(R.drawable.right_menu_shadow);
         }
+        ButterKnife.findById(menu, R.id.leftMiHomePage).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiMyConsultation).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiPriceSetting).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiMyPhotoes).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiIntroductionVideo).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiTeachingVideo).setOnClickListener(onMenuItemClickListener);
+        ButterKnife.findById(menu, R.id.leftMiMoreSettings).setOnClickListener(onMenuItemClickListener);
     }
 
     @Override
@@ -114,5 +122,56 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
 
         this.selectedFragment = backHandledFragment;
 
+    }
+
+    View.OnClickListener onMenuItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()){
+                case R.id.leftMiHomePage:
+                    onLeftMenuHomePage();
+                    break;
+                case R.id.leftMiMyConsultation:
+                    T.showShort(getApplicationContext(), "My Consultation");
+                    break;
+                case R.id.leftMiPriceSetting:
+                    T.showShort(getApplicationContext(), "Price Setting");
+                    break;
+                case R.id.leftMiMyPhotoes:
+                    T.showShort(getApplicationContext(), "My Photoes");
+                    break;
+                case R.id.leftMiIntroductionVideo:
+                    onLeftMenuIntroductionVideo();
+                    break;
+                case R.id.leftMiTeachingVideo:
+                    T.showShort(getApplicationContext(), "Teaching Video");
+                    break;
+                case R.id.leftMiMoreSettings:
+                    T.showShort(getApplicationContext(), "More Settings");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    private void onLeftMenuHomePage(){
+        if (!(selectedFragment instanceof HomeFragment)) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_container, HomeFragment.newInstance("param1", "param2"))
+                    .commit();
+        }
+        menu.showContent(true);
+    }
+
+    private void onLeftMenuIntroductionVideo(){
+        if (!(selectedFragment instanceof IntroductionVideoFragment)) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_container, IntroductionVideoFragment.newInstance("param1", "param2"))
+                    .commit();
+        }
+        menu.showContent(true);
     }
 }

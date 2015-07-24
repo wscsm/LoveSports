@@ -1,39 +1,79 @@
 package mobi.imuse.lovesports.fragment;
 
 
+import android.hardware.Camera;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.skd.androidrecording.video.AdaptiveSurfaceView;
+import com.skd.androidrecording.video.CameraHelper;
+import com.skd.androidrecording.video.VideoRecordingHandler;
+import com.skd.androidrecording.video.VideoRecordingManager;
+
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import mobi.imuse.lovesports.Constants;
 import mobi.imuse.lovesports.R;
+import mobi.imuse.lovesports.model.SizeAdapter;
+import mobi.imuse.lovesports.util.T;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link IntroductionVideoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IntroductionVideoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+@SuppressWarnings("deprecation")
+public class IntroductionVideoFragment extends BackHandledFragment {
+    private static final String TAG = IntroductionVideoFragment.class.getSimpleName();
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    @Bind(R.id.videoView)    AdaptiveSurfaceView mVideoView;
+    @Bind(R.id.tvRecordingTime)    TextView mTvRecordingTime;
+    @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
+    @Bind(R.id.btnRecord)    Button mBtnRecord;
+    @Bind(R.id.videoSizeSpinner)    Spinner mVideoSizeSpinner;
+
     private String mParam1;
     private String mParam2;
 
+    private Camera.Size videoSize = null;
+    private VideoRecordingManager recordingManager;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyVideoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    private VideoRecordingHandler recordingHandler = new VideoRecordingHandler() {
+        @Override
+        public boolean onPrepareRecording() {
+            if (videoSize == null) {
+                initVideoSizeSpinner();
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Camera.Size getVideoSize() {
+            return videoSize;
+        }
+
+        @Override
+        public int getDisplayRotation() {
+            return getActivity().getWindowManager().getDefaultDisplay().getRotation();
+        }
+    };
+
     public static IntroductionVideoFragment newInstance(String param1, String param2) {
         IntroductionVideoFragment fragment = new IntroductionVideoFragment();
         Bundle args = new Bundle();
@@ -57,11 +97,110 @@ public class IntroductionVideoFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_introduction_video, container, false);
+        View view = inflater.inflate(R.layout.fragment_introduction_video, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        recordingManager = new VideoRecordingManager(mVideoView, recordingHandler);
+    }
+
+    @Override
+    public void onStop() {
+        recordingManager.dispose();
+        recordingHandler = null;
+
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        ButterKnife.unbind(this);
+    }
+
+    private void initVideoSizeSpinner() {
+//        mVideoSizeSpinner = ButterKnife.findById(getActivity(), R.id.videoSizeSpinner);
+        if (VERSION.SDK_INT >= 11) {
+            List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
+            if (sizes == null){
+                mVideoSizeSpinner.setVisibility(View.GONE);
+            }
+            else {
+                mVideoSizeSpinner.setAdapter(new SizeAdapter(sizes));
+                mVideoSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                        videoSize = (Camera.Size) arg0.getItemAtPosition(arg2);
+                        recordingManager.setPreviewSize(videoSize);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
+                videoSize = (Camera.Size) mVideoSizeSpinner.getItemAtPosition(0);
+            }
+        }
+        else {
+            mVideoSizeSpinner.setVisibility(View.GONE);
+        }
+    }
+
+    private void updateVideoSizes() {
+        if (VERSION.SDK_INT >= 11) {
+            ((SizeAdapter) mVideoSizeSpinner.getAdapter()).set(CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera()));
+            mVideoSizeSpinner.setSelection(0);
+            videoSize = (Camera.Size) mVideoSizeSpinner.getItemAtPosition(0);
+            recordingManager.setPreviewSize(videoSize);
+        }
+    }
+
+    @OnClick(R.id.btnRecord)
+    public void onBtnRecordClick(){
+        if (recordingManager.stopRecording()) {
+            mBtnRecord.setText("Start Record");
+            mBtnSwitch.setEnabled(true);
+            mVideoSizeSpinner.setEnabled(true);
+        }
+        else {
+            startRecording();
+        }
+    }
+
+    private void startRecording() {
+        long now = System.currentTimeMillis();
+        String videoId = String.format("%d.%03d", now/1000, now%1000);
+        String fileName = videoId+".mp4";
+        if (recordingManager.startRecording(Constants.BasePhotoUrlDiskCached+"/"+fileName, videoSize)) {
+            mBtnRecord.setText("Stop");
+            mBtnSwitch.setEnabled(false);
+            mVideoSizeSpinner.setEnabled(false);
+            return;
+        }
+        T.showLong(getActivity(), "Recording video failed");
+    }
+
+    @OnClick(R.id.btnSwitch)
+    public void onBtnSwitchClick(){
+        recordingManager.getCameraManager().switchCamera();
+        updateVideoSizes();
+    }
+
+    @Override
+    public String getTagText() {
+        return TAG;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
+    }
 
 }

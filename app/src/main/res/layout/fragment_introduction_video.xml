@@ -1,7 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="mobi.imuse.lovesports.fragment.IntroductionVideoFragment">
+    <RelativeLayout
+        android:id="@+id/rlSurfaceView"
+        android:layout_above="@+id/controlsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="#000000" >
 
-</FrameLayout>
+        <com.skd.androidrecording.video.AdaptiveSurfaceView
+            android:id="@+id/videoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+        <TextView
+            android:id="@+id/tvRecordingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/md_white_1000"
+            android:text="01:00"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/controlsLayout"
+        android:layout_above="@+id/videoSizeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <Button
+            android:id="@+id/btnRecord"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="0.6"
+            android:background="@color/md_light_blue_400"
+            android:text="Start Record" />
+
+        <ImageButton
+            android:id="@+id/btnSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="#ffffff"
+            android:padding="8dp"
+            android:src="@drawable/ic_switch_camera" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/videoSizeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/white" />
+
+</RelativeLayout>
