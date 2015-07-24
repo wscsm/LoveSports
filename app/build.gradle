@@ -82,6 +82,7 @@ dependencies {
     compile project(':slidingmenu')
     compile project(':pickview')
     compile project(':actionsheet')
+    compile project(':videorecording')
     compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
     compile "de.greenrobot:eventbus:${EVENTBUS_VERSION}"
     compile "com.loopj.android:android-async-http:${ASYNC_HTTP_VERSION}"

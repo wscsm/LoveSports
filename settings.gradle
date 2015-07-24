@@ -1,1 +1,1 @@
-include ':app', ':imageslider', ':slidingmenu', ':avatar', ':pickview', ':actionsheet'
+include ':app', ':imageslider', ':slidingmenu', ':avatar', ':pickview', ':actionsheet', ':videorecording'

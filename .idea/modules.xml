@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/imageslider/imageslider.iml" filepath="$PROJECT_DIR$/imageslider/imageslider.iml" />
       <module fileurl="file://$PROJECT_DIR$/pickview/pickview.iml" filepath="$PROJECT_DIR$/pickview/pickview.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidingmenu/slidingmenu.iml" filepath="$PROJECT_DIR$/slidingmenu/slidingmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videorecording/videorecording.iml" filepath="$PROJECT_DIR$/videorecording/videorecording.iml" />
     </modules>
   </component>
 </project>
