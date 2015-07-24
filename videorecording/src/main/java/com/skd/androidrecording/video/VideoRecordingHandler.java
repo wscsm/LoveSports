@@ -18,6 +18,7 @@ package com.skd.androidrecording.video;
 
 import android.hardware.Camera.Size;
 
+@SuppressWarnings("deprecation")
 public interface VideoRecordingHandler {
 	public boolean onPrepareRecording();
 	public Size getVideoSize();

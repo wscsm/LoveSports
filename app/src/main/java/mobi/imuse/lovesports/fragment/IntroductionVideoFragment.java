@@ -41,11 +41,16 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    @Bind(R.id.videoView)    AdaptiveSurfaceView mVideoView;
-    @Bind(R.id.tvRecordingTime)    TextView mTvRecordingTime;
-    @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
-    @Bind(R.id.btnRecord)    Button mBtnRecord;
-    @Bind(R.id.videoSizeSpinner)    Spinner mVideoSizeSpinner;
+    @Bind(R.id.videoView)
+    AdaptiveSurfaceView mVideoView;
+    @Bind(R.id.tvRecordingTime)
+    TextView mTvRecordingTime;
+    @Bind(R.id.btnSwitch)
+    ImageButton mBtnSwitch;
+    @Bind(R.id.btnRecord)
+    Button mBtnRecord;
+    @Bind(R.id.videoSizeSpinner)
+    Spinner mVideoSizeSpinner;
 
     private String mParam1;
     private String mParam2;
@@ -129,7 +134,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
 //        mVideoSizeSpinner = ButterKnife.findById(getActivity(), R.id.videoSizeSpinner);
         if (VERSION.SDK_INT >= 11) {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
-            if (sizes == null){
+            if (sizes == null) {
                 mVideoSizeSpinner.setVisibility(View.GONE);
             }
             else {
@@ -163,7 +168,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     }
 
     @OnClick(R.id.btnRecord)
-    public void onBtnRecordClick(){
+    public void onBtnRecordClick() {
         if (recordingManager.stopRecording()) {
             mBtnRecord.setText("Start Record");
             mBtnSwitch.setEnabled(true);
@@ -176,9 +181,9 @@ public class IntroductionVideoFragment extends BackHandledFragment {
 
     private void startRecording() {
         long now = System.currentTimeMillis();
-        String videoId = String.format("%d.%03d", now/1000, now%1000);
-        String fileName = videoId+".mp4";
-        if (recordingManager.startRecording(Constants.BasePhotoUrlDiskCached+"/"+fileName, videoSize)) {
+        String videoId = String.format("%d.%03d", now / 1000, now % 1000);
+        String fileName = videoId + ".mp4";
+        if (recordingManager.startRecording(Constants.BasePhotoUrlDiskCached + "/" + fileName, videoSize)) {
             mBtnRecord.setText("Stop");
             mBtnSwitch.setEnabled(false);
             mVideoSizeSpinner.setEnabled(false);
@@ -188,7 +193,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     }
 
     @OnClick(R.id.btnSwitch)
-    public void onBtnSwitchClick(){
+    public void onBtnSwitchClick() {
         recordingManager.getCameraManager().switchCamera();
         updateVideoSizes();
     }
