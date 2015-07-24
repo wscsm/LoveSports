@@ -22,6 +22,7 @@ import android.hardware.Camera.Size;
 import android.view.SurfaceHolder;
 
 import java.io.IOException;
+import java.util.List;
 
 /*
  * Manages camera preview
@@ -60,8 +61,27 @@ public class CameraManager {
 		defaultCameraID = (defaultCameraID + 1) % camerasCount;
 		openCamera();
 	}
-	
-	public void setupCameraAndStartPreview(SurfaceHolder sf, Size sz, int displayRotation) {
+
+    // begin : added by suyanlu;
+    public void setFlash(String mode){
+        Parameters p = camera.getParameters();
+        p.setFlashMode(mode);
+        camera.setParameters(p);
+        startCameraPreview();
+    }
+
+    public String getFlashMode(){
+        Parameters p = camera.getParameters();
+        return p.getFlashMode();
+    }
+
+    public List<String> getSupportedFlashModes() {
+        Parameters p = camera.getParameters();
+        return p.getSupportedFlashModes();
+    }
+    // end : added by suyanlu;
+
+    public void setupCameraAndStartPreview(SurfaceHolder sf, Size sz, int displayRotation) {
 		stopCameraPreview();
 		
 		cameraRotationDegree = CameraHelper.setCameraDisplayOrientation(defaultCameraID, camera, displayRotation);

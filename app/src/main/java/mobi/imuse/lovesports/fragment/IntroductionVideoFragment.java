@@ -41,22 +41,19 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    @Bind(R.id.videoView)
-    AdaptiveSurfaceView mVideoView;
-    @Bind(R.id.tvRecordingTime)
-    TextView mTvRecordingTime;
-    @Bind(R.id.btnSwitch)
-    ImageButton mBtnSwitch;
-    @Bind(R.id.btnRecord)
-    Button mBtnRecord;
-    @Bind(R.id.videoSizeSpinner)
-    Spinner mVideoSizeSpinner;
+    @Bind(R.id.videoView)    AdaptiveSurfaceView mVideoView;
+    @Bind(R.id.tvRecordingTime)    TextView mTvRecordingTime;
+    @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
+    @Bind(R.id.btnFlash)    Button mBtnFlash;
+    @Bind(R.id.btnRecord)    Button mBtnRecord;
+    @Bind(R.id.videoSizeSpinner)    Spinner mVideoSizeSpinner;
 
     private String mParam1;
     private String mParam2;
 
     private Camera.Size videoSize = null;
     private VideoRecordingManager recordingManager;
+    private String[] flashModes = {"auto", "torch", "off"};
 
     private VideoRecordingHandler recordingHandler = new VideoRecordingHandler() {
         @Override
@@ -195,7 +192,30 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     @OnClick(R.id.btnSwitch)
     public void onBtnSwitchClick() {
         recordingManager.getCameraManager().switchCamera();
+        if (recordingManager.getCameraManager().getSupportedFlashModes()==null){
+            mBtnFlash.setEnabled(false);
+        }
+        else{
+            mBtnFlash.setEnabled(true);
+            mBtnFlash.setText(flashModes[0]);
+            recordingManager.getCameraManager().setFlash(flashModes[0]);
+        }
         updateVideoSizes();
+    }
+
+    @OnClick(R.id.btnFlash)
+    public void onBtnFlashClick(){
+        String currentMode = mBtnFlash.getText().toString().toLowerCase();
+        int length = flashModes.length;
+        String nextMode = flashModes[0];
+        for (int i=0; i<length; i++){
+            if (currentMode.equals(flashModes[i].toLowerCase())){
+                nextMode = flashModes[(i+1)%length];
+                break;
+            }
+        }
+        mBtnFlash.setText(nextMode);
+        recordingManager.getCameraManager().setFlash(nextMode);
     }
 
     @Override
