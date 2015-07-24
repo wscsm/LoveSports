@@ -20,6 +20,7 @@ import mobi.imuse.actionsheet.ActionSheet;
 import mobi.imuse.lovesports.util.T;
 import mobi.imuse.pickview.CityPicker;
 import mobi.imuse.pickview.GenderPicker;
+import mobi.imuse.pickview.SportsPicker;
 import mobi.imuse.pickview.TimePicker;
 import mobi.imuse.pickview.lib.WheelTime;
 
@@ -142,9 +143,22 @@ public class PerfectInfoActivity extends BaseActivity {
 
                     @Override
                     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-                        T.showShort(PerfectInfoActivity.this, "Menu Item["+index+"] is Clicked.");
+                        T.showShort(PerfectInfoActivity.this, "Menu Item[" + index + "] is Clicked.");
                     }
                 })
                 .show();
+    }
+
+    @OnClick(R.id.rlSportGame)
+    public void onRlSportGameClick(){
+        String sportgame = mTvSportGame.getText().toString();
+        SportsPicker.instance(this)
+                .setSelectListener(new SportsPicker.OnSelectListener() {
+                    @Override
+                    public void onSelected(int selected) {
+                        mTvSportGame.setText(SportsPicker.Sports.getSport(selected).zhValue());
+                    }
+                })
+                .show(sportgame);
     }
 }
