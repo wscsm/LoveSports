@@ -49,6 +49,14 @@ public class VideoRecordingManager implements SurfaceHolder.Callback {
 	}
 
 	public void setPreviewSize(Size videoSize) {
+        // begin add by suyanlu;
+        // 当PreviewSize不变但是更换前后摄像头的时候，因为SurfaceView的Size没有变化，所以不会回调surfaceChanged(),
+        // 所以，就不会显示图像;
+        if(videoSize.height == videoView.getHeight() && videoSize.width == videoView.getWidth()){
+            surfaceChanged(videoView.getHolder(), 0, videoSize.width, videoSize.height);
+            return;
+        }
+        // end  end by suyanlu;
 		videoView.setPreviewSize(videoSize);
 	}
 	
