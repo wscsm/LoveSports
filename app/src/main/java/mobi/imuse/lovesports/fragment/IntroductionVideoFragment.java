@@ -5,7 +5,6 @@ import android.hardware.Camera;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.lovesports.Constants;
 import mobi.imuse.lovesports.R;
-import mobi.imuse.lovesports.util.SLog;
 import mobi.imuse.lovesports.util.T;
 
 /**
@@ -150,16 +148,18 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private void initVideoSize() {
         if (VERSION.SDK_INT >= 11) {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
-            DisplayMetrics metric = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+            // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
+            videoSize = getOptimalPreviewSize(sizes, mVideoView.getHeight(), mVideoView.getWidth());
+/*
             for (Camera.Size s : sizes) {
                 // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
-                if (s.height == metric.widthPixels && s.width < metric.widthPixels) {
-                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
+                if (s.height == metric.widthPixels) {
+//                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
                     videoSize = s;
                     break;
                 }
             }
+*/
             recordingManager.setPreviewSize(videoSize);
         }
     }
@@ -167,15 +167,17 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private void updateVideoSizes() {
         if (VERSION.SDK_INT >= 11) {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
-            DisplayMetrics metric = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+            // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
+            videoSize = getOptimalPreviewSize(sizes, mVideoView.getHeight(), mVideoView.getWidth());
+/*
             for (Camera.Size s : sizes) {
-                if (s.height == metric.widthPixels && s.width < metric.widthPixels) {
-                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
+                if (s.height == metric.widthPixels) {
+//                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
                     videoSize = s;
                     break;
                 }
             }
+*/
             recordingManager.setPreviewSize(videoSize);
         }
     }

@@ -67,7 +67,6 @@ public class CameraManager {
         Parameters p = camera.getParameters();
         p.setFlashMode(mode);
         camera.setParameters(p);
-        startCameraPreview();
     }
 
     public String getFlashMode(){
@@ -79,6 +78,25 @@ public class CameraManager {
         Parameters p = camera.getParameters();
         return p.getSupportedFlashModes();
     }
+
+	// 调整焦距,支持0和max两级;
+	public void setZoom(){
+        if (camera == null){
+            return;
+        }
+		Parameters p = camera.getParameters();
+		if (p.isZoomSupported()){
+			int currentZoom = p.getZoom();
+			int maxZoom = p.getMaxZoom();
+			if (p.isSmoothZoomSupported()) {
+				camera.startSmoothZoom(currentZoom == 0 ? maxZoom:0);
+			}
+			else{
+				p.setZoom(currentZoom == 0 ? maxZoom:0);
+                camera.setParameters(p);
+			}
+		}
+	}
     // end : added by suyanlu;
 
     public void setupCameraAndStartPreview(SurfaceHolder sf, Size sz, int displayRotation) {
