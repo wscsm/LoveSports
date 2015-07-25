@@ -103,25 +103,15 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_introduction_video, container, false);
         ButterKnife.bind(this, view);
+        recordingManager = new VideoRecordingManager(mVideoView, recordingHandler);
         return view;
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        recordingManager = new VideoRecordingManager(mVideoView, recordingHandler);
-    }
-
-    @Override
-    public void onStop() {
+    public void onDestroyView() {
         recordingManager.dispose();
         recordingHandler = null;
 
-        super.onStop();
-    }
-
-    @Override
-    public void onDestroyView() {
         super.onDestroyView();
 
         ButterKnife.unbind(this);
