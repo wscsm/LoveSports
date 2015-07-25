@@ -45,6 +45,7 @@ public class AdaptiveSurfaceView extends SurfaceView {
 	}
 
 	public void setPreviewSize(Camera.Size size) {
+/*
 		int screenW = getResources().getDisplayMetrics().widthPixels;
 		int screenH = getResources().getDisplayMetrics().heightPixels;
 		if (screenW < screenH) {
@@ -55,6 +56,9 @@ public class AdaptiveSurfaceView extends SurfaceView {
 			previewWidth = size.width > size.height ? size.width : size.height;
 			previewHeight = size.width <= size.height ? size.width : size.height;
 		}
+*/
+        previewWidth = size.width;
+        previewHeight = size.height;
 		ratio = previewHeight / (float) previewWidth;
 		requestLayout();
 	}
