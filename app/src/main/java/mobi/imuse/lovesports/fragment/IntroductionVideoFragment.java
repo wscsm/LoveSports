@@ -5,13 +5,12 @@ import android.hardware.Camera;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.skd.androidrecording.video.AdaptiveSurfaceView;
@@ -26,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.lovesports.Constants;
 import mobi.imuse.lovesports.R;
-import mobi.imuse.lovesports.model.SizeAdapter;
+import mobi.imuse.lovesports.util.SLog;
 import mobi.imuse.lovesports.util.T;
 
 /**
@@ -46,7 +45,6 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
     @Bind(R.id.btnFlash)    Button mBtnFlash;
     @Bind(R.id.btnRecord)    Button mBtnRecord;
-    @Bind(R.id.videoSizeSpinner)    Spinner mVideoSizeSpinner;
 
     private String mParam1;
     private String mParam2;
@@ -59,7 +57,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         @Override
         public boolean onPrepareRecording() {
             if (videoSize == null) {
-                initVideoSizeSpinner();
+                initVideoSize();
                 return true;
             }
             return false;
@@ -117,39 +115,67 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         ButterKnife.unbind(this);
     }
 
-    private void initVideoSizeSpinner() {
-//        mVideoSizeSpinner = ButterKnife.findById(getActivity(), R.id.videoSizeSpinner);
-        if (VERSION.SDK_INT >= 11) {
-            List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
-            if (sizes == null) {
-                mVideoSizeSpinner.setVisibility(View.GONE);
-            }
-            else {
-                mVideoSizeSpinner.setAdapter(new SizeAdapter(sizes));
-                mVideoSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                        videoSize = (Camera.Size) arg0.getItemAtPosition(arg2);
-                        recordingManager.setPreviewSize(videoSize);
-                    }
+    private Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int w, int h) {
+        final double ASPECT_TOLERANCE = 0.1;
+        double targetRatio=(double)h / w;
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                    }
-                });
-                videoSize = (Camera.Size) mVideoSizeSpinner.getItemAtPosition(0);
+        if (sizes == null) return null;
+
+        Camera.Size optimalSize = null;
+        double minDiff = Double.MAX_VALUE;
+
+        int targetHeight = h;
+
+        for (Camera.Size size : sizes) {
+            double ratio = (double) size.width / size.height;
+            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;
+            if (Math.abs(size.height - targetHeight) < minDiff) {
+                optimalSize = size;
+                minDiff = Math.abs(size.height - targetHeight);
             }
         }
-        else {
-            mVideoSizeSpinner.setVisibility(View.GONE);
+
+        if (optimalSize == null) {
+            minDiff = Double.MAX_VALUE;
+            for (Camera.Size size : sizes) {
+                if (Math.abs(size.height - targetHeight) < minDiff) {
+                    optimalSize = size;
+                    minDiff = Math.abs(size.height - targetHeight);
+                }
+            }
+        }
+        return optimalSize;
+    }
+
+    private void initVideoSize() {
+        if (VERSION.SDK_INT >= 11) {
+            List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
+            DisplayMetrics metric = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+            for (Camera.Size s : sizes) {
+                // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
+                if (s.height == metric.widthPixels && s.width < metric.widthPixels) {
+                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
+                    videoSize = s;
+                    break;
+                }
+            }
+            recordingManager.setPreviewSize(videoSize);
         }
     }
 
     private void updateVideoSizes() {
         if (VERSION.SDK_INT >= 11) {
-            ((SizeAdapter) mVideoSizeSpinner.getAdapter()).set(CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera()));
-            mVideoSizeSpinner.setSelection(0);
-            videoSize = (Camera.Size) mVideoSizeSpinner.getItemAtPosition(0);
+            List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
+            DisplayMetrics metric = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+            for (Camera.Size s : sizes) {
+                if (s.height == metric.widthPixels && s.width < metric.widthPixels) {
+                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
+                    videoSize = s;
+                    break;
+                }
+            }
             recordingManager.setPreviewSize(videoSize);
         }
     }
@@ -159,7 +185,6 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         if (recordingManager.stopRecording()) {
             mBtnRecord.setText("Start Record");
             mBtnSwitch.setEnabled(true);
-            mVideoSizeSpinner.setEnabled(true);
         }
         else {
             startRecording();
@@ -173,7 +198,6 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         if (recordingManager.startRecording(Constants.BasePhotoUrlDiskCached + "/" + fileName, videoSize)) {
             mBtnRecord.setText("Stop");
             mBtnSwitch.setEnabled(false);
-            mVideoSizeSpinner.setEnabled(false);
             return;
         }
         T.showLong(getActivity(), "Recording video failed");
