@@ -106,6 +106,12 @@ public class CameraManager {
 		
 		Parameters param = camera.getParameters();
 		param.setPreviewSize(sz.width, sz.height);
+        // begin: added by suyanlu, 自动持续聚焦;
+        List<String> focusModes = param.getSupportedFocusModes();
+        if (focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+            param.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+        }
+        // end: added by suyanlu.
 		camera.setParameters(param);
 		
 		if (setDisplay(sf)) {
