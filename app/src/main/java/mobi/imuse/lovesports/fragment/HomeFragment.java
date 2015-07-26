@@ -103,7 +103,7 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
             }
         });
 
-        mListener.onImageSliderInitilized(mImageSlider);
+        mListener.onImageSliderChanged(mImageSlider);
 
         return rootView;
     }
@@ -156,16 +156,18 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
 
     @Override
     public void onRefresh() {
+        mImageSlider.stopAutoCycle();
         mSwipeRefreshLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(false);
+                mImageSlider.startAutoCycle();
             }
         }, 1000);
     }
 
     public interface OnHomeFragmentListener{
-        public void onImageSliderInitilized(View slider);
+        public void onImageSliderChanged(SliderLayout slider);
     }
 
     @Override
@@ -182,6 +184,7 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener.onImageSliderChanged(null);
         mListener = null;
     }
 }

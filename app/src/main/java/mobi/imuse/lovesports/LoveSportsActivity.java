@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import com.daimajia.slider.library.SliderLayout;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,10 +20,10 @@ import mobi.imuse.slidingmenu.SlidingMenu;
 public class LoveSportsActivity extends BaseActivity implements BackHandledFragment.BackHandlerInterface, HomeFragment.OnHomeFragmentListener {
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
-    @Bind(R.id.toolbar)
-    Toolbar mToolbar;
+    @Bind(R.id.toolbar)    Toolbar mToolbar;
 
     private SlidingMenu menu;
+    private SliderLayout mImageSlider;
 
     private BackHandledFragment selectedFragment;
     private static long back_pressed; //按两次back退出;
@@ -72,8 +74,11 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
     }
 
     @Override
-    public void onImageSliderInitilized(View slider) {
-        menu.addIgnoredView(slider);
+    public void onImageSliderChanged(SliderLayout slider) {
+        mImageSlider = slider;
+        if (slider != null) {
+            menu.addIgnoredView(slider);
+        }
     }
 
     @Override

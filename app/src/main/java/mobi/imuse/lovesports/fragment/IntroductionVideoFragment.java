@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.skd.androidrecording.video.AdaptiveSurfaceView;
@@ -38,6 +39,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    @Bind(R.id.rlSurfaceView)    RelativeLayout mRlSurfaceView;
     @Bind(R.id.videoView)    AdaptiveSurfaceView mVideoView;
     @Bind(R.id.tvRecordingTime)    TextView mTvRecordingTime;
     @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
@@ -122,45 +124,46 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         Camera.Size optimalSize = null;
         double minDiff = Double.MAX_VALUE;
 
-        int targetHeight = h;
+        int targetWidth = w;
 
         for (Camera.Size size : sizes) {
             double ratio = (double) size.width / size.height;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;
-            if (Math.abs(size.height - targetHeight) < minDiff) {
+            if (Math.abs(size.height - targetWidth) < minDiff) {
                 optimalSize = size;
-                minDiff = Math.abs(size.height - targetHeight);
+                minDiff = Math.abs(size.height - targetWidth);
             }
         }
 
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
             for (Camera.Size size : sizes) {
-                if (Math.abs(size.height - targetHeight) < minDiff) {
+                if (Math.abs(size.height - targetWidth) < minDiff) {
                     optimalSize = size;
-                    minDiff = Math.abs(size.height - targetHeight);
+                    minDiff = Math.abs(size.height - targetWidth);
                 }
             }
         }
-        return optimalSize;
+
+        if (optimalSize != null && h >= optimalSize.height*optimalSize.width/w){
+            return optimalSize;
+        }
+        else {
+            Camera camera = recordingManager.getCameraManager().getCamera();
+            return camera.new Size(640, 480);
+        }
     }
 
     private void initVideoSize() {
         if (VERSION.SDK_INT >= 11) {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
             // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
-//            videoSize = getOptimalPreviewSize(sizes, mVideoView.getHeight(), mVideoView.getWidth());
-            for (Camera.Size s : sizes) {
-                // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
-                if (s.width == 640 && s.height == 480) {
-//                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
-                    videoSize = s;
-                    break;
-                }
-            }
+            videoSize = getOptimalPreviewSize(sizes, mRlSurfaceView.getHeight(), mRlSurfaceView.getWidth());
+
             Camera camera = recordingManager.getCameraManager().getCamera();
-            int screenW = getResources().getDisplayMetrics().widthPixels;
-            Camera.Size sizePreview = camera.new Size(screenW, screenW*480/640);
+            int screenW = mRlSurfaceView.getWidth();
+            Camera.Size sizePreview;
+            sizePreview = camera.new Size(screenW, screenW * videoSize.width / videoSize.height);
             recordingManager.setPreviewSize(sizePreview);
         }
     }
@@ -169,17 +172,12 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         if (VERSION.SDK_INT >= 11) {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
             // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
-//            videoSize = getOptimalPreviewSize(sizes, mVideoView.getHeight(), mVideoView.getWidth());
-            for (Camera.Size s : sizes) {
-                if (s.width == 640 && s.height == 480) {
-//                    SLog.d(TAG, "video size matched: " + s.height + " x " + s.width);
-                    videoSize = s;
-                    break;
-                }
-            }
+            videoSize = getOptimalPreviewSize(sizes, mRlSurfaceView.getHeight(), mRlSurfaceView.getWidth());
+
             Camera camera = recordingManager.getCameraManager().getCamera();
-            int screenW = getResources().getDisplayMetrics().widthPixels;
-            Camera.Size sizePreview = camera.new Size(screenW, screenW*480/640);
+            int screenW = mRlSurfaceView.getWidth();
+            Camera.Size sizePreview;
+            sizePreview = camera.new Size(screenW, screenW * videoSize.width / videoSize.height);
             recordingManager.setPreviewSize(sizePreview);
         }
     }
