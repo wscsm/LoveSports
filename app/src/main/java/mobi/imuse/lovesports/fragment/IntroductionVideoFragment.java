@@ -126,6 +126,19 @@ public class IntroductionVideoFragment extends BackHandledFragment {
 
         int targetWidth = w;
 
+        //  优先640x480;
+        for (Camera.Size size : sizes){
+            if (size.width == 640 && size.height == 480){
+                return size;
+            }
+        }
+
+        // 再选择是否有等宽高的;
+        for (Camera.Size size : sizes){
+            if (size.width == size.height && size.width == w){
+                return size;
+            }
+        }
         for (Camera.Size size : sizes) {
             double ratio = (double) size.width / size.height;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;

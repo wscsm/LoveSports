@@ -59,7 +59,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
             menu.setBehindOffset((int) (screenWidth * (1 - 0.618)));
 //            menuLeft.setBehindScrollScale(1.0f);
             menu.setFadeDegree(0.35f);
-            menu.setBehindScrollScale(1.0f);
+            menu.setBehindScrollScale(0.0f);
             menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
             menu.setMenu(R.layout.slidemenu_left);
             menu.setSecondaryMenu(R.layout.slidemenu_right);
