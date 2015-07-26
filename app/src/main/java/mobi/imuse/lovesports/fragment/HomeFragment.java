@@ -156,7 +156,6 @@ public class HomeFragment extends BackHandledFragment implements SwipeRefreshLay
 
     @Override
     public void onRefresh() {
-        mImageSlider.stopAutoCycle();
         mSwipeRefreshLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
