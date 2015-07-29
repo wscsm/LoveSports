@@ -25,8 +25,8 @@ public class BaseActivity extends AppCompatActivity {
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
             //此处可以重新指定状态栏颜色
-            tintManager.setStatusBarTintResource(R.color.primary_dark);
-            tintManager.setNavigationBarTintResource(R.color.primary_dark);
+            tintManager.setStatusBarTintResource(R.color.primary);
+            tintManager.setNavigationBarTintResource(R.color.primary);
         }
     }
 

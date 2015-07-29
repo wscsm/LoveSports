@@ -8,8 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,6 +43,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
     private static final String ARG_PARAM2 = "param2";
 
     @Bind(R.id.rlSurfaceView)    RelativeLayout mRlSurfaceView;
+    @Bind(R.id.controlsLayout)    LinearLayout mControlsLayout;
     @Bind(R.id.videoView)    AdaptiveSurfaceView mVideoView;
     @Bind(R.id.tvRecordingTime)    TextView mTvRecordingTime;
     @Bind(R.id.btnSwitch)    ImageButton mBtnSwitch;
@@ -102,6 +106,18 @@ public class IntroductionVideoFragment extends BackHandledFragment {
         View view = inflater.inflate(R.layout.fragment_introduction_video, container, false);
         ButterKnife.bind(this, view);
         recordingManager = new VideoRecordingManager(mVideoView, recordingHandler);
+        ViewTreeObserver vto = mVideoView.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mVideoView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                int width = mRlSurfaceView.getWidth();
+                int height = mRlSurfaceView.getHeight() - width*3/4 - getActionBarSize();
+                FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams)mControlsLayout.getLayoutParams();
+                lp.width = width;lp.height = height;
+                mControlsLayout.setLayoutParams(lp);
+            }
+        });
         return view;
     }
 

@@ -73,4 +73,11 @@ public abstract class BackHandledFragment extends Fragment{
         }
         return activity.findViewById(android.R.id.content).getHeight();
     }
+    protected int getScreenWidth() {
+        Activity activity = getActivity();
+        if (activity == null) {
+            return 0;
+        }
+        return activity.findViewById(android.R.id.content).getWidth();
+    }
 }
