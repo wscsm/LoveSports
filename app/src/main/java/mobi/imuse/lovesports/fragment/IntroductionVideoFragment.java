@@ -146,8 +146,8 @@ public class IntroductionVideoFragment extends BackHandledFragment {
 
         // 优先选择高度等于窗口宽度的,因为旋转了90度,所以这里用高度等于宽度来判断;
         for (Camera.Size size: sizes){
-            if (size.height == w){
-                if (size.width >= w*3/4){
+            if (size.height == h){
+                if (size.width >= h*3/4){
                     return size;
                 }
             }
