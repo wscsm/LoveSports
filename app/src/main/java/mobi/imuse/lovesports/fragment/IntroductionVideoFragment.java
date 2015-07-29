@@ -114,6 +114,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
                 mVideoView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 int width = mRlSurfaceView.getWidth();
                 int height = mRlSurfaceView.getHeight() - width * 3 / 4 - getActionBarSize();
+                SLog.d(TAG, "ActionBar Height = " + getActionBarSize());
                 FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mControlsLayout.getLayoutParams();
                 lp.width = width;
                 lp.height = height;
