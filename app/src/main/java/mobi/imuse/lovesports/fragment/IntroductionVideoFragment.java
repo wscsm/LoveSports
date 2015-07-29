@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mobi.imuse.lovesports.Constants;
 import mobi.imuse.lovesports.R;
+import mobi.imuse.lovesports.util.SLog;
 import mobi.imuse.lovesports.util.T;
 
 /**
@@ -112,9 +113,10 @@ public class IntroductionVideoFragment extends BackHandledFragment {
             public void onGlobalLayout() {
                 mVideoView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 int width = mRlSurfaceView.getWidth();
-                int height = mRlSurfaceView.getHeight() - width*3/4 - getActionBarSize();
-                FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams)mControlsLayout.getLayoutParams();
-                lp.width = width;lp.height = height;
+                int height = mRlSurfaceView.getHeight() - width * 3 / 4 - getActionBarSize();
+                FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mControlsLayout.getLayoutParams();
+                lp.width = width;
+                lp.height = height;
                 mControlsLayout.setLayoutParams(lp);
             }
         });
@@ -142,6 +144,14 @@ public class IntroductionVideoFragment extends BackHandledFragment {
 
         int targetWidth = w;
 
+        // 优先选择高度等于窗口宽度的,因为旋转了90度,所以这里用高度等于宽度来判断;
+        for (Camera.Size size: sizes){
+            if (size.height == w){
+                if (size.width >= w*3/4){
+                    return size;
+                }
+            }
+        }
         //  优先640x480;
         for (Camera.Size size : sizes){
             if (size.width == 640 && size.height == 480){
@@ -188,6 +198,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
             // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
             videoSize = getOptimalPreviewSize(sizes, mRlSurfaceView.getHeight(), mRlSurfaceView.getWidth());
+            SLog.d(TAG, "selected PreviewSize: " + videoSize.width + "x" + videoSize.height);
 
             Camera camera = recordingManager.getCameraManager().getCamera();
             int screenW = mRlSurfaceView.getWidth();
@@ -202,6 +213,7 @@ public class IntroductionVideoFragment extends BackHandledFragment {
             List<Camera.Size> sizes = CameraHelper.getCameraSupportedVideoSizes(recordingManager.getCameraManager().getCamera());
             // 因为是竖屏,所以这里s的height才是显示的surface的宽度;
             videoSize = getOptimalPreviewSize(sizes, mRlSurfaceView.getHeight(), mRlSurfaceView.getWidth());
+            SLog.d(TAG, "selected PreviewSize: " + videoSize.width + "x" + videoSize.height);
 
             Camera camera = recordingManager.getCameraManager().getCamera();
             int screenW = mRlSurfaceView.getWidth();
