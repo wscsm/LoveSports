@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 
@@ -14,6 +15,7 @@ import butterknife.OnClick;
 import mobi.imuse.lovesports.fragment.BackHandledFragment;
 import mobi.imuse.lovesports.fragment.HomeFragment;
 import mobi.imuse.lovesports.fragment.IntroductionVideoFragment;
+import mobi.imuse.lovesports.fragment.ServicePriceSettingFragment;
 import mobi.imuse.lovesports.util.T;
 import mobi.imuse.slidingmenu.SlidingMenu;
 
@@ -21,6 +23,10 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
     private static final String TAG = LoveSportsActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar)    Toolbar mToolbar;
+    @Bind(R.id.tvTitleName)    TextView mTvTitleName;
+    @Bind(R.id.tvBtnLeft)    TextView mTvBtnLeft;
+    @Bind(R.id.tvBtnRight)    TextView mTvBtnRight;
+    @Bind(R.id.tvTextBtnRight)    TextView mTvTextBtnRight;
 
     private SlidingMenu menu;
     private SliderLayout mImageSlider;
@@ -122,7 +128,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
 
     @Override
     public void setSelectedFragment(BackHandledFragment backHandledFragment) {
-        if (this.selectedFragment == backHandledFragment){
+        if (this.selectedFragment == backHandledFragment) {
             return;
         }
 
@@ -133,7 +139,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
     View.OnClickListener onMenuItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch(v.getId()){
+            switch (v.getId()) {
                 case R.id.leftMiHomePage:
                     onLeftMenuHomePage();
                     break;
@@ -141,7 +147,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
                     T.showShort(getApplicationContext(), "My Consultation");
                     break;
                 case R.id.leftMiPriceSetting:
-                    T.showShort(getApplicationContext(), "Price Setting");
+                    onLeftMenuPriceSetting();
                     break;
                 case R.id.leftMiMyPhotoes:
                     T.showShort(getApplicationContext(), "My Photoes");
@@ -161,22 +167,38 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
         }
     };
 
-    private void onLeftMenuHomePage(){
+    private void onLeftMenuHomePage() {
         if (!(selectedFragment instanceof HomeFragment)) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, HomeFragment.newInstance("param1", "param2"))
                     .commit();
+            mTvBtnLeft.setVisibility(View.VISIBLE);
+            mTvBtnRight.setVisibility(View.VISIBLE);
         }
         menu.showContent(true);
     }
 
-    private void onLeftMenuIntroductionVideo(){
+    private void onLeftMenuIntroductionVideo() {
         if (!(selectedFragment instanceof IntroductionVideoFragment)) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, IntroductionVideoFragment.newInstance("param1", "param2"))
                     .commit();
+            mTvBtnLeft.setVisibility(View.VISIBLE);
+            mTvBtnRight.setVisibility(View.GONE);
+        }
+        menu.showContent(true);
+    }
+
+    private void onLeftMenuPriceSetting() {
+        if (!(selectedFragment instanceof ServicePriceSettingFragment)) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_container, ServicePriceSettingFragment.newInstance("param1", "param2"))
+                    .commit();
+            mTvBtnLeft.setVisibility(View.VISIBLE);
+            mTvBtnRight.setVisibility(View.GONE);
         }
         menu.showContent(true);
     }

@@ -19,6 +19,7 @@
     <string name="error_input_bodylength">Body Length is not correct</string>
     <string name="error_input_bodyweight">Body Weight is not correct</string>
     <string name="error_input_teaching_experience">Teaching Experience\'s Value incorrect</string>
+    <string name="error_input_price">Price\'s Value incorrect</string>
 
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_register_newer">New User Register</string>
@@ -50,8 +51,11 @@
     <string name="unit_length">CM</string>
     <string name="unit_weight">KG</string>
     <string name="unit_time">Years</string>
+    <string name="unit_price_everytime">RMB/Times</string>
+    <string name="unit_quota_everyday">Times/Day</string>
 
     <string name="title_submit">Submit</string>
+    <string name="title_save">Save</string>
 
     <string name="title_lovesport_coach">LoveSport For Coach</string>
 
@@ -68,4 +72,9 @@
     <string name="left_menu_more_settings">More Settings</string>
 
     <string name="title_right_menu">Message Center</string>
+
+    <string name="title_price_online_consultation">Online Consultation Price</string>
+    <string name="title_provide_special_offer">Provide Special Offer</string>
+    <string name="title_special_offer">Special Offer</string>
+    <string name="title_quota_special_offer">Special Offer Quota</string>
 </resources>

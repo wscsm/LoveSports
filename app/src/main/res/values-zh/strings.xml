@@ -53,5 +53,13 @@
     <string name="left_menu_price_settting">设置价格</string>
     <string name="left_menu_teaching_video">我的教学视频</string>
     <string name="title_right_menu">消息中心</string>
+    <string name="title_price_online_consultation">图文资讯价格</string>
+    <string name="title_provide_special_offer">是否提供特价咨询</string>
+    <string name="title_special_offer">特价咨询价格</string>
+    <string name="unit_price_everytime">元/次</string>
+    <string name="unit_quota_everyday">次/天</string>
+    <string name="error_input_price">输入的价格有误，请重新输入</string>
+    <string name="title_quota_special_offer">特价咨询名额</string>
+    <string name="title_save">保存</string>
 
 </resources>
