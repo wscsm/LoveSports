@@ -1,6 +1,5 @@
 package mobi.imuse.pickview.lib;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 /**
@@ -25,10 +24,6 @@ public class ArrayWheelAdapter<T> implements WheelAdapter {
 	public ArrayWheelAdapter(ArrayList<T> items, int length) {
 		this.items = items;
 		this.length = length;
-		int maxItemlength = getItemsMaxLength(items);
-		if (maxItemlength < 16 && maxItemlength > length){
-			this.length = maxItemlength;
-		}
 	}
 	
 	/**
@@ -58,16 +53,4 @@ public class ArrayWheelAdapter<T> implements WheelAdapter {
 		return length;
 	}
 
-	private int getItemsMaxLength(ArrayList<T> items){
-		int maxlen = items.get(0).toString().getBytes(Charset.forName("UTF-8")).length;
-		int tmp = 0;
-		for (T t:items){
-			tmp = t.toString().getBytes(Charset.forName("UTF-8")).length;
-			if (tmp > maxlen){
-				maxlen = tmp;
-			}
-		}
-
-		return maxlen;
-	}
 }
