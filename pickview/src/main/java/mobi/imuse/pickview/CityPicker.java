@@ -2,9 +2,11 @@ package mobi.imuse.pickview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import com.google.gson.Gson;
 import com.orhanobut.dialogplus.DialogPlus;
@@ -82,7 +84,18 @@ public class CityPicker {
 
     }
 
+    private void closeInputKeyboard(){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            View focusView = ((AppCompatActivity)mContext).getCurrentFocus();
+            if (focusView != null) {
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            }
+        }
+    }
+
     public void show(String currentProvince, String currentCity) {
+        closeInputKeyboard();
         this.setPicker(stringListProvinces, stringListCityOfProvinces)
                 .setProvinceCity(currentProvince, currentCity)
                 .setCyclic(false);

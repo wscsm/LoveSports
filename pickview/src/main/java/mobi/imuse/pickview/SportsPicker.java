@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.Holder;
@@ -83,10 +85,21 @@ public class SportsPicker {
                 optionspicker.getPaddingLeft(),
                 optionspicker.getPaddingTop(),
                 optionspicker.getPaddingRight(),
-                optionspicker.getPaddingBottom()+NavigationBarUtil.getNavigationBarHeight(mContext));
+                optionspicker.getPaddingBottom() + NavigationBarUtil.getNavigationBarHeight(mContext));
+    }
+
+    private void closeInputKeyboard(){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            View focusView = ((AppCompatActivity)mContext).getCurrentFocus();
+            if (focusView != null) {
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            }
+        }
     }
 
     public void show(String currentSport) {
+        closeInputKeyboard();
         this.setPicker(sportsList)
                 .setSport(currentSport == null ? "不设置" : currentSport)
                 .setCyclic(false);

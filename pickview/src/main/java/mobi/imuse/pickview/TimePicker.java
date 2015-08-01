@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import com.orhanobut.dialogplus.DialogPlus;
@@ -69,6 +70,16 @@ public class TimePicker {
         }
     }
 
+    private void closeInputKeyboard(){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            View focusView = ((AppCompatActivity)mContext).getCurrentFocus();
+            if (focusView != null) {
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            }
+        }
+    }
+
     public void show() {
         if (dialog != null && dialog.isShowing()) {
             return;
@@ -93,6 +104,7 @@ public class TimePicker {
                 .setCancelable(true)
                 .setFooter(footer)
                 .create();
+        closeInputKeyboard();
         dialog.show();
     }
 
