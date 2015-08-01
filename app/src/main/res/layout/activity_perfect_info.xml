@@ -52,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dip"
+                android:paddingLeft="4dip"
                 android:paddingBottom="4dip"
                 android:text="@string/title_basic_info"
                 android:textColor="@color/primary_text"
@@ -268,6 +269,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="4dip"
                 android:paddingBottom="4dip"
                 android:paddingTop="32dip"
                 android:text="@string/title_coach_info"
@@ -509,6 +511,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="4dip"
                 android:paddingBottom="4dip"
                 android:paddingTop="32dip"
                 android:text="@string/title_skills"
