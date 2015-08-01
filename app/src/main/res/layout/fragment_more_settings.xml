@@ -3,50 +3,69 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            android:background="@color/md_white_1000"
+            android:scrollbars="none"
             tools:context="mobi.imuse.lovesports.fragment.MoreSettingsFragment"
     >
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dip"
+        android:divider="@drawable/divider_verital"
+        android:orientation="vertical"
+        android:paddingBottom="32dip"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dip"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:background="@drawable/bg_up_underline"
+            android:background="@color/md_white_1000"
             android:divider="@drawable/divider_verital"
             android:orientation="vertical"
+            android:paddingLeft="@dimen/edittext_padding"
             android:showDividers="middle"
             >
 
             <TextView
-                android:id="@+id/leftMiHomePage"
+                android:id="@+id/tvChangePasswd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_change_passwd"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
 
             <TextView
-                android:id="@+id/leftMiMyConsultation"
+                android:id="@+id/tvUpdateInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_update_info"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+        </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="32dip"
-                />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dip"
+            android:background="@color/md_white_1000"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:showDividers="middle"
+            >
 
             <TextView
                 android:id="@+id/tvConsultationWelcome"
@@ -54,27 +73,39 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_consultation_welcom_setting"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+
             <TextView
                 android:id="@+id/tvConsultationCompleted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_consultation_completed_setting"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+        </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="32dip"
-                />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dip"
+            android:background="@color/md_white_1000"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:showDividers="middle"
+            >
 
             <TextView
                 android:id="@+id/tvInviteFriend"
@@ -82,67 +113,81 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_invite_friend"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+
             <TextView
                 android:id="@+id/tvFeedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_feedback"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+
             <TextView
                 android:id="@+id/tvRateApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_rate_me"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
+
             <TextView
                 android:id="@+id/tvAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_grey"
                 android:drawableRight="@drawable/ic_arrow_right"
-                android:padding="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/edittext_padding"
+                android:paddingRight="@dimen/edittext_padding"
+                android:paddingTop="@dimen/edittext_padding"
                 android:text="@string/title_about"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
                 />
-            <FrameLayout
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dip"
+            android:paddingTop="32dip"
+            >
+
+            <Button
+                android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="32dip"
-                android:paddingBottom="32dip"
-                >
-                <Button
-                    android:id="@+id/btnSubmit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dip"
-                    android:layout_marginRight="16dip"
-                    android:layout_weight="1.0"
-                    android:background="@drawable/btn_common"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_submit"
-                    android:textColor="@color/icons"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dip"
+                android:layout_marginRight="16dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_red"
+                android:padding="@dimen/activity_padding"
+                android:text="@string/title_logout"
+                android:textColor="@color/icons"
+                android:textSize="@dimen/font_size_large"
+                />
 
-            </FrameLayout>
+        </FrameLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

@@ -12,18 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:background="@color/md_white_1000"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:scrollbars="none"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/divider_verital"
             android:orientation="vertical"
-            android:showDividers="middle"
             >
 
             <!-- 图文咨询价格; -->
@@ -31,8 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dip"
-                android:background="@drawable/bg_up_underline"
+                android:background="@color/md_white_1000"
                 android:orientation="horizontal"
+                android:paddingLeft="@dimen/edittext_padding"
                 >
 
                 <TextView
@@ -78,142 +74,152 @@
                     />
             </LinearLayout>
 
-            <!-- 是否提供特价咨询 -->
-            <RelativeLayout
-                android:id="@+id/rlProvideSpecialOffer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dip"
-                android:background="@drawable/bg_up_underline"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
+                android:background="@color/md_white_1000"
+                android:divider="@drawable/divider_verital"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:showDividers="middle"
                 >
 
-                <CheckBox
-                    android:id="@+id/cbProvideSpecialOffer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dip"
-                    android:clickable="false"
-                    />
-
-                <TextView
+                <!-- 是否提供特价咨询 -->
+                <RelativeLayout
+                    android:id="@+id/rlProvideSpecialOffer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:text="@string/title_provide_special_offer"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    >
 
-            </RelativeLayout>
+                    <CheckBox
+                        android:id="@+id/cbProvideSpecialOffer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16dip"
+                        android:clickable="false"
+                        />
 
-            <!-- 特价咨询价格; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:text="@string/title_provide_special_offer"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_special_offer"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                </RelativeLayout>
 
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editSpecialOffer"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_price"
-                    app:testType="numeric"
-                    tools:text="160"
-                    />
+                <!-- 特价咨询价格; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="4dip"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:text="@string/unit_price_everytime"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/activity_padding"
+                        android:paddingBottom="@dimen/activity_padding"
+                        android:text="@string/title_special_offer"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
 
-            <!-- 特价咨询价格; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_underline"
-                android:orientation="horizontal"
-                >
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editSpecialOffer"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_price"
+                        app:testType="numeric"
+                        tools:text="160"
+                        />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_quota_special_offer"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dip"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:text="@string/unit_price_everytime"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+                </LinearLayout>
 
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editQuotaSpecialOffer"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_price"
-                    app:testType="numeric"
-                    tools:text="160"
-                    />
+                <!-- 特价咨询价格; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_underline"
+                    android:orientation="horizontal"
+                    >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="4dip"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:text="@string/unit_quota_everyday"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/activity_padding"
+                        android:paddingBottom="@dimen/activity_padding"
+                        android:text="@string/title_quota_special_offer"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editQuotaSpecialOffer"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_price"
+                        app:testType="numeric"
+                        tools:text="160"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dip"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:text="@string/unit_quota_everyday"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+                </LinearLayout>
             </LinearLayout>
 
             <FrameLayout
@@ -221,6 +227,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="32dip"
                 >
+
                 <Button
                     android:id="@+id/btnSave"
                     android:layout_width="match_parent"

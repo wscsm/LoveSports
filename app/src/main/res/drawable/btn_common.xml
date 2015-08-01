@@ -4,24 +4,24 @@
     <item android:state_enabled="false">
         <shape>
             <gradient
-                android:startColor="@color/primary"
-                android:endColor="@color/primary"
+                android:startColor="@color/button_blue"
+                android:endColor="@color/button_blue"
                 android:angle="0" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape>
             <gradient
-                android:startColor="@color/primary_dark"
-                android:endColor="@color/primary_dark"
+                android:startColor="@color/button_blue_dark"
+                android:endColor="@color/button_blue_dark"
                 android:angle="0" />
         </shape>
     </item>
     <item>
         <shape>
             <gradient
-                android:startColor="@color/primary"
-                android:endColor="@color/primary"
+                android:startColor="@color/button_blue"
+                android:endColor="@color/button_blue"
                 android:angle="0" />
         </shape>
     </item>

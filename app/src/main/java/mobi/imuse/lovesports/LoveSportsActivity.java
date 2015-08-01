@@ -15,6 +15,7 @@ import butterknife.OnClick;
 import mobi.imuse.lovesports.fragment.BackHandledFragment;
 import mobi.imuse.lovesports.fragment.HomeFragment;
 import mobi.imuse.lovesports.fragment.IntroductionVideoFragment;
+import mobi.imuse.lovesports.fragment.MoreSettingsFragment;
 import mobi.imuse.lovesports.fragment.ServicePriceSettingFragment;
 import mobi.imuse.lovesports.util.T;
 import mobi.imuse.slidingmenu.SlidingMenu;
@@ -159,7 +160,7 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
                     T.showShort(getApplicationContext(), "Teaching Video");
                     break;
                 case R.id.leftMiMoreSettings:
-                    T.showShort(getApplicationContext(), "More Settings");
+                    onLeftMenuMoreSettings();
                     break;
                 default:
                     break;
@@ -196,6 +197,18 @@ public class LoveSportsActivity extends BaseActivity implements BackHandledFragm
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, ServicePriceSettingFragment.newInstance("param1", "param2"))
+                    .commit();
+            mTvBtnLeft.setVisibility(View.VISIBLE);
+            mTvBtnRight.setVisibility(View.GONE);
+        }
+        menu.showContent(true);
+    }
+
+    private void onLeftMenuMoreSettings() {
+        if (!(selectedFragment instanceof MoreSettingsFragment)) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_container, MoreSettingsFragment.newInstance("param1", "param2"))
                     .commit();
             mTvBtnLeft.setVisibility(View.VISIBLE);
             mTvBtnRight.setVisibility(View.GONE);

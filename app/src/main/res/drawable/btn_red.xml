@@ -4,8 +4,8 @@
     <item android:state_enabled="false">
         <shape>
             <gradient
-                android:startColor="@color/md_red_A700"
-                android:endColor="@color/md_red_A700"
+                android:startColor="@color/md_red_A400"
+                android:endColor="@color/md_red_A400"
                 android:angle="0" />
         </shape>
     </item>
@@ -20,8 +20,8 @@
     <item>
         <shape>
             <gradient
-                android:startColor="@color/md_red_A700"
-                android:endColor="@color/md_red_A700"
+                android:startColor="@color/md_red_A400"
+                android:endColor="@color/md_red_A400"
                 android:angle="0" />
         </shape>
     </item>

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">@color/md_light_blue_500</color>
-    <color name="primary_dark">@color/md_light_blue_700</color>
+    <color name="button_blue">@color/md_light_blue_500</color>
+    <color name="button_blue_dark">@color/md_light_blue_700</color>
+    <!--<color name="primary">#84d8d1</color>-->
+    <color name="primary">#63c1ba</color>
+    <color name="primary_dark">#10c0b4</color>
     <color name="primary_light">@color/md_light_blue_100</color>
     <color name="accent">@color/md_blue_A200</color>
     <color name="primary_text">@color/md_grey_900</color>
     <color name="secondary_text">@color/md_grey_600</color>
     <color name="icons">@color/md_white_1000</color>
     <color name="divider">@color/md_grey_400</color>
+    <color name="windowBackground">#eff2f4</color>
 </resources>

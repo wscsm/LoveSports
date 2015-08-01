@@ -1,11 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="mobi.imuse.lovesports.PerfectInfoActivity"
-              android:id="@+id/activityPerfectInfo"
+<LinearLayout
+    android:id="@+id/activityPerfectInfo"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mobi.imuse.lovesports.PerfectInfoActivity"
     >
 
     <android.support.v7.widget.Toolbar
@@ -37,461 +38,479 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:background="@color/md_white_1000"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:scrollbars="none"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/divider_verital"
             android:orientation="vertical"
-            android:showDividers="middle"
             >
 
             <!-- 基本信息 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dip"
+                android:layout_marginTop="32dip"
                 android:paddingBottom="4dip"
                 android:text="@string/title_basic_info"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
                 />
-            <!-- 头像这一栏; -->
-            <RelativeLayout
-                android:id="@+id/rlAvatar"
-                android:layout_width="match_parent"
-                android:layout_height="72.0dip"
-                android:background="@drawable/btn_grey"
-                android:clickable="true"
-                >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:text="@string/title_avatar"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <!-- 头像; -->
-                <ImageView
-                    android:id="@+id/ivAvatarImage"
-                    android:layout_width="48.0dip"
-                    android:layout_height="48.0dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="32.0dip"
-                    android:src="@drawable/avatar_default"
-                    />
-            </RelativeLayout>
-
-            <!-- 名字这一栏; -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:background="@color/md_white_1000"
+                android:divider="@drawable/divider_verital"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:showDividers="middle"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_realname"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editRealName"
+                <!-- 头像这一栏; -->
+                <RelativeLayout
+                    android:id="@+id/rlAvatar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="text"
-                    android:maxLength="32"
-                    android:padding="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_realname"
-                    app:testType="personName"
-                    tools:text="Michael"
-                    />
+                    android:layout_height="72.0dip"
+                    android:background="@drawable/btn_grey"
+                    android:clickable="true"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/activity_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:text="@string/title_avatar"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <!-- 头像; -->
+                    <ImageView
+                        android:id="@+id/ivAvatarImage"
+                        android:layout_width="48.0dip"
+                        android:layout_height="48.0dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="32.0dip"
+                        android:src="@drawable/avatar_default"
+                        />
+                </RelativeLayout>
+
+                <!-- 名字这一栏; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/activity_padding"
+                        android:text="@string/title_realname"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editRealName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="text"
+                        android:maxLength="32"
+                        android:padding="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_realname"
+                        app:testType="personName"
+                        tools:text="Michael"
+                        />
+                </LinearLayout>
+
+                <!-- 性别 -->
+                <RelativeLayout
+                    android:id="@+id/rlGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:paddingLeft="@dimen/activity_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:text="@string/title_gender"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16dip"
+                        android:gravity="center_vertical|right"
+                        android:padding="@dimen/edittext_padding"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="Male"
+                        />
+                </RelativeLayout>
+
+                <!-- 生日 -->
+                <RelativeLayout
+                    android:id="@+id/rlBirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:paddingLeft="@dimen/activity_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:text="@string/title_birthday"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvBirthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16dip"
+                        android:gravity="center_vertical|right"
+                        android:padding="@dimen/edittext_padding"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="2015-07-19"
+                        />
+                </RelativeLayout>
+
+                <!-- 所在城市 -->
+                <RelativeLayout
+                    android:id="@+id/rlCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:paddingLeft="@dimen/activity_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:text="@string/title_city"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvProvince"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvCity"
+                        android:gravity="center_vertical|right"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingLeft="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="江苏省"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16dip"
+                        android:gravity="center_vertical|right"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="南京市"
+                        />
+                </RelativeLayout>
             </LinearLayout>
-
-            <!-- 性别 -->
-            <RelativeLayout
-                android:id="@+id/rlGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_grey"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:text="@string/title_gender"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <TextView
-                    android:id="@+id/tvGender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dip"
-                    android:gravity="center_vertical|right"
-                    android:padding="@dimen/edittext_padding"
-                    android:textSize="@dimen/font_size_large"
-                    tools:text="Male"
-                    />
-            </RelativeLayout>
-
-            <!-- 生日 -->
-            <RelativeLayout
-                android:id="@+id/rlBirthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_grey"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:text="@string/title_birthday"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <TextView
-                    android:id="@+id/tvBirthday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dip"
-                    android:gravity="center_vertical|right"
-                    android:padding="@dimen/edittext_padding"
-                    tools:text="2015-07-19"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </RelativeLayout>
-
-            <!-- 所在城市 -->
-            <RelativeLayout
-                android:id="@+id/rlCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_grey"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:text="@string/title_city"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <TextView
-                    android:layout_toLeftOf="@+id/tvCity"
-                    android:id="@+id/tvProvince"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_vertical|right"
-                    android:paddingLeft="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    tools:text="江苏省"
-                    android:textSize="@dimen/font_size_large"
-                    />
-                <TextView
-                    android:id="@+id/tvCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dip"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    tools:text="南京市"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </RelativeLayout>
-
             <!-- 教练信息 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dip"
                 android:paddingBottom="4dip"
+                android:paddingTop="32dip"
                 android:text="@string/title_coach_info"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
                 />
-            <!-- 运动项目 -->
-            <RelativeLayout
-                android:id="@+id/rlSportGame"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_grey"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
+                android:background="@color/md_white_1000"
+                android:divider="@drawable/divider_verital"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:showDividers="middle"
                 >
 
-                <TextView
+                <!-- 运动项目 -->
+                <RelativeLayout
+                    android:id="@+id/rlSportGame"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:drawableRight="@drawable/ic_arrow_right"
-                    android:paddingLeft="@dimen/activity_padding"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:text="@string/title_sport_game"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
+                    android:background="@drawable/btn_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    >
 
-                <TextView
-                    android:id="@+id/tvSportGame"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dip"
-                    android:gravity="center_vertical|right"
-                    android:padding="@dimen/edittext_padding"
-                    android:textSize="@dimen/font_size_large"
-                    tools:text="网球"
-                    />
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:paddingLeft="@dimen/activity_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:text="@string/title_sport_game"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
 
-            <!-- 身高; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                    <TextView
+                        android:id="@+id/tvSportGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="16dip"
+                        android:gravity="center_vertical|right"
+                        android:padding="@dimen/edittext_padding"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="网球"
+                        />
+                </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_body_length"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editBodyLength"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_bodylength"
-                    app:testType="numeric"
-                    tools:text="172"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="4dip"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:text="@string/unit_length"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </LinearLayout>
-
-            <!-- 体重; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_body_weight"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editBodyWeight"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_bodyweight"
-                    app:testType="numeric"
-                    tools:text="60"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="4dip"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:text="@string/unit_weight"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </LinearLayout>
-
-            <!-- 执教年限; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_teaching_experience"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <com.andreabaccega.widget.FormEditText
-                    android:id="@+id/editTeachingExperience"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:paddingBottom="@dimen/edittext_padding"
-                    android:paddingTop="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    app:emptyErrorString="@string/error_input_empty"
-                    app:testErrorString="@string/error_input_teaching_experience"
-                    app:testType="numeric"
-                    tools:text="60"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="4dip"
-                    android:paddingRight="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:text="@string/unit_time"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-            </LinearLayout>
-
-            <!-- 所属机构; -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/activity_padding"
-                    android:text="@string/title_organisation"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    />
-
-                <EditText
-                    android:id="@+id/editOrganisation"
+                <!-- 身高; -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:gravity="right|center_vertical"
-                    android:inputType="text"
-                    android:maxLength="128"
-                    android:padding="@dimen/edittext_padding"
-                    android:singleLine="true"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/font_size_large"
-                    tools:text="网球协会"
-                    />
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/activity_padding"
+                        android:text="@string/title_body_length"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editBodyLength"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_bodylength"
+                        app:testType="numeric"
+                        tools:text="172"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dip"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:text="@string/unit_length"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+                </LinearLayout>
+
+                <!-- 体重; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/activity_padding"
+                        android:text="@string/title_body_weight"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editBodyWeight"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_bodyweight"
+                        app:testType="numeric"
+                        tools:text="60"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dip"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:text="@string/unit_weight"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+                </LinearLayout>
+
+                <!-- 执教年限; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/activity_padding"
+                        android:text="@string/title_teaching_experience"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:id="@+id/editTeachingExperience"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:paddingBottom="@dimen/edittext_padding"
+                        android:paddingTop="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        app:emptyErrorString="@string/error_input_empty"
+                        app:testErrorString="@string/error_input_teaching_experience"
+                        app:testType="numeric"
+                        tools:text="60"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dip"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:text="@string/unit_time"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+                </LinearLayout>
+
+                <!-- 所属机构; -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/activity_padding"
+                        android:text="@string/title_organisation"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        />
+
+                    <EditText
+                        android:id="@+id/editOrganisation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:inputType="text"
+                        android:maxLength="128"
+                        android:padding="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/font_size_large"
+                        tools:text="网球协会"
+                        />
+                </LinearLayout>
+            </LinearLayout>
             <!-- 擅长信息 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dip"
                 android:paddingBottom="4dip"
+                android:paddingTop="32dip"
                 android:text="@string/title_skills"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
@@ -501,7 +520,7 @@
                 android:id="@+id/editSkills"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
+                android:background="@color/md_white_1000"
                 android:gravity="left"
                 android:inputType="textMultiLine"
                 android:lines="2"
@@ -522,8 +541,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dip"
                 android:paddingBottom="4dip"
+                android:paddingTop="32dip"
                 android:text="@string/title_detailed_introduction"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
@@ -533,7 +552,7 @@
                 android:id="@+id/editDetailIntroduction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
+                android:background="@color/md_white_1000"
                 android:gravity="left"
                 android:inputType="textMultiLine"
                 android:lines="5"
@@ -555,6 +574,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="32dip"
                 >
+
                 <Button
                     android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
