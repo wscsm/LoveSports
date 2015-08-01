@@ -53,99 +53,102 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/llInputInformations"
         android:layout_below="@id/toolbar"
+        android:layout_marginTop="32dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dip"
         android:background="@color/md_white_1000"
-        android:divider="@drawable/divider_verital"
-        android:orientation="vertical"
-        android:showDividers="middle"
         >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/md_white_1000"
-            android:divider="@drawable/divider_verital"
-            android:orientation="horizontal"
             android:paddingLeft="@dimen/edittext_padding"
+            android:divider="@drawable/divider_verital"
+            android:orientation="vertical"
             android:showDividers="middle"
             >
 
-            <TextView
-                android:id="@+id/titleMobilePhone"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_padding"
-                android:paddingBottom="@dimen/activity_padding"
-                android:gravity="center_vertical"
-                android:text="@string/title_mobile_phone"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/font_size_large"
-                />
-
-            <com.andreabaccega.widget.FormEditText
-                android:id="@+id/editMobilePhone"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:singleLine="true"
-                android:gravity="right|center_vertical"
-                android:inputType="phone"
-                android:maxLength="32"
-                android:padding="@dimen/edittext_padding"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/font_size_extra_large"
-                app:customRegexp="^(0|86|\\+86)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$"
-                app:emptyErrorString="@string/error_input_empty"
-                app:testErrorString="@string/error_input_phone"
-                app:testType="regexp"
-                />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/md_white_1000"
-            android:divider="@drawable/divider_verital"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:showDividers="middle"
-            >
+                <TextView
+                    android:id="@+id/titleMobilePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/activity_padding"
+                    android:paddingBottom="@dimen/activity_padding"
+                    android:paddingRight="@dimen/activity_padding"
+                    android:gravity="center_vertical"
+                    android:text="@string/title_mobile_phone"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/font_size_large"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_padding"
-                android:paddingBottom="@dimen/activity_padding"
-                android:gravity="center_vertical"
-                android:text="@string/title_login_password"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/font_size_large"
-                />
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editMobilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:singleLine="true"
+                    android:gravity="right|center_vertical"
+                    android:inputType="phone"
+                    android:maxLength="32"
+                    android:padding="@dimen/edittext_padding"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/font_size_extra_large"
+                    app:customRegexp="^(0|86|\\+86)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$"
+                    app:emptyErrorString="@string/error_input_empty"
+                    app:testErrorString="@string/error_input_phone"
+                    app:testType="regexp"
+                    />
+            </LinearLayout>
 
-            <com.andreabaccega.widget.FormEditText
-                android:id="@+id/editPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:singleLine="true"
-                android:gravity="right|center_vertical"
-                android:inputType="textPassword"
-                android:maxLength="18"
-                android:padding="@dimen/edittext_padding"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/font_size_extra_large"
-                app:customRegexp="^[a-zA-Z]\w{5,17}$"
-                app:emptyErrorString="@string/error_input_empty"
-                app:testErrorString="@string/error_input_password"
-                app:testType="regexp"
-                />
+                android:layout_height="wrap_content"
+                android:background="@color/md_white_1000"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/activity_padding"
+                    android:paddingBottom="@dimen/activity_padding"
+                    android:paddingRight="@dimen/activity_padding"
+                    android:gravity="center_vertical"
+                    android:text="@string/title_login_password"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/font_size_large"
+                    />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:singleLine="true"
+                    android:gravity="right|center_vertical"
+                    android:inputType="textPassword"
+                    android:maxLength="18"
+                    android:padding="@dimen/edittext_padding"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/font_size_extra_large"
+                    app:customRegexp="^[a-zA-Z]\w{5,17}$"
+                    app:emptyErrorString="@string/error_input_empty"
+                    app:testErrorString="@string/error_input_password"
+                    app:testType="regexp"
+                    />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_below="@id/llInputInformations"
