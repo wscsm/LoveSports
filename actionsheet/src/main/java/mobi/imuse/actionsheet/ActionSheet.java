@@ -6,9 +6,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -115,7 +117,18 @@ public class ActionSheet{
         return attrs;
     }
 
+    private void closeInputKeyboard(){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            View focusView = ((AppCompatActivity)mContext).getCurrentFocus();
+            if (focusView != null) {
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            }
+        }
+    }
+
     public void show(){
+        closeInputKeyboard();
         Holder holder = new ViewHolder(createView());
         View footer = new View(mContext);
         // 只有在4.4以上版本，采用这个View来填充下面导航栏的位置，避免错位.
