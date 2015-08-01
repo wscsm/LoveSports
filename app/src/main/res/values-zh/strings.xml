@@ -61,5 +61,14 @@
     <string name="error_input_price">输入的价格有误，请重新输入</string>
     <string name="title_quota_special_offer">特价咨询名额</string>
     <string name="title_save">保存</string>
+    <string name="title_change_passwd">修改密码</string>
+    <string name="title_about">关于我们</string>
+    <string name="title_consultation_completed_setting">设置咨询结束语</string>
+    <string name="title_consultation_welcom_setting">设置咨询欢迎语</string>
+    <string name="title_invite_friend">邀请朋友</string>
+    <string name="title_logout">退出登录</string>
+    <string name="title_rate_me">给我们评价</string>
+    <string name="title_feedback">意见反馈</string>
+    <string name="title_update_info">更新个人信息</string>
 
 </resources>

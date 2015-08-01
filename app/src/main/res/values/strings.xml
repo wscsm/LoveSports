@@ -77,4 +77,14 @@
     <string name="title_provide_special_offer">Provide Special Offer</string>
     <string name="title_special_offer">Special Offer</string>
     <string name="title_quota_special_offer">Special Offer Quota</string>
+
+    <string name="title_change_passwd">Change Password</string>
+    <string name="title_update_info">Update Personal Information</string>
+    <string name="title_consultation_welcom_setting">Welcome Hint</string>
+    <string name="title_consultation_completed_setting">Complete Hint</string>
+    <string name="title_invite_friend">Invite Friends</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_rate_me">Rate This App</string>
+    <string name="title_about">About Cool Coach</string>
+    <string name="title_logout">Logout</string>
 </resources>

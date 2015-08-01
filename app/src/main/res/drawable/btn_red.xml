@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape>
+            <gradient
+                android:startColor="@color/md_red_A700"
+                android:endColor="@color/md_red_A700"
+                android:angle="0" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape>
+            <gradient
+                android:startColor="@color/md_red_A200"
+                android:endColor="@color/md_red_A200"
+                android:angle="0" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient
+                android:startColor="@color/md_red_A700"
+                android:endColor="@color/md_red_A700"
+                android:angle="0" />
+        </shape>
+    </item>
+</selector>
