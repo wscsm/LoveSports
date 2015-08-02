@@ -92,7 +92,6 @@ public class RegisterActivity extends BaseActivity {
                         SmsResponse rsp = gson.fromJson(response.toString(), SmsResponse.class);
                     }
                     else {
-                        // TODO: 弹出对话框提示错误;
                         SLog.d(TAG, "ErrorCode: " + errorCode + ", ErrorMsg: " + response.getString("ErrorMsgCN"));
                         T.showShort(RegisterActivity.this, "Error: " + errorCode);
                     }

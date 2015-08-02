@@ -24,15 +24,10 @@ public final class Constants {
     public static final String BasePhotoUrlDiskCached = Environment.getExternalStorageDirectory()+"/LoveSports/Caches";
 
     // Base Url;
-    public static final String BASE_URL = "http://118.192.93.37/";
+    public static final String BASE_URL = "http://1.2.3.4/";
 
     public static final String QINIU_ACCESS_KEY = "k74kwexXovTZpEBtbeys25ID3CxLtW2oWPhsNnOL";
     public static final String QINIU_SECRET_KEY = "dxaLtIKj8ObKaA0b45L0ZVAP53RjFanM2YeKeoTb";
     public static final String QINIU_BUCKET_NAME = "sports";
-
-    // 填写从短信SDK应用后台注册得到的APPKEY
-    public static final String APPKEY_SMS = "5d208043a5e4";
-    // 填写从短信SDK应用后台注册得到的APPSECRET
-    public static final String APPSECRET_SMS = "ea0d08588fdce8f60bd06930e3a2203c";
 
 }
