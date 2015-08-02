@@ -9,6 +9,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="32dip"
+        android:divider="@drawable/divider_verital"
+        android:showDividers="middle"
         >
 
         <!-- 头像这一栏; -->

@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:divider="@drawable/divider_verital"
+            android:showDividers="middle"
             >
 
             <!-- 图文咨询价格; -->
@@ -175,7 +177,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_underline"
                     android:orientation="horizontal"
                     >
 

@@ -5,7 +5,6 @@
                 android:layout_height="match_parent"
                 tools:context="mobi.imuse.lovesports.RegisterActivity"
     >
-    >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -56,20 +55,21 @@
 
     <LinearLayout
         android:id="@+id/llInputInformations"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:layout_marginTop="32dip"
         android:background="@color/md_white_1000"
         android:divider="@drawable/divider_verital"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/edittext_padding"
-        android:showDividers="middle"
+        android:showDividers="beginning|end"
         >
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edittext_padding"
+            android:background="@drawable/bg_underline"
             android:orientation="horizontal"
             >
 
@@ -77,9 +77,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="@dimen/activity_padding"
                 android:paddingBottom="@dimen/activity_padding"
                 android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/activity_padding"
                 android:text="@string/title_mobile_phone"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
@@ -91,11 +91,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:gravity="right|center_vertical"
                 android:inputType="phone"
                 android:maxLength="32"
                 android:padding="@dimen/edittext_padding"
                 android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_extra_large"
                 app:customRegexp="^(0|86|\\+86)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$"
@@ -108,6 +108,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edittext_padding"
             android:orientation="horizontal"
             >
 
@@ -115,9 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="@dimen/activity_padding"
                 android:paddingBottom="@dimen/activity_padding"
                 android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/activity_padding"
                 android:text="@string/title_sms_authcode"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
@@ -129,17 +130,18 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:background="@android:color/transparent"
+                android:gravity="right|center_vertical"
                 android:inputType="number"
                 android:maxLength="6"
                 android:padding="@dimen/edittext_padding"
                 android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_large"
                 app:emptyErrorString="@string/error_input_empty"
                 app:testErrorString="@string/error_input_sms_authcode"
                 app:testType="numeric"
                 />
+
             <Button
                 android:id="@+id/btnSendSms"
                 android:layout_width="wrap_content"
@@ -152,21 +154,22 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/llInputInformations"
         android:id="@+id/llUserInformations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/llInputInformations"
         android:layout_marginTop="32dip"
         android:background="@color/md_white_1000"
         android:divider="@drawable/divider_verital"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/edittext_padding"
-        android:showDividers="middle"
+        android:showDividers="beginning|end"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edittext_padding"
+            android:background="@drawable/bg_underline"
             android:orientation="horizontal"
             >
 
@@ -174,9 +177,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="@dimen/activity_padding"
                 android:paddingBottom="@dimen/activity_padding"
                 android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/activity_padding"
                 android:text="@string/title_realname"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
@@ -187,11 +190,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:gravity="right|center_vertical"
                 android:inputType="text"
                 android:maxLength="32"
                 android:padding="@dimen/edittext_padding"
                 android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_large"
                 app:emptyErrorString="@string/error_input_empty"
@@ -203,6 +206,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edittext_padding"
             android:orientation="horizontal"
             >
 
@@ -210,9 +214,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="@dimen/activity_padding"
                 android:paddingBottom="@dimen/activity_padding"
                 android:paddingRight="@dimen/activity_padding"
+                android:paddingTop="@dimen/activity_padding"
                 android:text="@string/title_login_password"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/font_size_large"
@@ -223,11 +227,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:gravity="right|center_vertical"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:padding="@dimen/edittext_padding"
                 android:singleLine="true"
-                android:gravity="right|center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/font_size_large"
                 app:customRegexp="^[a-zA-Z]\w{5,17}$"
@@ -239,13 +243,13 @@
     </LinearLayout>
 
     <Button
-        android:layout_below="@id/llUserInformations"
         android:id="@+id/btnNextStep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/llUserInformations"
         android:layout_centerVertical="true"
-        android:layout_marginRight="16dip"
         android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
         android:layout_marginTop="32dip"
         android:layout_weight="1.0"
         android:background="@drawable/btn_common"

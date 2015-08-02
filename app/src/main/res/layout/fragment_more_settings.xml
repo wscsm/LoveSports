@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dip"
         android:divider="@drawable/divider_verital"
+        android:showDividers="beginning|middle"
         android:orientation="vertical"
         android:paddingBottom="32dip"
         >
