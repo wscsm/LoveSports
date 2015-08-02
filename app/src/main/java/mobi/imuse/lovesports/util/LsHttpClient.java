@@ -5,9 +5,9 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 
+import mobi.imuse.lovesports.Constants;
+
 public class LsHttpClient {
-    private static final String BASE_URL = "http://118.192.93.37/";
-    
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     // 这个用原始Url;
@@ -33,6 +33,6 @@ public class LsHttpClient {
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {
-        return BASE_URL + relativeUrl;
+        return Constants.BASE_URL + relativeUrl;
     }
 }
