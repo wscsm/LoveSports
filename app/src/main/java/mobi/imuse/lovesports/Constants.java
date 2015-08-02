@@ -26,8 +26,8 @@ public final class Constants {
     // Base Url;
     public static final String BASE_URL = "http://1.2.3.4/";
 
-    public static final String QINIU_ACCESS_KEY = "k74kwexXovTZpEBtbeys25ID3CxLtW2oWPhsNnOL";
-    public static final String QINIU_SECRET_KEY = "dxaLtIKj8ObKaA0b45L0ZVAP53RjFanM2YeKeoTb";
+    public static final String QINIU_ACCESS_KEY = "accesskey";
+    public static final String QINIU_SECRET_KEY = "secretkey";
     public static final String QINIU_BUCKET_NAME = "sports";
 
 }
